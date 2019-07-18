@@ -188,6 +188,7 @@ SPController::HandlePacketIn (
 
   uint64_t dpId = swtch->GetDpId ();
 
+  std::cout<<"The switch with dpid= "<<dpId<<" received packetIn!!!!!!!!!!!!!"<<std::endl;
   uint16_t ethType;
   struct ofl_match_tlv *tlv;
   tlv = oxm_match_lookup (OXM_OF_ETH_TYPE, (struct ofl_match*)msg->match);
@@ -237,22 +238,30 @@ SPController::HandlePacketIn (
     // Get L2Table for this datapath
      auto it = m_learnedInfo.find (dpId);
      if (it != m_learnedInfo.end ()){
-        std::cout<<"Find L2 table for this datapath id="<<dpId<<" "<<std::endl;
+        std::cout<<"Find L2 table for this datapath id="<<dpId<<",";
         L2Table_t *l2Table = &it->second;
           // Looking for out port based on dst address (except for broadcast)
           if (!dst48.IsBroadcast ()) {
               auto itDst = l2Table->find (dst48);
               if (itDst != l2Table->end ()) {
                   outPort = itDst->second;
+                  std::cout<<"port exists for: "<<dst48<<" is "<< outPort<<std::endl; 
               }
               else{
                  //calculating path by dpid
                  vector<dpid_t> path;
                  calPath(srcDpid, dstDpid, path);
                  outPort = updateL2Table(path, dst48);
-                 // NS_LOG_DEBUG ("No L2 info for mac " << dst48 << ". Flood.");
+                 std::cout<<"port calculated for: "<<dst48<<" is "<< outPort<<std::endl; 
               }
 
+              //insert flow table
+              std::ostringstream cmd;
+              cmd << "flow-mod cmd=add,table=0,idle=10,flags=0x0001"
+                      << ",prio=" << ++prio << " eth_dst=" << dst48
+                      << " apply:output=" << outPort;
+              DpctlExecute (swtch, cmd.str ());
+              /*
               // Learning port from source address
               NS_ASSERT_MSG (!src48.IsBroadcast (), "Invalid src broadcast addr");
               auto itSrc = l2Table->find (src48);
@@ -303,11 +312,9 @@ SPController::HandlePacketIn (
 
               SendToSwitch (swtch, (struct ofl_msg_header*)&reply, xid);
               free (a);
+              */
                //===================================
-
      }
-    //populate routing table
-    //AddDefaultFlowEntry();
   }
      else
          NS_LOG_ERROR ("No L2 table for this datapath id " << dpId);
@@ -563,8 +570,12 @@ SPController::calPath(dpid_t srcDpid, dpid_t dstDpid, vector<dpid_t>& path) {
   std::cout<<"Path to "<<dstDpid<<" next hop: "<<srcDpid<<std::endl;
   if(srcDpid == dstDpid) return;
   for(uint32_t i = 0; i < m_dpidAdj[srcDpid].size(); i++) {
-    if(m_dpidAdj[srcDpid][i] == srcDpid)  continue;
-    else
+    bool loop = false;
+    for(uint32_t j = 0; j < path.size(); j++) {
+        if(m_dpidAdj[srcDpid][i] == path[j])
+            loop = true;
+    }
+    if(!loop)
       calPath(m_dpidAdj[srcDpid][i], dstDpid, path);
   }
 }
@@ -572,12 +583,12 @@ SPController::calPath(dpid_t srcDpid, dpid_t dstDpid, vector<dpid_t>& path) {
 uint32_t
 SPController::updateL2Table(vector<dpid_t> path, Mac48Address dst48){
   uint32_t ret;
-  for(uint32_t i = 0; i < path.size() - 1; i++) {
+  L2Table_t *l2Table;
+  uint32_t i = 0;
+  for(; i < path.size() - 1; i++) {
     auto it = m_learnedInfo.find(path[i]);
-    L2Table_t *l2Table;
     uint32_t outPort;
     if(it != m_learnedInfo.end()){
-      std::cout<<"Updating L2Table of "<<path[i]<<std::endl;
       l2Table = &it->second;
       if(m_dpidPortMap.find(path[i]) != m_dpidPortMap.end()){
         if(m_dpidPortMap[path[i]].find(path[i+1]) != m_dpidPortMap[path[i]].end()) {
@@ -596,12 +607,24 @@ SPController::updateL2Table(vector<dpid_t> path, Mac48Address dst48){
     else {
       NS_LOG_ERROR ("No L2 table for this datapath id " << path[i]);
     }
+    std::cout<<"Updating L2Table of dpid = "<<path[i]<<std::endl;
+    std::cout<<"The port to "<<dst48<<" is "<<outPort<<std::endl;
     std::pair<Mac48Address, uint32_t> entry (dst48, outPort);
     //insert into table
-    auto ret = l2Table->insert(entry);
-    if(ret.second == false) {
+    auto insrt_ret = l2Table->insert(entry);
+    if(insrt_ret.second == false) {
       NS_LOG_ERROR ("Can't insert mac48address / port pair");
     }
+  }
+    
+  std::cout<<"Updating L2Table of dpid = "<<path[i]<<std::endl;
+  std::cout<<"The port to "<<dst48<<" is "<<0<<std::endl;
+  auto it = m_learnedInfo.find(path[i]);
+  l2Table = &it->second;
+  std::pair<Mac48Address, uint32_t> final_entry (dst48, 0);
+  auto insrt_ret = l2Table->insert(final_entry);
+  if(insrt_ret.second == false) {
+      NS_LOG_ERROR ("Can't insert mac48address / port pair");
   }
   return ret;
 }
