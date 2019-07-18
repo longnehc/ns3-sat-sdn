@@ -38,6 +38,7 @@
 #include <ns3/internet-apps-module.h>
 #include <ns3/udp-client-server-helper.h>
 #include <vector>
+#include <map>
 
 #include "sp-controller.h"
 #include "satpos.h"
@@ -49,6 +50,25 @@ NodeContainer switches, servers;
 NetDeviceContainer serverPorts;
 ApplicationContainer apps;
 Ipv4InterfaceContainer serverIpIfaces;
+
+
+void updatePortMap(map<dpid_t, map<dpid_t, uint32_t>>& dpidPortMap, dpid_t dpid1, dpid_t dpid2)
+{
+    auto it = dpidPortMap.find(dpid1);
+    if(it != dpidPortMap.end()) {
+        uint32_t portNum = (it->second).size() + 1;
+        pair<dpid_t,uint32_t> value(dpid2, portNum);
+        dpidPortMap[dpid1].insert(value);
+        std::cout<<"updatePortMap: Dpid= "<< dpid1<<" to dpid "<<dpid2<<"'s port is "<<portNum<<std::endl;
+    } else {
+        map<dpid_t, uint32_t> initial_map;
+        pair<dpid_t,uint32_t> value(dpid2,1);
+        initial_map.insert(value);
+        pair<dpid_t, map<dpid_t, uint32_t>> temp_value(dpid1, initial_map);
+        dpidPortMap.insert(temp_value);
+        std::cout<<"updatePortMap(0): Dpid= "<< dpid1<<" to dpid "<<dpid2<<"'s port is "<<1<<std::endl;
+    }
+}
 
 //datarate is Mbps
 void
@@ -76,7 +96,8 @@ main (int argc, char *argv[])
   //create iridium topology
   uint16_t nPlane = 6;
   uint16_t nIndex = 11;
-  uint16_t nSat = nPlane * nIndex;
+  //uint16_t nSat = nPlane * nIndex;
+  uint16_t nSat = 3;
   uint16_t altitude = 780;
   double incl = 86.4;
 
@@ -118,7 +139,7 @@ main (int argc, char *argv[])
 
   // Each satellite is bound with a server node
   servers.Create (nSat);
-
+  
   // Create switch nodes
   switches.Create (nSat);
   vector<NetDeviceContainer> switchPorts (nSat);
@@ -152,6 +173,23 @@ main (int argc, char *argv[])
   
   }
 
+
+  CsmaHelper csmaH;
+  csmaH.SetChannelAttribute ("DataRate", DataRateValue (DataRate ("20Mbps")));
+  csmaH.SetChannelAttribute ("Delay", StringValue ("2ms"));
+
+  //add link n0---n1
+  NodeContainer n0n1 = NodeContainer(switches.Get(0),switches.Get(1));  
+  NetDeviceContainer p2pD1 = csmaH.Install(n0n1); 
+  switchPorts[0].Add(p2pD1.Get(0));
+  switchPorts[1].Add(p2pD1.Get(1));
+
+ //add link n1---n2
+  NodeContainer n1n2 = NodeContainer(switches.Get(1),switches.Get(2));  
+  NetDeviceContainer p2pD2 = csmaH.Install(n1n2); 
+  switchPorts[1].Add(p2pD2.Get(0));
+  switchPorts[2].Add(p2pD2.Get(1));
+
   // Create the controller node
   Ptr<Node> controllerNode = CreateObject<Node> ();
 
@@ -165,14 +203,56 @@ main (int argc, char *argv[])
       of13Helper->InstallSwitch (switches.Get (i), switchPorts [i]);
   }
   of13Helper->CreateOpenFlowChannels ();
+
+
+  Ptr<OFSwitch13Device> ofdev0 = switches.Get(0)->GetObject<OFSwitch13Device>();
+  dpid_t dpid0 = ofdev0->GetDpId();
  
+  Ptr<OFSwitch13Device> ofdev1 = switches.Get(1)->GetObject<OFSwitch13Device>();
+  dpid_t dpid1 = ofdev1->GetDpId();
+
+  Ptr<OFSwitch13Device> ofdev2 = switches.Get(2)->GetObject<OFSwitch13Device>();
+  dpid_t dpid2 = ofdev2->GetDpId();
+  
+  map<dpid_t, map<dpid_t, uint32_t>> dpidPortMap;
+  map<dpid_t, vector<dpid_t>> dpidAdj;
+
+  updatePortMap(dpidPortMap, dpid0, dpid1);
+  updatePortMap(dpidPortMap, dpid1, dpid0);
+  updatePortMap(dpidPortMap, dpid1, dpid2);
+  updatePortMap(dpidPortMap, dpid2, dpid1);
+  /*
+  map<dpid_t, NetDeviceContainer> tmp3 = dpidPortMap.Get(dpid1);
+  tmp3[dpid2] = p2pD2.Get(0); 
+  dpidPortMap[dpid1] = tmp3;
+
+  map<dpid_t, NetDeviceContainer> tmp4;
+  tmp4[dpid1] = p2pD2.Get(1);
+  dpidPortMap[dpid2] = tmp4;
+*/
+  vector<dpid_t> vec1;
+  vec1.push_back(dpid1);
+  dpidAdj[dpid0] = vec1;
+
+  vector<dpid_t> vec2;
+  vec2.push_back(dpid0);
+  vec2.push_back(dpid2);
+  dpidAdj[dpid1] = vec2;
+
+  vector<dpid_t> vec3;
+  vec3.push_back(dpid1);
+  dpidAdj[dpid2] = vec3;
+
+
   // Set IPv4 server addresses
   Ipv4AddressHelper ipv4helpr;
   ipv4helpr.SetBase ("10.1.1.0", "255.255.255.0");
   serverIpIfaces = ipv4helpr.Assign (serverPorts);
-  
+ 
   spCtrl->ImportNodes(switches);
   spCtrl->ImportServers(servers);
+  spCtrl->ImportDpidPortMap(dpidPortMap);
+  spCtrl->ImportDpidAdj(dpidAdj);
   
   // Install UDP server on all nodes (port 11399)
   UdpServerHelper udpServerHelper (11399);

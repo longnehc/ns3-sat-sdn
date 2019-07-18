@@ -60,6 +60,26 @@ SPController::GetTypeId (void)
   return tid;
 }
 
+void SPController::ImportDpidAdj(map<dpid_t, vector<dpid_t>> dpidAdj)
+{
+    NS_LOG_FUNCTION(this);
+    m_dpidAdj = dpidAdj;
+}
+
+void
+SPController::ImportDpidPortMap(map<dpid_t, map<dpid_t, uint32_t>> dpidPortMap)
+{
+    NS_LOG_FUNCTION(this);
+    m_dpidPortMap = dpidPortMap;
+}
+/*
+void
+SPController::ImportOutportMap(map<int,map<int,NetDeviceContainer>> swOutPortMap)
+{
+    NS_LOG_FUNCTION(this);
+    m_outPortMap = swOutPortMap;
+}*/
+
 void
 SPController::ImportServers(NodeContainer servers)
 {
@@ -160,11 +180,13 @@ SPController::HandlePacketIn (
   uint32_t xid)
 {
   NS_LOG_FUNCTION (this << swtch << xid);
-
+  static int prio = 100;
   char *msgStr =
     ofl_structs_match_to_string ((struct ofl_match_header*)msg->match, 0);
   NS_LOG_DEBUG ("Packet in match: " << msgStr);
   free (msgStr);
+
+  uint64_t dpId = swtch->GetDpId ();
 
   uint16_t ethType;
   struct ofl_match_tlv *tlv;
@@ -172,8 +194,6 @@ SPController::HandlePacketIn (
   memcpy (&ethType, tlv->value, OXM_LENGTH (OXM_OF_ETH_TYPE));
   if (msg->reason == OFPR_ACTION)
   {
-      
-      //calculate shortest path
       if (ethType == ArpL3Protocol::PROT_NUMBER)
       {
           NS_LOG_FUNCTION("is arp");     
@@ -186,24 +206,118 @@ SPController::HandlePacketIn (
     if (ethType == Ipv4L3Protocol::PROT_NUMBER)
         NS_LOG_FUNCTION("is udp");     
     
+    uint32_t inPort;
+    uint32_t outPort = OFPP_FLOOD;
+    size_t portLen = OXM_LENGTH (OXM_OF_IN_PORT); // (Always 4 bytes)
+    struct ofl_match_tlv *input =
+      oxm_match_lookup (OXM_OF_IN_PORT, (struct ofl_match*)msg->match);
+    memcpy (&inPort, input->value, portLen);
+
+
+    Mac48Address src48;
+    struct ofl_match_tlv *ethSrc =
+      oxm_match_lookup (OXM_OF_ETH_SRC, (struct ofl_match*)msg->match);
+    src48.CopyFrom (ethSrc->value);
+    
     Mac48Address dst48;
     struct ofl_match_tlv *ethDst =
       oxm_match_lookup (OXM_OF_ETH_DST, (struct ofl_match*)msg->match);
     dst48.CopyFrom (ethDst->value);
     
+    dpid_t srcDpid = m_macDpidTable[src48];
+    std::cout<<"The src dpid for Mac: "<<src48<<" is "<<srcDpid<<std::endl;
+
+    dpid_t dstDpid = m_macDpidTable[dst48];
+    std::cout<<"The dst dpid for Mac: "<<dst48<<" is "<<dstDpid<<std::endl;
+
     uint16_t ethType;
     tlv = oxm_match_lookup (OXM_OF_ETH_TYPE, (struct ofl_match*)msg->match);
     memcpy (&ethType, tlv->value, OXM_LENGTH (OXM_OF_ETH_TYPE));
+
+    // Get L2Table for this datapath
+     auto it = m_learnedInfo.find (dpId);
+     if (it != m_learnedInfo.end ()){
+        std::cout<<"Find L2 table for this datapath id="<<dpId<<" "<<std::endl;
+        L2Table_t *l2Table = &it->second;
+          // Looking for out port based on dst address (except for broadcast)
+          if (!dst48.IsBroadcast ()) {
+              auto itDst = l2Table->find (dst48);
+              if (itDst != l2Table->end ()) {
+                  outPort = itDst->second;
+              }
+              else{
+                 //calculating path by dpid
+                 vector<dpid_t> path;
+                 calPath(srcDpid, dstDpid, path);
+                 outPort = updateL2Table(path, dst48);
+                 // NS_LOG_DEBUG ("No L2 info for mac " << dst48 << ". Flood.");
+              }
+
+              // Learning port from source address
+              NS_ASSERT_MSG (!src48.IsBroadcast (), "Invalid src broadcast addr");
+              auto itSrc = l2Table->find (src48);
+              if (itSrc == l2Table->end ()) {
+              std::pair<Mac48Address, uint32_t> entry (src48, inPort);
+              auto ret = l2Table->insert (entry);
+              if (ret.second == false) {
+                  NS_LOG_ERROR ("Can't insert mac48address / port pair");
+                }
+              else {
+                  NS_LOG_DEBUG ("Learning that mac " << src48 <<
+                                " can be found at port " << inPort);
+                  // Send a flow-mod to switch creating this flow. Let's
+                  // configure the flow entry to 10s idle timeout and to
+                  // notify the controller when flow expires. (flags=0x0001)
+                  std::ostringstream cmd;
+                  cmd << "flow-mod cmd=add,table=0,idle=10,flags=0x0001"
+                      << ",prio=" << ++prio << " eth_dst=" << src48
+                      << " apply:output=" << inPort;
+                  DpctlExecute (swtch, cmd.str ());
+                }
+              }
+              //===================================
+              // Lets send the packet out to switch.
+              struct ofl_msg_packet_out reply;
+              reply.header.type = OFPT_PACKET_OUT;
+              reply.buffer_id = msg->buffer_id;
+              reply.in_port = inPort;
+              reply.data_length = 0;
+              reply.data = 0;
+
+              if (msg->buffer_id == NO_BUFFER)
+                {
+                  // No packet buffer. Send data back to switch
+                  reply.data_length = msg->data_length;
+                  reply.data = msg->data;
+                }
+
+              // Create output action
+              struct ofl_action_output *a =
+                (struct ofl_action_output*)xmalloc (sizeof (struct ofl_action_output));
+              a->header.type = OFPAT_OUTPUT;
+              a->port = outPort;
+              a->max_len = 0;
+
+              reply.actions_num = 1;
+              reply.actions = (struct ofl_action_header**)&a;
+
+              SendToSwitch (swtch, (struct ofl_msg_header*)&reply, xid);
+              free (a);
+               //===================================
+
+     }
     //populate routing table
     //AddDefaultFlowEntry();
+  }
+     else
+         NS_LOG_ERROR ("No L2 table for this datapath id " << dpId);
   }
   // All handlers must free the message when everything is ok
   ofl_msg_free ((struct ofl_msg_header*)msg, 0);
   return 0;
 }
 
-void
-SPController::HandshakeSuccessful (Ptr<const RemoteSwitch> swtch)
+void SPController::HandshakeSuccessful(Ptr<const RemoteSwitch> swtch)
 {
   NS_LOG_FUNCTION (this << swtch);
 
@@ -215,6 +329,15 @@ SPController::HandshakeSuccessful (Ptr<const RemoteSwitch> swtch)
 
   DpctlExecute (swtch, "set-config miss=128");
   
+  L2Table_t l2Table;
+  uint64_t dpId = swtch->GetDpId ();
+  
+  std::pair<uint64_t, L2Table_t> entry (dpId, l2Table);
+  auto ret = m_learnedInfo.insert (entry);
+  if (ret.second == false){
+    NS_LOG_ERROR ("Table exists for this datapath.");
+  }
+
   // Redirect ARP requests to the controller
   DpctlExecute (swtch, "flow-mod cmd=add,table=0,prio=20 "
                 "eth_type=0x0806,arp_op=1 apply:output=ctrl");
@@ -243,19 +366,19 @@ SPController::HandshakeSuccessful (Ptr<const RemoteSwitch> swtch)
           cmd << "flow-mod cmd=add,table=0,prio=100"
               << " eth_dst=" << macaddr 
               << " apply:output=" << 0;
-          
-          std::cout<<DpctlExecute (swtch, cmd.str ())<<"!"<<std::endl;
+          DpctlExecute (swtch, cmd.str ());
+          //std::cout<<DpctlExecute (swtch, cmd.str ())<<"!"<<std::endl;
           if(ipaddr != Ipv4Address("127.0.0.1"))
           {
               SaveArpEntry (ipaddr, macaddr);
+              SaveMac2Dpid (macaddr, swtch->GetDpId());
           }
       }
   }
 }
 
 
-void 
-SPController::TopologyConstruction()
+void SPController::TopologyConstruction()
 {
   NS_LOG_FUNCTION (this);
   Simulator::Schedule (MilliSeconds (1000), &SPController::TopologyConstruction, this);
@@ -384,6 +507,21 @@ SPController::GetArpEntry (Ipv4Address ip)
   NS_ABORT_MSG ("No ARP information for this IP.");
 }
 
+
+void
+SPController::SaveMac2Dpid (Mac48Address macAddr, uint64_t dpid)
+{
+  NS_LOG_FUNCTION(this<<macAddr<<dpid);
+  std::pair<Mac48Address, uint64_t> entry (macAddr, dpid);
+  std::pair <MacDpidMap_t::iterator, bool> ret;
+  ret = m_macDpidTable.insert (entry);
+  if (ret.second == true)
+    {
+      std::cout<<"Mac: "<<macAddr<<" is connected to switch with dpid = "<<dpid<<std::endl;
+      return;
+    }
+}
+
 void
 SPController::SaveArpEntry (Ipv4Address ipAddr, Mac48Address macAddr)
 {
@@ -418,3 +556,53 @@ SPController::ExtractIpv4Address (uint32_t oxm_of, struct ofl_match* match)
       NS_ABORT_MSG ("Invalid IP field.");
     }
 }
+
+void
+SPController::calPath(dpid_t srcDpid, dpid_t dstDpid, vector<dpid_t>& path) {
+  path.push_back(srcDpid);
+  std::cout<<"Path to "<<dstDpid<<" next hop: "<<srcDpid<<std::endl;
+  if(srcDpid == dstDpid) return;
+  for(uint32_t i = 0; i < m_dpidAdj[srcDpid].size(); i++) {
+    if(m_dpidAdj[srcDpid][i] == srcDpid)  continue;
+    else
+      calPath(m_dpidAdj[srcDpid][i], dstDpid, path);
+  }
+}
+
+uint32_t
+SPController::updateL2Table(vector<dpid_t> path, Mac48Address dst48){
+  uint32_t ret;
+  for(uint32_t i = 0; i < path.size() - 1; i++) {
+    auto it = m_learnedInfo.find(path[i]);
+    L2Table_t *l2Table;
+    uint32_t outPort;
+    if(it != m_learnedInfo.end()){
+      std::cout<<"Updating L2Table of "<<path[i]<<std::endl;
+      l2Table = &it->second;
+      if(m_dpidPortMap.find(path[i]) != m_dpidPortMap.end()){
+        if(m_dpidPortMap[path[i]].find(path[i+1]) != m_dpidPortMap[path[i]].end()) {
+          outPort = m_dpidPortMap[path[i]][path[i+1]];
+          if(i == 0)
+            ret = outPort;
+        }
+        else {
+          NS_LOG_ERROR ("No next port available of "<<path[i]);
+        }
+      } 
+      else {
+        NS_LOG_ERROR ("No next hop available of "<<path[i]);
+      }
+    }
+    else {
+      NS_LOG_ERROR ("No L2 table for this datapath id " << path[i]);
+    }
+    std::pair<Mac48Address, uint32_t> entry (dst48, outPort);
+    //insert into table
+    auto ret = l2Table->insert(entry);
+    if(ret.second == false) {
+      NS_LOG_ERROR ("Can't insert mac48address / port pair");
+    }
+  }
+  return ret;
+}
+

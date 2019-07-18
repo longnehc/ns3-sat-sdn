@@ -23,8 +23,12 @@
 
 #include <ns3/ofswitch13-module.h>
 #include <iostream>
+#include <vector>
+#include <map>
 using namespace ns3;
+using namespace std;
 
+typedef uint64_t dpid_t;
 
 
 /**
@@ -57,8 +61,12 @@ public:
     struct ofl_msg_packet_in *msg, Ptr<const RemoteSwitch> swtch,
     uint32_t xid);
 
+  //void ImportOutportMap(map<int,map<int,NetDeviceContainer>> swOutPortMap);
   void ImportNodes(NodeContainer switches);
   void ImportServers(NodeContainer servers);
+  void ImportDpidAdj(map<dpid_t, vector<dpid_t>> dpidAdj);
+  void ImportDpidPortMap(map<dpid_t, map<dpid_t, uint32_t>> dpidPortMap);
+     
   
   /**
    * Save the pair IP / MAC address in ARP table.
@@ -67,15 +75,31 @@ public:
    */
   void SaveArpEntry (Ipv4Address ipAddr, Mac48Address macAddr);
 
+  void SaveMac2Dpid (Mac48Address macAddr, uint64_t dpid);
 
   Ptr<Node> FindNodeByDpid(uint64_t dpid, int& index);
   NodeContainer m_switches;
   NodeContainer m_servers;
+  map<int,map<int,NetDeviceContainer>> m_outPortMap;
+  map<dpid_t, map<dpid_t, uint32_t>> m_dpidPortMap;
+
+  void calPath(dpid_t srcDpid, dpid_t dstDpid, vector<dpid_t>& path);
+
+  uint32_t updateL2Table(vector<dpid_t> path, Mac48Address dst48);
+
+  //void replyPacketOut(vector<dpid_t> path); 
+
 protected:
   // Inherited from OFSwitch13Controller
   void HandshakeSuccessful (Ptr<const RemoteSwitch> swtch);
 
 private:
+  
+  typedef std::map<Mac48Address, uint32_t> L2Table_t;
+
+  typedef std::map<uint64_t, L2Table_t> DatapathMap_t;
+  
+  DatapathMap_t m_learnedInfo;
 
   void TopologyConstruction( void );
 
@@ -110,7 +134,10 @@ private:
 
   /** Map saving <IPv4 address / MAC address> */
   typedef std::map<Ipv4Address, Mac48Address> IpMacMap_t;
+  typedef std::map<Mac48Address, uint64_t> MacDpidMap_t;
   IpMacMap_t m_arpTable;          //!< ARP resolution table.
+  MacDpidMap_t m_macDpidTable;
+  map<dpid_t, vector<dpid_t>> m_dpidAdj;
 
   ofl_err HandleArpPacketIn (struct ofl_msg_packet_in *msg, Ptr<const RemoteSwitch> swtch, uint32_t xid);
   
