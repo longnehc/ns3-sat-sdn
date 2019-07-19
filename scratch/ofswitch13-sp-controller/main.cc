@@ -49,6 +49,7 @@ using namespace std;
 NodeContainer switches, servers;
 NetDeviceContainer serverPorts;
 ApplicationContainer apps;
+
 Ipv4InterfaceContainer serverIpIfaces;
 
 void dpidPortMapConstruct(map<int, map<int, uint32_t>> intPortMap, map<dpid_t, map<dpid_t, uint32_t>>& dpidPortMap, NodeContainer switches)
@@ -105,8 +106,7 @@ main (int argc, char *argv[])
   int NOW = 0;
   uint16_t simTime = 10;
   bool verbose = false;
-  LogComponentEnable ("OFSwitch13Port", LOG_LEVEL_INFO);
-  LogComponentEnable ("OFSwitch13Port", LOG_LEVEL_INFO);
+  //LogComponentEnable ("OFSwitch13Port", LOG_LEVEL_INFO);
   LogComponentEnable ("UdpClient", LOG_LEVEL_INFO);
   LogComponentEnable ("UdpServer", LOG_LEVEL_INFO);
   //create iridium topology
@@ -249,10 +249,6 @@ csmaHelper.EnablePcap ("switch", switchPorts [2], true);
   
   map<dpid_t, vector<dpid_t>> dpidAdj;
 
- 
-  /*
-  dpidPortMap[dpid2] = tmp4;
-*/
   vector<dpid_t> vec1;
   vec1.push_back(dpid1);
   dpidAdj[dpid0] = vec1;
