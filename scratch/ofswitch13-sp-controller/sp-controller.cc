@@ -257,10 +257,17 @@ SPController::HandlePacketIn (
 
               //insert flow table
               std::ostringstream cmd;
-              cmd << "flow-mod cmd=add,table=0,idle=10,flags=0x0001"
+              cmd << "flow-mod cmd=add,table=0,flags=0x0001"
                       << ",prio=" << ++prio << " eth_dst=" << dst48
                       << " apply:output=" << outPort;
-              DpctlExecute (swtch, cmd.str ());
+  
+              std::cout<<"Inserting flow entry to dpid: "<<dpId<<" dst = "<<dst48<<" outPort "<< outPort<<std::endl; 
+              int stat = DpctlExecute (swtch, cmd.str ());
+              if(stat != 0)
+                  std::cout<<"Error accured!!!!!!!!!!!!!!!!!!!!!"<<std::endl;
+              //std::ostringstream cmd1;
+              //cmd1 << "dump-flows "<<dpId;
+              //std::cout<<DpctlExecute(swtch, cmd1.str())<<std::endl;;
               /*
               // Learning port from source address
               NS_ASSERT_MSG (!src48.IsBroadcast (), "Invalid src broadcast addr");
@@ -316,8 +323,10 @@ SPController::HandlePacketIn (
                //===================================
      }
   }
-     else
+     else{
          NS_LOG_ERROR ("No L2 table for this datapath id " << dpId);
+         std::cout<<"No L2 table for this datapath id " << dpId << std::endl;
+     }
   }
   // All handlers must free the message when everything is ok
   ofl_msg_free ((struct ofl_msg_header*)msg, 0);
@@ -618,10 +627,10 @@ SPController::updateL2Table(vector<dpid_t> path, Mac48Address dst48){
   }
     
   std::cout<<"Updating L2Table of dpid = "<<path[i]<<std::endl;
-  std::cout<<"The port to "<<dst48<<" is "<<0<<std::endl;
+  std::cout<<"The port to "<<dst48<<" is "<<1<<std::endl;
   auto it = m_learnedInfo.find(path[i]);
   l2Table = &it->second;
-  std::pair<Mac48Address, uint32_t> final_entry (dst48, 0);
+  std::pair<Mac48Address, uint32_t> final_entry (dst48, 1);
   auto insrt_ret = l2Table->insert(final_entry);
   if(insrt_ret.second == false) {
       NS_LOG_ERROR ("Can't insert mac48address / port pair");

@@ -51,36 +51,23 @@ NetDeviceContainer serverPorts;
 ApplicationContainer apps;
 Ipv4InterfaceContainer serverIpIfaces;
 
-void dpidPortMapConstruct(map<int, map<int, uint32_t>> intPortMap, map<dpid_t, map<dpid_t, uint32_t>>& dpidPortMap, NodeContainer switches)
-{
-    
-    auto it = intPortMap.begin();
-    while(it != intPortMap.end()){
-        int switch0 = it->first;
-        Ptr<OFSwitch13Device> ofdev0 = switches.Get(switch0)->GetObject<OFSwitch13Device>();
-        dpid_t dpid0 = ofdev0->GetDpId(); 
-        map<dpid_t, uint32_t> innerMap;
-        map<int, uint32_t> im = it->second;
-        auto inner_it = im.begin();
-        while(inner_it != im.end()){
-            int switchi = inner_it -> first;
-            uint32_t portNum = inner_it -> second;
-            Ptr<OFSwitch13Device> ofdevi = switches.Get(switchi)->GetObject<OFSwitch13Device>();
-            dpid_t dpidi = ofdevi->GetDpId(); 
-            dpidPortMap[dpid0][dpidi] = portNum;
 
-            std::cout<<"dpidPortMapConstruct: Dpid= "<< dpid0<<" to dpid "<<dpidi<<"'s port is "<<portNum<<std::endl;
-            inner_it++;
-        }
-        it++;
-    }
-}
-void updatePortMap(map<int, map<int, uint32_t>>& intPortMap, int dpid1, int dpid2, vector<NetDeviceContainer> switchPorts)
+void updatePortMap(map<dpid_t, map<dpid_t, uint32_t>>& dpidPortMap, dpid_t dpid1, dpid_t dpid2)
 {
-    
-    uint32_t portNum = switchPorts[dpid1].GetN();
-    intPortMap[dpid1][dpid2] = portNum;
-    std::cout<<"updatePortMap: dev_id= "<< dpid1<<" to dev_id "<<dpid2<<"'s port is "<<portNum<<std::endl;
+    auto it = dpidPortMap.find(dpid1);
+    if(it != dpidPortMap.end()) {
+        uint32_t portNum = (it->second).size() + 2;
+        pair<dpid_t,uint32_t> value(dpid2, portNum);
+        dpidPortMap[dpid1].insert(value);
+        std::cout<<"updatePortMap: Dpid= "<< dpid1<<" to dpid "<<dpid2<<"'s port is "<<portNum<<std::endl;
+    } else {
+        map<dpid_t, uint32_t> initial_map;
+        pair<dpid_t,uint32_t> value(dpid2,2);
+        initial_map.insert(value);
+        pair<dpid_t, map<dpid_t, uint32_t>> temp_value(dpid1, initial_map);
+        dpidPortMap.insert(temp_value);
+        std::cout<<"updatePortMap(0): Dpid= "<< dpid1<<" to dpid "<<dpid2<<"'s port is "<<2<<std::endl;
+    }
 }
 
 //datarate is Mbps
@@ -92,7 +79,7 @@ CreateUdpApp(int src, int dst, float datarate)
 
     std::cout<<"remote addr:" << remoteServerAddr<<std::endl;
     
-    UdpClientHelper helper(remoteServerAddr, 11399);
+    UdpClientHelper helper(remoteServerAddr);
     helper.SetAttribute("Interval", TimeValue(MilliSeconds(1/datarate)));
     NodeContainer clients (servers.Get(src));
     ApplicationContainer curapp = helper.Install (clients);
@@ -105,8 +92,6 @@ main (int argc, char *argv[])
   int NOW = 0;
   uint16_t simTime = 10;
   bool verbose = false;
-  LogComponentEnable ("OFSwitch13Port", LOG_LEVEL_INFO);
-  LogComponentEnable ("OFSwitch13Port", LOG_LEVEL_INFO);
   LogComponentEnable ("UdpClient", LOG_LEVEL_INFO);
   LogComponentEnable ("UdpServer", LOG_LEVEL_INFO);
   //create iridium topology
@@ -178,11 +163,17 @@ main (int argc, char *argv[])
   }
   InternetStackHelper internet;
   internet.Install (servers);
-
-//
-csmaHelper.EnablePcap ("switch", switchPorts [0], true);
-csmaHelper.EnablePcap ("switch", switchPorts [2], true);
-//
+/*
+   CsmaHelper csma;
+   csma.SetChannelAttribute ("DataRate", DataRateValue (DataRate (5000000)));
+   csma.SetChannelAttribute ("Delay", TimeValue (MilliSeconds (2)));
+   csma.SetDeviceAttribute ("Mtu", UintegerValue (1400));
+   NetDeviceContainer d = csma.Install (servers);
+*/
+   //
+   csmaHelper.EnablePcap ("switch", switchPorts [0], true);
+   csmaHelper.EnablePcap ("switch", switchPorts [1], true);
+   //
 
   //create intra-plane link
   for(int i=0; i<nPlane; i++){
@@ -194,7 +185,7 @@ csmaHelper.EnablePcap ("switch", switchPorts [2], true);
   
   }
 
-  std::cout<<"port number1: "<<switchPorts[0].GetN()<<std::endl;
+
   CsmaHelper csmaH;
   csmaH.SetChannelAttribute ("DataRate", DataRateValue (DataRate ("20Mbps")));
   csmaH.SetChannelAttribute ("Delay", StringValue ("2ms"));
@@ -204,10 +195,6 @@ csmaHelper.EnablePcap ("switch", switchPorts [2], true);
   NetDeviceContainer p2pD1 = csmaH.Install(n0n1); 
   switchPorts[0].Add(p2pD1.Get(0));
   switchPorts[1].Add(p2pD1.Get(1));
-  
-  map<int, map<int, uint32_t>> intPortMap;
-  updatePortMap(intPortMap, 0, 1, switchPorts);
-  updatePortMap(intPortMap, 1, 0, switchPorts);
 
  //add link n1---n2
   NodeContainer n1n2 = NodeContainer(switches.Get(1),switches.Get(2));  
@@ -215,9 +202,6 @@ csmaHelper.EnablePcap ("switch", switchPorts [2], true);
   switchPorts[1].Add(p2pD2.Get(0));
   switchPorts[2].Add(p2pD2.Get(1));
 
-  updatePortMap(intPortMap, 1, 2, switchPorts);
-  updatePortMap(intPortMap, 2, 1, switchPorts);
-  
   // Create the controller node
   Ptr<Node> controllerNode = CreateObject<Node> ();
 
@@ -233,7 +217,6 @@ csmaHelper.EnablePcap ("switch", switchPorts [2], true);
   of13Helper->CreateOpenFlowChannels ();
 
 
-  std::cout<<"port number2: "<<switchPorts[0].GetN()<<std::endl;
   Ptr<OFSwitch13Device> ofdev0 = switches.Get(0)->GetObject<OFSwitch13Device>();
   dpid_t dpid0 = ofdev0->GetDpId();
  
@@ -244,12 +227,12 @@ csmaHelper.EnablePcap ("switch", switchPorts [2], true);
   dpid_t dpid2 = ofdev2->GetDpId();
   
   map<dpid_t, map<dpid_t, uint32_t>> dpidPortMap;
-  
-  dpidPortMapConstruct(intPortMap, dpidPortMap, switches); 
-  
   map<dpid_t, vector<dpid_t>> dpidAdj;
 
- 
+  updatePortMap(dpidPortMap, dpid0, dpid1);
+  updatePortMap(dpidPortMap, dpid1, dpid0);
+  updatePortMap(dpidPortMap, dpid1, dpid2);
+  updatePortMap(dpidPortMap, dpid2, dpid1);
   /*
   dpidPortMap[dpid2] = tmp4;
 */
@@ -271,23 +254,44 @@ csmaHelper.EnablePcap ("switch", switchPorts [2], true);
   Ipv4AddressHelper ipv4helpr;
   ipv4helpr.SetBase ("10.1.1.0", "255.255.255.0");
   serverIpIfaces = ipv4helpr.Assign (serverPorts);
- 
+
+  Address serverAddress = Address(serverIpIfaces.GetAddress(1));
+
   spCtrl->ImportNodes(switches);
   spCtrl->ImportServers(servers);
   spCtrl->ImportDpidPortMap(dpidPortMap);
   spCtrl->ImportDpidAdj(dpidAdj);
   
   // Install UDP server on all nodes (port 11399)
-  UdpServerHelper udpServerHelper (11399);
+  /*
+  UdpServerHelper udpServerHelper (0);
   ApplicationContainer serverApps = udpServerHelper.Install (servers);
   serverApps.Start (Seconds (1.0));
   serverApps.Stop (Seconds (10.0));
 
 
   // Configure udp application between two hosts
-  CreateUdpApp(0,2,1);
+  CreateUdpApp(0,1,1);
   apps.Start (Seconds (2.0));
   apps.Stop (Seconds (10.0));
+*/
+  uint16_t port = 0;
+  UdpServerHelper userver (port);
+  ApplicationContainer apps = userver.Install (servers.Get (1));
+  apps.Start (Seconds (1.0));
+  apps.Stop (Seconds (10.0));
+
+   uint32_t MaxPacketSize = 1024;
+   Time interPacketInterval = Seconds (0.05);
+   uint32_t maxPacketCount = 320;
+   UdpClientHelper uclient (serverAddress, port);
+   uclient.SetAttribute ("MaxPackets", UintegerValue (maxPacketCount));
+   uclient.SetAttribute ("Interval", TimeValue (interPacketInterval));
+   uclient.SetAttribute ("PacketSize", UintegerValue (MaxPacketSize));
+
+   apps = uclient.Install (servers.Get (0));
+   apps.Start (Seconds (2.0));
+   apps.Stop (Seconds (10.0));
 
   // Run the simulation
   Simulator::Stop (Seconds (simTime));
