@@ -72,13 +72,7 @@ SPController::ImportDpidPortMap(map<dpid_t, map<dpid_t, uint32_t>> dpidPortMap)
     NS_LOG_FUNCTION(this);
     m_dpidPortMap = dpidPortMap;
 }
-/*
-void
-SPController::ImportOutportMap(map<int,map<int,NetDeviceContainer>> swOutPortMap)
-{
-    NS_LOG_FUNCTION(this);
-    m_outPortMap = swOutPortMap;
-}*/
+ 
 
 void
 SPController::ImportServers(NodeContainer servers)
@@ -91,39 +85,7 @@ void
 SPController::ImportNodes(NodeContainer switches)
 {
     NS_LOG_FUNCTION(this);
-    
     m_switches = switches;
-/*    
-    NodeContainer::Iterator i;
-    for (i = switches.Begin (); i != switches.End (); ++i)
-    {
-        Ptr<OFSwitch13Device> ofdev = (*i)->GetObject<OFSwitch13Device>();
-        uint64_t dpid = ofdev->GetDpId();
-        
-
-        Ptr<Ipv4> ipv4 = (*i)->GetObject<Ipv4>();
-        for(uint32_t ifNum=0; ifNum<ipv4->GetNInterfaces(); ifNum++)
-        {
-            Ptr< NetDevice > dev = ipv4->GetNetDevice(ifNum);
-            Mac48Address macaddr = Mac48Address::ConvertFrom(dev->GetAddress());
-            for(uint32_t addrNum = 0; addrNum < ipv4->GetNAddresses(ifNum); addrNum++)
-            {
-                Ipv4InterfaceAddress address = ipv4->GetAddress(ifNum, addrNum);
-                Ipv4Address ipaddr = address.GetLocal();
-                
-                std::ostringstream cmd;
-                cmd << "flow-mod cmd=add,table=0,prio=100 eth_dst="
-                    <<macaddr << " apply:output=local";
-                
-                //std::cout<<DpctlExecute (dpid, cmd.str ())<<"!"<<std::endl;
-                if(ipaddr != Ipv4Address("127.0.0.1"))
-                {
-                    SaveArpEntry (ipaddr, macaddr);
-                }
-            }
-        }
-    }
-*/
 }
 
 Ptr<Node>
@@ -145,35 +107,7 @@ SPController::FindNodeByDpid(uint64_t dpid, int& index)
     return NULL;
 }
 
-/*
-void
-SPController::AddTCPFlowEntry(Ptr<const RemoteSwitch> swtch, Ipv4Addr ipSrc, 
-        Ipv4Addr ipDst, TcpAddr tcpSrc, TCPAddr tcpDst, uint32_t outPort)
-{
-  NS_LOG_FUNCTION (thjs << swtch << ipSrc << ipDst << outPort);
-
-  std::ostringstream cmd;
-  cmd << "flow-mod cmd=add,table=0,idle=5,flags=0x0001"
-      << ",prio=100 ip_src=" << ipSrc 
-      << " ip_dst=" << ipDst
-      << " tcp_src=" << tcpSrc
-      << " tcp_dst=" << tcpDst
-      << " apply:output=" << outPort;
-  DpctlExecute (swtch, cmd.str ());
-}
-
-void
-SPController::AddDefaultFlowEntry(Ptr<const RemoteSwitch> swtch, Mac48Address src, uint32_t outPort)
-{
-  NS_LOG_FUNCTION (thjs << swtch << src << outPort);
-  std::ostringstream cmd;
-  cmd << "flow-mod cmd=add,table=0,idle=5,flags=0x0001"
-      << ",prio=10 eth_dst=" << src
-      << " apply:output=" << outPort;
-  DpctlExecute (swtch, cmd.str ());
-}
-*/
-
+ 
 ofl_err
 SPController::HandlePacketIn (
   struct ofl_msg_packet_in *msg, Ptr<const RemoteSwitch> swtch,
@@ -265,62 +199,6 @@ SPController::HandlePacketIn (
               int stat = DpctlExecute (swtch, cmd.str ());
               if(stat != 0)
                   std::cout<<"Error accured!!!!!!!!!!!!!!!!!!!!!"<<std::endl;
-              //std::ostringstream cmd1;
-              //cmd1 << "dump-flows "<<dpId;
-              //std::cout<<DpctlExecute(swtch, cmd1.str())<<std::endl;;
-              /*
-              // Learning port from source address
-              NS_ASSERT_MSG (!src48.IsBroadcast (), "Invalid src broadcast addr");
-              auto itSrc = l2Table->find (src48);
-              if (itSrc == l2Table->end ()) {
-              std::pair<Mac48Address, uint32_t> entry (src48, inPort);
-              auto ret = l2Table->insert (entry);
-              if (ret.second == false) {
-                  NS_LOG_ERROR ("Can't insert mac48address / port pair");
-                }
-              else {
-                  NS_LOG_DEBUG ("Learning that mac " << src48 <<
-                                " can be found at port " << inPort);
-                  // Send a flow-mod to switch creating this flow. Let's
-                  // configure the flow entry to 10s idle timeout and to
-                  // notify the controller when flow expires. (flags=0x0001)
-                  std::ostringstream cmd;
-                  cmd << "flow-mod cmd=add,table=0,idle=10,flags=0x0001"
-                      << ",prio=" << ++prio << " eth_dst=" << src48
-                      << " apply:output=" << inPort;
-                  DpctlExecute (swtch, cmd.str ());
-                }
-              }
-              //===================================
-              // Lets send the packet out to switch.
-              struct ofl_msg_packet_out reply;
-              reply.header.type = OFPT_PACKET_OUT;
-              reply.buffer_id = msg->buffer_id;
-              reply.in_port = inPort;
-              reply.data_length = 0;
-              reply.data = 0;
-
-              if (msg->buffer_id == NO_BUFFER)
-                {
-                  // No packet buffer. Send data back to switch
-                  reply.data_length = msg->data_length;
-                  reply.data = msg->data;
-                }
-
-              // Create output action
-              struct ofl_action_output *a =
-                (struct ofl_action_output*)xmalloc (sizeof (struct ofl_action_output));
-              a->header.type = OFPAT_OUTPUT;
-              a->port = outPort;
-              a->max_len = 0;
-
-              reply.actions_num = 1;
-              reply.actions = (struct ofl_action_header**)&a;
-
-              SendToSwitch (swtch, (struct ofl_msg_header*)&reply, xid);
-              free (a);
-              */
-               //===================================
      }
   }
      else{

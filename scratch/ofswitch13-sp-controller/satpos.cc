@@ -2,8 +2,15 @@
 #include <stdlib.h>
 #include <math.h>
 #include "satpos.h"
+#include <iostream>
+
+using namespace std;
 
 // Returns the distance in km between points a and b
+SatGeometry::SatGeometry()
+{
+    
+}
 double SatGeometry::distance(coordinate a, coordinate b)
 {
     double a_x, a_y, a_z, b_x, b_y, b_z;     // cartesian
@@ -117,56 +124,6 @@ SatPosition::SatPosition()
 
 
 /////////////////////////////////////////////////////////////////////
-// class TermSatPosition
-/////////////////////////////////////////////////////////////////////
-
-// Specify initial coordinates.  Default coordinates place the terminal
-// on the Earth's surface at 0 deg lat, 0 deg long.
-TermSatPosition::TermSatPosition(double Theta, double Phi)  {
-	initial_.r = EARTH_RADIUS;
-	period_ = EARTH_PERIOD; // seconds
-	set(Theta, Phi);
-	type_ = POSITION_SAT_TERM;
-}
-
-//
-// Convert user specified latitude and longitude to our spherical coordinates
-// Latitude is in the range (-90, 90) with neg. values -> south
-// Initial_.theta is stored from 0 to PI (spherical)
-// Longitude is in the range (-180, 180) with neg. values -> west
-// Initial_.phi is stored from 0 to 2*PI (spherical)
-//
-void TermSatPosition::set(double latitude, double longitude)
-{
-	if (latitude < -90 || latitude > 90)
-		fprintf(stderr, "TermSatPosition:  latitude out of bounds %f\n",
-		   latitude);
-	if (longitude < -180 || longitude > 180)
-		fprintf(stderr, "TermSatPosition: longitude out of bounds %f\n",
-		    longitude);
-	initial_.theta = DEG_TO_RAD(90 - latitude);
-	if (longitude < 0)
-		initial_.phi = DEG_TO_RAD(360 + longitude);
-	else
-		initial_.phi = DEG_TO_RAD(longitude);
-}
-
-coordinate TermSatPosition::coord(int NOW)
-{
-	coordinate current;
-
-	current.r = initial_.r;
-	current.theta = initial_.theta;
-	current.phi = fmod((initial_.phi + 
-	    (fmod(NOW,period_)/period_) * 2*PI), 2*PI);
-
-#ifdef POINT_TEST
-	current = initial_; // debug option to stop earth's rotation
-#endif
-	return current;
-}
-
-/////////////////////////////////////////////////////////////////////
 // class PolarSatPosition
 /////////////////////////////////////////////////////////////////////
 
@@ -176,6 +133,14 @@ PolarSatPosition::PolarSatPosition(double altitude, double Inc, double Lon,
         if (Plane) 
 		plane_ = int(Plane);
 	type_ = POSITION_SAT_POLAR;
+}
+
+PolarSatPosition::PolarSatPosition(double altitude, double Inc, double Lon, 
+    double Alpha, int Plane, int index) {
+    set(altitude, Lon, Alpha, Inc);
+    plane_ = Plane;
+    index_ = index;
+    type_ = POSITION_SAT_POLAR;
 }
 
 //
@@ -204,6 +169,7 @@ void PolarSatPosition::set(double Altitude, double Lon, double Alpha, double Inc
 		exit(1);
 	}
 	initial_.theta = DEG_TO_RAD(Alpha);
+
 	if (Lon < -180 || Lon > 180) {
 		fprintf(stderr, "PolarSatPosition:  lon out of bounds: %f\n", 
 		    Lon);
@@ -213,6 +179,7 @@ void PolarSatPosition::set(double Altitude, double Lon, double Alpha, double Inc
 		initial_.phi = DEG_TO_RAD(360 + Lon);
 	else
 		initial_.phi = DEG_TO_RAD(Lon);
+
 	if (Incl < 0 || Incl > 180) {
 		// retrograde orbits = (90 < Inclination < 180)
 		fprintf(stderr, "PolarSatPosition:  inclination out of \
@@ -223,6 +190,7 @@ void PolarSatPosition::set(double Altitude, double Lon, double Alpha, double Inc
 	// XXX: can't use "num = pow(initial_.r,3)" here because of linux lib
 	double num = initial_.r * initial_.r * initial_.r;
 	period_ = 2 * PI * sqrt(num/MU); // seconds
+    //cout<<"period_ of the constellation is: "<<period_<<endl;
 }
 
 
@@ -289,41 +257,4 @@ bool PolarSatPosition::isascending(int NOW)
 	}
 }
 
-/////////////////////////////////////////////////////////////////////
-// class GeoSatPosition
-/////////////////////////////////////////////////////////////////////
-
-GeoSatPosition::GeoSatPosition(double longitude) 
-{
-	initial_.r = EARTH_RADIUS + GEO_ALTITUDE;
-	initial_.theta = PI/2;
-	set(longitude);
-	type_ = POSITION_SAT_GEO;
-	period_ = EARTH_PERIOD;
-}
-
-coordinate GeoSatPosition::coord(int NOW)
-{
-	coordinate current;
-	current.r = initial_.r;
-	current.theta = initial_.theta;
-	double fractional = 
-	    (fmod(NOW, period_)/period_) *2*PI; // rad
-	current.phi = fmod(initial_.phi + fractional, 2*PI);
-	return current;
-}
-
-//
-// Longitude is in the range (0, 180) with negative values -> west
-//
-void GeoSatPosition::set(double longitude)
-{
-	if (longitude < -180 || longitude > 180)
-		fprintf(stderr, "GeoSatPosition:  longitude out of bounds %f\n",
-		    longitude);
-	if (longitude < 0)
-		initial_.phi = DEG_TO_RAD(360 + longitude);
-	else
-		initial_.phi = DEG_TO_RAD(longitude);
-}
-
+ 
