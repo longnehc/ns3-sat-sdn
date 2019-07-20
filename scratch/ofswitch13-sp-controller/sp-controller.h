@@ -25,11 +25,17 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include <algorithm>
 using namespace ns3;
 using namespace std;
 
 typedef uint64_t dpid_t;
 
+typedef struct NodeInfo
+{
+    int plane;
+    int index;
+} nodeInfo_t;
 
 /**
  * \brief An border OpenFlow 1.3 controller
@@ -64,8 +70,14 @@ public:
   //void ImportOutportMap(map<int,map<int,NetDeviceContainer>> swOutPortMap);
   void ImportNodes(NodeContainer switches);
   void ImportServers(NodeContainer servers);
-  void ImportDpidAdj(map<dpid_t, vector<dpid_t>> dpidAdj);
-  void ImportDpidPortMap(map<dpid_t, map<dpid_t, uint32_t>> dpidPortMap);
+ 
+  void ImportBasicInfo(int plane, int index);
+  void ImportDpidInfo(nodeInfo_t* dpidInfo, uint16_t len);
+  void ImportDpidPortMap(int** dpidPortMap, uint16_t len);
+  void ImportDpidAdj(double** dpidAdj, uint16_t len);
+
+  dpid_t getDpidByIndex(int i);
+ 
      
   
   /**
@@ -80,13 +92,17 @@ public:
   Ptr<Node> FindNodeByDpid(uint64_t dpid, int& index);
   NodeContainer m_switches;
   NodeContainer m_servers;
-  map<int,map<int,NetDeviceContainer>> m_outPortMap;
-  map<dpid_t, map<dpid_t, uint32_t>> m_dpidPortMap;
 
+  
+
+  void PathHelper(dpid_t srcDpid, dpid_t dstDpid, bool right, bool up, double cur_delay, vector<dpid_t>& cur_path, double min_delay, vector<dpid_t>& m_path);
   void calPath(dpid_t srcDpid, dpid_t dstDpid, vector<dpid_t>& path);
 
   uint32_t updateL2Table(vector<dpid_t> path, Mac48Address dst48);
 
+  bool turnRight(int src_plane, int dst_plane);
+  bool turnUp(int src_index, int dst_index);
+  
   //void replyPacketOut(vector<dpid_t> path); 
 
 protected:
@@ -95,6 +111,18 @@ protected:
 
 private:
   
+  uint16_t m_dpidlen;
+  nodeInfo_t* m_dpidInfo;
+  int** m_dpidPortMap;
+  double** m_dpidAdj;
+  int m_plane;
+  int m_index;
+  bool* visited;
+  dpid_t* last_hop;
+  double* weight;
+  double* cost;
+
+
   typedef std::map<Mac48Address, uint32_t> L2Table_t;
 
   typedef std::map<uint64_t, L2Table_t> DatapathMap_t;
@@ -137,7 +165,6 @@ private:
   typedef std::map<Mac48Address, uint64_t> MacDpidMap_t;
   IpMacMap_t m_arpTable;          //!< ARP resolution table.
   MacDpidMap_t m_macDpidTable;
-  map<dpid_t, vector<dpid_t>> m_dpidAdj;
 
   ofl_err HandleArpPacketIn (struct ofl_msg_packet_in *msg, Ptr<const RemoteSwitch> swtch, uint32_t xid);
   

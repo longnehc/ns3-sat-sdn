@@ -39,6 +39,10 @@ SPController::SPController ()
 SPController::~SPController ()
 {
   NS_LOG_FUNCTION (this);
+  delete[] cost;
+  delete[] weight;
+  delete[] last_hop;
+  delete[] visited;  
 }
 
 void
@@ -60,19 +64,42 @@ SPController::GetTypeId (void)
   return tid;
 }
 
-void SPController::ImportDpidAdj(map<dpid_t, vector<dpid_t>> dpidAdj)
+
+void 
+SPController::ImportBasicInfo(int plane, int index)
 {
     NS_LOG_FUNCTION(this);
-    m_dpidAdj = dpidAdj;
+    m_plane = plane;
+    m_index = index;
 }
+void 
+SPController::ImportDpidInfo(nodeInfo_t* dpidInfo, uint16_t len)
+{
+    NS_LOG_FUNCTION(this);
+    m_dpidInfo = dpidInfo;
+    m_dpidlen = len;
+    visited = new bool[m_dpidlen];    //from 1 to m_dpidlen-1
+    last_hop = new dpid_t[m_dpidlen];
+    weight = new double[m_dpidlen];
+    cost = new double[m_dpidlen];
+}
+   
 
 void
-SPController::ImportDpidPortMap(map<dpid_t, map<dpid_t, uint32_t>> dpidPortMap)
+SPController::ImportDpidPortMap(int** dpidPortMap, uint16_t len)
 {
     NS_LOG_FUNCTION(this);
     m_dpidPortMap = dpidPortMap;
+    m_dpidlen = len;
 }
- 
+
+void 
+SPController::ImportDpidAdj(double** dpidAdj, uint16_t len)
+{
+    NS_LOG_FUNCTION(this);
+    m_dpidAdj = dpidAdj;
+    m_dpidlen = len;
+}
 
 void
 SPController::ImportServers(NodeContainer servers)
@@ -172,7 +199,7 @@ SPController::HandlePacketIn (
     // Get L2Table for this datapath
      auto it = m_learnedInfo.find (dpId);
      if (it != m_learnedInfo.end ()){
-        std::cout<<"Find L2 table for this datapath id="<<dpId<<",";
+        std::cout<<"Find L2 table for this datapath id="<<dpId<<endl;
         L2Table_t *l2Table = &it->second;
           // Looking for out port based on dst address (except for broadcast)
           if (!dst48.IsBroadcast ()) {
@@ -411,7 +438,7 @@ SPController::SaveMac2Dpid (Mac48Address macAddr, uint64_t dpid)
   ret = m_macDpidTable.insert (entry);
   if (ret.second == true)
     {
-      std::cout<<"Mac: "<<macAddr<<" is connected to switch with dpid = "<<dpid<<std::endl;
+    //  std::cout<<"Mac: "<<macAddr<<" is connected to switch with dpid = "<<dpid<<std::endl;
       return;
     }
 }
@@ -451,11 +478,170 @@ SPController::ExtractIpv4Address (uint32_t oxm_of, struct ofl_match* match)
     }
 }
 
+void 
+SPController::PathHelper(dpid_t srcDpid, dpid_t dstDpid, bool right, bool up, double cur_delay, vector<dpid_t>& cur_path, double min_delay, vector<dpid_t>& m_path) {
+  int sp = m_dpidInfo[srcDpid].plane;
+  int sn = m_dpidInfo[srcDpid].index;
+  int dp = m_dpidInfo[dstDpid].plane;
+  int dn = m_dpidInfo[dstDpid].index;
+
+  if(sp == dp && sn == dn){
+       cout<<" Dst reached: ("<<sp<<","<<dp<<")!!!!!!!!!!!!!!"<<endl;
+      if(cur_delay < min_delay){
+        cout<<" Path updated: "<<min_delay<<">"<<cur_delay<<"!!!!!!!!!!!!!!"<<endl;
+        min_delay = cur_delay;
+        m_path = cur_path;
+      }
+  }
+  int l_plane = (sp == 0) ? m_plane - 1 : sp - 1;
+  int r_plane = (sp == m_plane - 1) ? 0 : sp + 1;
+  int u_num = (sn == m_index - 1) ? 0 : sn + 1;
+  int d_num = (sn == 0) ? m_index-1 : sn - 1;
+  cout<<"PathHelper called: "<<srcDpid<<","<<dstDpid<<endl;
+  if(right && sp != dp){
+  //if(sp != dp){
+      dpid_t next_dpid = getDpidByIndex(r_plane * m_index + sn);
+      cout<<"To right: "<<r_plane<<" "<<sn<<" "<<m_dpidAdj[srcDpid][next_dpid]<<endl;
+      if(m_dpidAdj[srcDpid][next_dpid] != -1) { 
+        cur_delay += m_dpidAdj[srcDpid][next_dpid];
+        cur_path.push_back(next_dpid);
+        cout<<"Moving right from ("<<m_dpidInfo[srcDpid].plane<<","<<m_dpidInfo[srcDpid].index<<")";
+        cout<<" to ("<<m_dpidInfo[next_dpid].plane<<","<<m_dpidInfo[next_dpid].index<<"), next_dpid="<<next_dpid<<endl;
+        PathHelper(next_dpid, dstDpid, right, up, cur_delay, cur_path, min_delay, m_path);
+        cur_path.pop_back();
+        cur_delay -= m_dpidAdj[srcDpid][next_dpid];
+      }
+      else
+          cout<<"Right failed"<<endl;
+  }
+  if(!right && sp != dp){
+  //if(sp != dp){
+      dpid_t next_dpid = getDpidByIndex(l_plane * m_index + sn);
+      cout<<"To left: "<<l_plane<<" "<<sn<<" "<<m_dpidAdj[srcDpid][next_dpid]<<endl;
+      if(m_dpidAdj[srcDpid][next_dpid] != -1){     
+      cur_delay += m_dpidAdj[srcDpid][next_dpid];
+      cur_path.push_back(next_dpid);
+      cout<<"Moving left from ("<<m_dpidInfo[srcDpid].plane<<","<<m_dpidInfo[srcDpid].index<<")";
+      cout<<" to ("<<m_dpidInfo[next_dpid].plane<<","<<m_dpidInfo[next_dpid].index<<")"<<endl;
+      PathHelper(next_dpid, dstDpid, right, up, cur_delay, cur_path, min_delay, m_path);
+      cur_path.pop_back();
+      cur_delay -= m_dpidAdj[srcDpid][next_dpid];
+      }
+      else
+          cout<<"Left failed"<<endl;
+  }
+  if(up && sn != dn){
+      dpid_t next_dpid = getDpidByIndex(sp * m_index + u_num);
+      cout<<"To up: "<<sp<<" "<<u_num<<" "<<m_dpidAdj[srcDpid][next_dpid]<<endl;
+      if(m_dpidAdj[srcDpid][next_dpid] != -1){  
+        cout<<"Next_dpid in up: "<<next_dpid<<endl;
+        cur_delay += m_dpidAdj[srcDpid][next_dpid];
+        cur_path.push_back(next_dpid);
+        cout<<"Moving up from ("<<m_dpidInfo[srcDpid].plane<<","<<m_dpidInfo[srcDpid].index<<")";
+        cout<<" to ("<<m_dpidInfo[next_dpid].plane<<","<<m_dpidInfo[next_dpid].index<<")"<<endl;
+        PathHelper(next_dpid, dstDpid, right, up, cur_delay, cur_path, min_delay, m_path);
+        cur_path.pop_back();
+        cur_delay -= m_dpidAdj[srcDpid][next_dpid];
+      }
+      else
+          cout<<"Up failed"<<endl;
+  }
+  if(!up && sn != dn) {
+      dpid_t next_dpid = getDpidByIndex(sp * m_index + d_num);
+      cout<<"To down: "<<sp<<" "<<d_num<<" "<<m_dpidAdj[srcDpid][next_dpid]<<endl;
+      if(m_dpidAdj[srcDpid][next_dpid] != -1){  
+        cout<<"Next_dpid in down: "<<next_dpid<<endl;
+        cur_delay += m_dpidAdj[srcDpid][next_dpid];
+        cur_path.push_back(next_dpid);
+        cout<<"Moving down from ("<<m_dpidInfo[srcDpid].plane<<","<<m_dpidInfo[srcDpid].index<<")";
+        cout<<" to ("<<m_dpidInfo[next_dpid].plane<<","<<m_dpidInfo[next_dpid].index<<")"<<endl;
+        PathHelper(next_dpid, dstDpid, right, up, cur_delay, cur_path, min_delay, m_path);
+        cur_path.pop_back();
+        cur_delay -= m_dpidAdj[srcDpid][next_dpid];
+      }
+      else
+          cout<<"Down failed"<<endl;
+  }
+}
+
 void
-SPController::calPath(dpid_t srcDpid, dpid_t dstDpid, vector<dpid_t>& path) {
+SPController::calPath(dpid_t srcDpid, dpid_t dstDpid, vector<dpid_t>& path) { 
+  
+
+  cout<<"Finding path from srcDpid: "<<srcDpid<<"("<<m_dpidInfo[srcDpid].plane<<","<<m_dpidInfo[srcDpid].index<<")";
+  cout<<" to dstDpid: "<<dstDpid<<"("<<m_dpidInfo[dstDpid].plane<<","<<m_dpidInfo[dstDpid].index<<")"<<endl;;
+
+  double DMAX = 99999999;
+  //init
+  for(uint32_t i = 1; i < m_dpidlen; i++){
+      if(i == srcDpid) {
+        visited[i] = true;
+        cost[i] = 0;
+      }
+      else {
+        visited[i] = false;
+        cost[i] = DMAX;
+      }
+      if(m_dpidAdj[srcDpid][i] != -1) {
+        weight[i] = m_dpidAdj[srcDpid][i];
+        //cout<<"The last hop of "<<i<<" is "<<srcDpid<<endl;
+        last_hop[i] = srcDpid;
+      }
+      else {
+        weight[i] = DMAX;
+        last_hop[i] = 0;
+      }
+  } 
+  for(uint32_t i = 1; i < m_dpidlen; i++){
+      int the_node = -1;
+      int dmin = DMAX;
+      for(uint32_t j = 1; j < m_dpidlen; j++){
+          if(j != srcDpid && !visited[j] && weight[j] < dmin){
+            dmin = weight[j];
+            the_node = j;
+          }
+      }
+      if(the_node == -1) continue;
+      //cout<<"Next hop (dpid) = " <<the_node<<endl;
+      visited[the_node] = true;
+      cost[the_node] = dmin;
+      for(uint32_t k = 1; k < m_dpidlen; k++){
+          if(!visited[k] && m_dpidAdj[the_node][k] != -1 && weight[the_node] + m_dpidAdj[the_node][k] < weight[k]){
+            //cout<<"Node with dpid: "<<k<<" is updated "<<endl;
+            weight[k] = weight[the_node] + m_dpidAdj[the_node][k];
+            last_hop[k] = the_node;
+          }
+      }
+  }
+
+  dpid_t cur = dstDpid;
+  do{
+    path.push_back(cur);
+    cur = last_hop[cur];
+  } while(cur!= srcDpid);
+  path.push_back(srcDpid);
+  reverse(path.begin(), path.end());
+  
+  //for(uint32_t i = 0; i < path.size(); i++)
+  //  cout<<path[i]<<"->";
+  //cout<<endl;
+
+ 
+ /*
+  
+  */
+  //bool right = turnRight(m_dpidInfo[srcDpid].plane, m_dpidInfo[dstDpid].plane);
+  //bool up = turnUp(m_dpidInfo[srcDpid].index, m_dpidInfo[dstDpid].index);
+ // double cur_delay = 0;
+ // double min_delay = 9999999;
+ // vector<dpid_t> cur_path;
+ // cur_path.push_back(srcDpid);
+ // PathHelper(srcDpid, dstDpid, right, up, cur_delay, cur_path, min_delay, path);
+/*
   path.push_back(srcDpid);
   std::cout<<"Path to "<<dstDpid<<" next hop: "<<srcDpid<<std::endl;
   if(srcDpid == dstDpid) return;
+  
   for(uint32_t i = 0; i < m_dpidAdj[srcDpid].size(); i++) {
     bool loop = false;
     for(uint32_t j = 0; j < path.size(); j++) {
@@ -465,6 +651,7 @@ SPController::calPath(dpid_t srcDpid, dpid_t dstDpid, vector<dpid_t>& path) {
     if(!loop)
       calPath(m_dpidAdj[srcDpid][i], dstDpid, path);
   }
+*/
 }
 
 uint32_t
@@ -477,6 +664,7 @@ SPController::updateL2Table(vector<dpid_t> path, Mac48Address dst48){
     uint32_t outPort;
     if(it != m_learnedInfo.end()){
       l2Table = &it->second;
+      /*
       if(m_dpidPortMap.find(path[i]) != m_dpidPortMap.end()){
         if(m_dpidPortMap[path[i]].find(path[i+1]) != m_dpidPortMap[path[i]].end()) {
           outPort = m_dpidPortMap[path[i]][path[i+1]];
@@ -486,8 +674,14 @@ SPController::updateL2Table(vector<dpid_t> path, Mac48Address dst48){
         else {
           NS_LOG_ERROR ("No next port available of "<<path[i]);
         }
-      } 
+      } */
+      if(m_dpidPortMap[path[i]][path[i+1]] != -1){
+        outPort = m_dpidPortMap[path[i]][path[i+1]];
+        if(i == 0) ret = outPort;         //return the port number of the next hop
+      }
       else {
+        cout<<"The port from dpid: "<<path[i]<<" to depid "<<path[i+1]<<" doesn't exists"<<endl;
+        ret = -1;
         NS_LOG_ERROR ("No next hop available of "<<path[i]);
       }
     }
@@ -503,7 +697,7 @@ SPController::updateL2Table(vector<dpid_t> path, Mac48Address dst48){
       NS_LOG_ERROR ("Can't insert mac48address / port pair");
     }
   }
-    
+  //The outPort of the last hop is 1
   std::cout<<"Updating L2Table of dpid = "<<path[i]<<std::endl;
   std::cout<<"The port to "<<dst48<<" is "<<1<<std::endl;
   auto it = m_learnedInfo.find(path[i]);
@@ -516,3 +710,31 @@ SPController::updateL2Table(vector<dpid_t> path, Mac48Address dst48){
   return ret;
 }
 
+
+bool 
+SPController::turnRight(int src_plane, int dst_plane){
+    if(src_plane < dst_plane && dst_plane - src_plane <= m_plane/2)
+      return true;
+    else if(src_plane > dst_plane && src_plane - dst_plane >= m_plane/2)
+      return true;
+    else
+      return false;
+}  
+
+bool 
+SPController::turnUp(int src_index, int dst_index){
+    if(src_index < dst_index && dst_index - src_index <= m_index/2)
+      return true;
+    else if (src_index > dst_index && src_index- dst_index >= m_index/2)
+      return true;
+    else
+      return false;
+}
+ 
+
+dpid_t 
+SPController::getDpidByIndex(int i)
+{
+    Ptr<OFSwitch13Device> ofdev = m_switches.Get(i)->GetObject<OFSwitch13Device>();
+    return ofdev->GetDpId();
+}

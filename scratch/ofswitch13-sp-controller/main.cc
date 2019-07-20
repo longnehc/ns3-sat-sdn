@@ -56,13 +56,122 @@ Ipv4InterfaceContainer serverIpIfaces;
 int NOW = 0;
 uint16_t simTime = 10;
 bool verbose = false;
-uint16_t _nPlane = 8;
-uint16_t _nIndex = 9;
-uint16_t _nSat = _nPlane * _nIndex;
+const uint16_t _nPlane = 8;
+const uint16_t _nIndex = 9;
+const uint16_t _nSat = _nPlane * _nIndex;
 uint16_t _altitude = 780;
 double _incl = 86.4;
-double _latborder = 75;
+double _latborder = 80;
 vector<NetDeviceContainer> switchPorts (_nSat);
+
+
+
+nodeInfo_t* indexInfo;
+nodeInfo_t* dpidInfo;
+ 
+//double indexAdj[_nSat][_nSat] = {-1};
+//double dpidAdj[_nSat+1][_nSat+1] = {-1};            //dpid = index + 1
+
+int** devPortMap;
+int** dpidPortMap;
+
+double** indexAdj;
+double** dpidAdj;
+ 
+void alloc(){
+    indexInfo = new nodeInfo_t[_nSat];
+    dpidInfo = new nodeInfo_t[_nSat + 1];
+
+    devPortMap = new int* [_nSat];
+    for(int i = 0; i < _nSat; i++)
+        devPortMap[i] = new int[_nSat];
+
+    dpidPortMap = new int* [_nSat + 1];
+    for(int i = 0; i < _nSat + 1; i++)
+        dpidPortMap[i] = new int[_nSat + 1];
+
+    indexAdj = new double* [_nSat];
+    for(int i = 0; i < _nSat; i++)
+        indexAdj[i] = new double[_nSat];
+
+    dpidAdj = new double* [_nSat + 1];
+    for(int i = 0; i < _nSat+1; i++)
+        dpidAdj[i] = new double[_nSat+1];
+
+
+    for(int i = 0; i < _nSat; i++)
+        for(int j = 0; j < _nSat; j++)
+            devPortMap[i][j] = -1;
+    for(int i = 0; i < _nSat + 1; i++)
+        for(int j = 0; j < _nSat + 1; j++)
+            dpidPortMap[i][j] = -1;
+
+    for(int i = 0; i < _nSat; i++)
+        for(int j = 0; j < _nSat; j++)
+            indexAdj[i][j] = -1;
+    for(int i = 0; i < _nSat + 1; i++)
+        for(int j = 0; j < _nSat + 1; j++)
+            dpidAdj[i][j] = -1;
+
+
+}
+
+void dealloc(){
+    delete[] indexInfo;
+    delete[] dpidInfo;
+    
+    for(int i = 0; i < _nSat; i++)
+        delete[] devPortMap[i];
+    delete[] devPortMap;
+
+    for(int i = 0; i < _nSat+1; i++)
+        delete[] dpidPortMap[i];
+    delete[] dpidPortMap;
+    
+    for(int i = 0; i < _nSat; i++)
+        delete[] indexAdj[i];
+    delete[] indexAdj;
+
+    for(int i = 0; i < _nSat+1; i++)
+        delete[] dpidAdj[i];
+    delete[] dpidAdj;
+}
+
+dpid_t getDpidByIndex(int i)
+{
+    Ptr<OFSwitch13Device> ofdev = switches.Get(i)->GetObject<OFSwitch13Device>();
+    return ofdev->GetDpId();
+}
+
+void dpidInfoConstruct(nodeInfo_t* indexInfo, nodeInfo_t* dpidInfo, uint16_t nSat)
+{
+    for(int i = 0; i < nSat; i++){
+        dpid_t _dpid = getDpidByIndex(i);
+        dpidInfo[_dpid] = indexInfo[i];
+    }
+}
+
+void dpidAdjConstruct(double** indexAdj, double** dpidAdj, uint16_t nSat)
+{  
+    for(int i = 0; i < nSat; i++){
+        for(int j = 0; j < nSat; j++){
+            dpid_t dpid_i = getDpidByIndex(i);
+            dpid_t dpid_j = getDpidByIndex(j);
+            dpidAdj[dpid_i][dpid_j] = indexAdj[i][j];
+        }
+    }
+}
+
+void dpidPortMapConstruct(int** devPortMap,int** dpidPortMap, uint16_t nSat)
+{  
+    for(int i = 0; i < nSat; i++){
+        for(int j = 0; j < nSat; j++){
+            dpid_t dpid_i = getDpidByIndex(i);
+            dpid_t dpid_j = getDpidByIndex(j);
+            dpidPortMap[dpid_i][dpid_j] = devPortMap[i][j];
+        }
+    }
+}
 
 void dpidPortMapConstruct(map<int, map<int, uint32_t>> intPortMap, map<dpid_t, map<dpid_t, uint32_t>>& dpidPortMap, NodeContainer switches)
 {
@@ -87,16 +196,16 @@ void dpidPortMapConstruct(map<int, map<int, uint32_t>> intPortMap, map<dpid_t, m
         it++;
     }
 }
-void updatePortMap(map<int, map<int, uint32_t>>& intPortMap, int dev1, int dev2, vector<NetDeviceContainer> switchPorts)
+void updatePortMap(int** devPortMap, int dev1, int dev2, vector<NetDeviceContainer> switchPorts)
 {
     
     uint32_t portNum = switchPorts[dev1].GetN();
-    intPortMap[dev1][dev2] = portNum;
-    std::cout<<"updatePortMap: dev_id= "<< dev1<<" to dev_id "<<dev2<<"'s port is "<<portNum<<std::endl;
+    devPortMap[dev1][dev2] = portNum;
+//    std::cout<<"updatePortMap: dev_id= "<< dev1<<" to dev_id "<<dev2<<"'s port is "<<portNum<<std::endl;
 
     uint32_t portNum2 = switchPorts[dev2].GetN();
-    intPortMap[dev2][dev1] = portNum2;
-    std::cout<<"updatePortMap: dev_id= "<< dev2<<" to dev_id "<<dev1<<"'s port is "<<portNum2<<std::endl;
+    devPortMap[dev2][dev1] = portNum2;
+//    std::cout<<"updatePortMap: dev_id= "<< dev2<<" to dev_id "<<dev1<<"'s port is "<<portNum2<<std::endl;
 }
 
 //datarate is Mbps
@@ -123,6 +232,10 @@ vector<PolarSatPosition> SatNodeInit(){
       //cout<<"Inserting node "<<i<<","<<j<<" lon: "<<lon<<" alpha: "<< alpha<<endl;
       satPositions.push_back(psp);
       //cout<<"The lat is: "<<RAD_TO_DEG(sg.get_latitude(psp.coord(0)))<<", the long is "<<RAD_TO_DEG(sg.get_longitude(psp.coord(0),0))<<endl;
+      nodeInfo_t nit;
+      nit.plane = i;
+      nit.index = j;
+      indexInfo[i * _nIndex + j] = nit;
     }
   }
   return satPositions;
@@ -135,7 +248,18 @@ string double2string(double a){
   return s;
 }
 
-void buildLink(int src, int dst, double delay, map<int, map<int, uint32_t>>& devPortMap)
+bool inPolar(coordinate a)
+{
+    SatGeometry sg;
+    bool ret = false;
+    if (RAD_TO_DEG(sg.get_latitude(a)) > _latborder || RAD_TO_DEG(sg.get_latitude(a)) < -_latborder)
+        ret = true;
+    //if(ret)
+    //    cout<<"The invalid latitude is: "<<RAD_TO_DEG(sg.get_latitude(a))<<endl;
+    return ret;
+}
+
+void buildLink(int src, int dst, double delay, int** devPortMap)
 {
       CsmaHelper csmaH;
       csmaH.SetChannelAttribute ("DataRate", DataRateValue (DataRate ("20Mbps")));
@@ -148,8 +272,7 @@ void buildLink(int src, int dst, double delay, map<int, map<int, uint32_t>>& dev
       updatePortMap(devPortMap, src, dst, switchPorts);
 }
 
-map<int, map<int, uint32_t>> SatLinkInit(vector<PolarSatPosition> satPositions){
-  map<int, map<int, uint32_t>> devPortMap;
+void SatLinkInit(vector<PolarSatPosition> satPositions, int** devPortMap){
   SatGeometry sg;
  
   for(int i = 0; i < _nPlane; i++){
@@ -159,38 +282,119 @@ map<int, map<int, uint32_t>> SatLinkInit(vector<PolarSatPosition> satPositions){
       int up_j = (j != _nIndex - 1) ? j + 1 : 0;
       int up_node_index = i * _nIndex + up_j;
  
-      //up link construction
-      double delay1 = sg.propdelay(satPositions[node_index].coord(0), satPositions[up_node_index].coord(0));
-      buildLink(node_index, up_node_index, delay1, devPortMap);
+      //if(!inPolar(satPositions[node_index].coord(0)) && !inPolar(satPositions[up_node_index].coord(0))) {
+        double delay1 = sg.propdelay(satPositions[node_index].coord(0), satPositions[up_node_index].coord(0));
+        buildLink(node_index, up_node_index, delay1 * 1000, devPortMap);
+        indexAdj[node_index][up_node_index] = delay1 * 1000;
+        indexAdj[up_node_index][node_index] = delay1 * 1000;
+       // cout<<"Delays between" <<node_index<<" "<<up_node_index<<"("<<i<<","<<j<<") -> ("<<i<<","<<up_j<<" ) is "<<delay1<<endl;
+      //} 
       
-      cout<<"Delays between ("<<i<<","<<j<<") and ("<<i<<","<<up_j<<" ) is "<<delay1<<endl;
       
       //intra-plane isl
       int right_i = (i != _nPlane - 1) ? i + 1 : 0;
       int right_node_index = right_i * _nIndex + j;
-      double delay4 = sg.propdelay(satPositions[node_index].coord(0), satPositions[right_node_index].coord(0));
-      buildLink(node_index, right_node_index, delay4, devPortMap);
-      cout<<"Delays between ("<<i<<","<<j<<") and ("<<right_i<<","<<j<<" ) is "<<delay4<<endl;
+      if(!inPolar(satPositions[node_index].coord(0)) && !inPolar(satPositions[right_node_index].coord(0))) {
+          double delay4 = sg.propdelay(satPositions[node_index].coord(0), satPositions[right_node_index].coord(0));
+          buildLink(node_index, right_node_index, delay4 * 1000, devPortMap);
+          indexAdj[node_index][right_node_index] = delay4 * 1000;
+          indexAdj[right_node_index][node_index] = delay4 * 1000;
+       //   cout<<"Delays between" <<node_index<<" "<<right_node_index<<"("<<i<<","<<j<<") -> ("<<right_i<<","<<j<<" ) is "<<delay4<<endl;
+      }
+     
     }
   }
-  return devPortMap;
 };
+
+void dumpDpidlist()
+{
+    for(uint32_t i = 0; i < switches.GetN(); i++) {
+        Ptr<OFSwitch13Device> ofdev = switches.Get(i)->GetObject<OFSwitch13Device>();
+        cout<<"dumpDpidlist: dpid of dev "<<i <<" is "<<ofdev->GetDpId()<<endl;
+    }
+}
+ 
+void dumpIndexinfo()
+{
+    for(uint32_t i = 0; i < _nSat; i++) {
+        nodeInfo_t a = indexInfo[i];
+        cout<<"dumpIndexinfo: dev: "<<i <<", plane = "<<a.plane<<", index= "<<a.index<<endl;
+    }
+} 
+
+void dumpDpidinfo()
+{
+    for(uint32_t i = 1; i < _nSat + 1; i++) {
+        nodeInfo_t a = dpidInfo[i];
+        cout<<"dumpDpidinfo: dpid: "<<i <<", plane = "<<a.plane<<", index= "<<a.index<<endl;
+    }
+
+}
+
+void dumpindexAdj()
+{
+    for(uint32_t i = 0; i < _nSat; i++) {
+        for(uint32_t j = 0; j < _nSat; j++){
+            if(indexAdj[i][j] != -1){
+                cout<<"dumpindexAdj: dev: "<<i <<" to dev: "<<j<<" cost= "<<indexAdj[i][j]<<endl;
+            }
+        }
+    }
+} 
+ 
+void dumpdpidAdj()
+{
+   
+    for(uint32_t i = 1; i < _nSat+1; i++) {
+        bool find = false;
+        for(uint32_t j = 1; j < _nSat+1; j++){
+            if(dpidAdj[i][j] != -1){
+                find =true;
+                cout<<"dumpindexAdj: dpid: "<<i <<" to dpid: "<<j<<" cost= "<<dpidAdj[i][j]<<endl;
+            }
+        }
+        if(!find)  cout<<"dumpindexAdj: dpid: "<<i <<" has no neighbor!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"<<endl;
+    }
+  
+
+} 
+
+void dumpDevPortMap()
+{
+    for(uint32_t i = 0; i < _nSat; i++) {
+        for(uint32_t j = 0; j < _nSat; j++){
+            if(devPortMap[i][j] != -1){
+                cout<<"dumpDevPortMap: dev: "<<i <<" to dev: "<<j<<" port= "<<devPortMap[i][j]<<endl;
+            }
+        }
+    }
+}
+
+void dumpDpidPortMap()
+{
+    for(uint32_t i = 1; i < _nSat+1; i++) {
+        for(uint32_t j = 1; j < _nSat+1; j++){
+            if(dpidPortMap[i][j] != -1){
+                cout<<"dumpDpidPortMap: dpid: "<<i <<" to dpid: "<<j<<" port= "<<dpidPortMap[i][j]<<endl;
+            }
+        }
+    }
+}
 
 int
 main (int argc, char *argv[])
 {
 
   //LogComponentEnable ("OFSwitch13Port", LOG_LEVEL_INFO);
-  //LogComponentEnable ("UdpClient", LOG_LEVEL_INFO);
-  //LogComponentEnable ("UdpServer", LOG_LEVEL_INFO);
+  LogComponentEnable ("UdpClient", LOG_LEVEL_INFO);
+  LogComponentEnable ("UdpServer", LOG_LEVEL_INFO);
 
   //create iridium topology
+  alloc();
   //Step1: init sat positions
   vector<PolarSatPosition> satPositions = SatNodeInit();
   
- //Step3：
-
-  // Configure command line parameters
+  // Step2: Configure command line parameters
   CommandLine cmd;
   cmd.AddValue ("simTime", "Simulation time (seconds)", simTime);
   cmd.AddValue ("verbose", "Enable verbose output", verbose);
@@ -214,10 +418,10 @@ main (int argc, char *argv[])
   // Enable checksum computations (required by OFSwitch13 module)
   GlobalValue::Bind ("ChecksumEnabled", BooleanValue (true));
 
-  // Each satellite is bound with a host
+  // Step3: Each satellite is bound with a host
   hosts.Create (_nSat);
   
-  // Create switch nodes
+  // Step4: Create switch nodes
   switches.Create (_nSat);
   for(int i=0; i<_nSat; i++)
       switchPorts[i] = NetDeviceContainer();
@@ -229,7 +433,7 @@ main (int argc, char *argv[])
   NetDeviceContainer p2pDevices;
   NodeContainer pair;
  
-  // connect host and switches
+  // Stepp6: connect host and switches
   for (int i=0; i<_nSat; i++){
     pair = NodeContainer (switches.Get (i), hosts.Get (i));
     p2pDevices = csmaHelper.Install (pair);
@@ -239,47 +443,17 @@ main (int argc, char *argv[])
   InternetStackHelper internet;
   internet.Install (hosts);
 
-//
-//csmaHelper.EnablePcap ("switch", switchPorts [0], true);
-//csmaHelper.EnablePcap ("switch", switchPorts [2], true);
-//
-
-  std::cout<<"port number1: "<<switchPorts[0].GetN()<<std::endl;
-/*
-  CsmaHelper csmaH;
-  csmaH.SetChannelAttribute ("DataRate", DataRateValue (DataRate ("20Mbps")));
-  csmaH.SetChannelAttribute ("Delay", StringValue ("2ms"));
-
-  //add link n0---n1
-  NodeContainer n0n1 = NodeContainer(switches.Get(0),switches.Get(1));  
-  NetDeviceContainer p2pD1 = csmaH.Install(n0n1); 
-  switchPorts[0].Add(p2pD1.Get(0));
-  switchPorts[1].Add(p2pD1.Get(1));
-  
-  map<int, map<int, uint32_t>> intPortMap;
-  updatePortMap(intPortMap, 0, 1, switchPorts);
-  updatePortMap(intPortMap, 1, 0, switchPorts);
-
- //add link n1---n2
-  NodeContainer n1n2 = NodeContainer(switches.Get(1),switches.Get(2));  
-  NetDeviceContainer p2pD2 = csmaH.Install(n1n2); 
-  switchPorts[1].Add(p2pD2.Get(0));
-  switchPorts[2].Add(p2pD2.Get(1));
-
-  updatePortMap(intPortMap, 1, 2, switchPorts);
-  updatePortMap(intPortMap, 2, 1, switchPorts);
-*/  
-
-  //Step2: create datapath links 
-  map<int, map<int, uint32_t>> devPortMap = SatLinkInit(satPositions); 
  
-  // Create the controller node
+  //Step7: create datapath links 
+  SatLinkInit(satPositions, devPortMap); 
+ 
+  //Step8: Create the controller node
   Ptr<Node> controllerNode = CreateObject<Node> ();
 
-  // Configure SPcontroller for all switches
+  //Step9: Configure SPcontroller for all switches
   Ptr<SPController> spCtrl = CreateObject<SPController>();
 
-  // Configure the OpenFlow network domain
+  //Step10: Configure the OpenFlow network domain
   Ptr<OFSwitch13InternalHelper> of13Helper = CreateObject<OFSwitch13InternalHelper> ();
   of13Helper->InstallController (controllerNode, spCtrl);
   for(int i=0; i<_nSat; i++){
@@ -287,40 +461,21 @@ main (int argc, char *argv[])
   }
   of13Helper->CreateOpenFlowChannels ();
 
-//TODO: 
-  //std::cout<<"port number2: "<<switchPorts[0].GetN()<<std::endl;
-  Ptr<OFSwitch13Device> ofdev0 = switches.Get(0)->GetObject<OFSwitch13Device>();
-  dpid_t dpid0 = ofdev0->GetDpId();
- 
-  Ptr<OFSwitch13Device> ofdev1 = switches.Get(1)->GetObject<OFSwitch13Device>();
-  dpid_t dpid1 = ofdev1->GetDpId();
 
-  Ptr<OFSwitch13Device> ofdev2 = switches.Get(2)->GetObject<OFSwitch13Device>();
-  dpid_t dpid2 = ofdev2->GetDpId();
-  
-  map<dpid_t, map<dpid_t, uint32_t>> dpidPortMap;
-  
-  //dpidPortMapConstruct(intPortMap, dpidPortMap, switches); 
-  
-  map<dpid_t, vector<dpid_t>> dpidAdj;
 
-  vector<dpid_t> vec1;
-  vec1.push_back(dpid1);
-  dpidAdj[dpid0] = vec1;
+  dpidInfoConstruct(indexInfo, dpidInfo, _nSat);
+  dpidAdjConstruct(indexAdj, dpidAdj, _nSat);
+  dpidPortMapConstruct(devPortMap, dpidPortMap, _nSat);
 
-  vector<dpid_t> vec2;
-  vec2.push_back(dpid0);
-  vec2.push_back(dpid2);
-  dpidAdj[dpid1] = vec2;
-
-  vector<dpid_t> vec3;
-  vec3.push_back(dpid1);
-  dpidAdj[dpid2] = vec3;
-
+//  dumpDpidlist();
+//  dumpIndexinfo();
+//  dumpDpidinfo();
+//  dumpindexAdj();
+//  dumpdpidAdj();
+// dumpDevPortMap();
+// dumpDpidPortMap();
 
 //-----
-
-
 
   // Set IPv4 server addresses
   Ipv4AddressHelper ipv4helpr;
@@ -329,25 +484,29 @@ main (int argc, char *argv[])
  
   spCtrl->ImportNodes(switches);
   spCtrl->ImportServers(hosts);
-  spCtrl->ImportDpidPortMap(dpidPortMap);
-  spCtrl->ImportDpidAdj(dpidAdj);
+
+  spCtrl->ImportBasicInfo(_nPlane, _nIndex);
+  spCtrl->ImportDpidInfo(dpidInfo, _nSat + 1);
+  spCtrl->ImportDpidPortMap(dpidPortMap, _nSat + 1);
+  spCtrl->ImportDpidAdj(dpidAdj, _nSat + 1);
   
   // Install UDP server on all nodes (port 11399)
   UdpServerHelper udpServerHelper (11399);
   ApplicationContainer serverApps = udpServerHelper.Install (hosts);
   
-  //serverApps.Start (Seconds (1.0));
-  //serverApps.Stop (Seconds (10.0));
+  serverApps.Start (Seconds (1.0));
+  serverApps.Stop (Seconds (10.0));
 
 
   // Configure udp application between two hosts
-  CreateUdpApp(0,2,1);
+  CreateUdpApp(0,20,1);
   
-  //apps.Start (Seconds (2.0));
-  //apps.Stop (Seconds (10.0));
+  apps.Start (Seconds (2.0));
+  apps.Stop (Seconds (10.0));
 
   // Run the simulation
   Simulator::Stop (Seconds (simTime));
   Simulator::Run ();
   Simulator::Destroy ();
+  dealloc();
 }
