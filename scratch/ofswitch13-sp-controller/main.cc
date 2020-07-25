@@ -54,7 +54,7 @@ ApplicationContainer apps;
 Ipv4InterfaceContainer serverIpIfaces;
 
 int NOW = 0;
-uint16_t simTime = 10;
+uint16_t simTime = 20;
 bool verbose = false;
 const uint16_t _nPlane = 8;
 const uint16_t _nIndex = 9;
@@ -78,6 +78,14 @@ int** dpidPortMap;
 double** indexAdj;
 double** dpidAdj;
  
+
+void test(int* a){
+  //cout<<"1111"<<endl;
+  cout<<Simulator::Now ().GetMilliSeconds ()<<","<<*a<<endl;
+  Simulator::Schedule (MilliSeconds (1), &test, a);
+} 
+
+
 void alloc(){
     indexInfo = new nodeInfo_t[_nSat];
     dpidInfo = new nodeInfo_t[_nSat + 1];
@@ -451,16 +459,43 @@ main (int argc, char *argv[])
   Ptr<Node> controllerNode = CreateObject<Node> ();
 
   //Step9: Configure SPcontroller for all switches
-  Ptr<SPController> spCtrl = CreateObject<SPController>();
+  Ptr<SPController> ctrl = CreateObject<SPController>();
 
-  //Step10: Configure the OpenFlow network domain
+
+  //Step8: Create the controller node
+  Ptr<Node> superControllerNode = CreateObject<Node> ();
+
+  //Step9: Configure controller and SPcontroller for all switches
+  Ptr<SPController> spctrl = CreateObject<SPController>();
+
+
   Ptr<OFSwitch13InternalHelper> of13Helper = CreateObject<OFSwitch13InternalHelper> ();
-  of13Helper->InstallController (controllerNode, spCtrl);
+  of13Helper->InstallController (controllerNode, ctrl);
+  of13Helper->InstallController (superControllerNode, spctrl);
+  ctrl->IsSC(false);   spctrl->IsSC(true); 
   for(int i=0; i<_nSat; i++){
       of13Helper->InstallSwitch (switches.Get (i), switchPorts [i]);
   }
   of13Helper->CreateOpenFlowChannels ();
 
+  //Step10: Configure the OpenFlow network domain
+
+  map<int,int> c2sc, s2c;
+  int scnum =  1;
+  int cnum = 2;
+  c2sc[0] = 0;
+  c2sc[1] = 0;
+  for(int i = 0; i < _nSat; i++){
+    if(i <= 10){
+      s2c[i+1] = 0;   //dpid = dev + 1
+    }
+    else{
+      s2c[i+1] = 1;
+    }
+  }
+  
+  ctrl-> ImportDomainConfig(cnum,scnum, s2c, c2sc);
+  spctrl-> ImportDomainConfig(cnum,scnum, s2c, c2sc);
 
 
   dpidInfoConstruct(indexInfo, dpidInfo, _nSat);
@@ -482,14 +517,26 @@ main (int argc, char *argv[])
   ipv4helpr.SetBase ("10.1.1.0", "255.255.255.0");
   serverIpIfaces = ipv4helpr.Assign (serverPorts);
  
-  spCtrl->ImportNodes(switches);
-  spCtrl->ImportServers(hosts);
+  ctrl->ImportNodes(switches);
+  ctrl->ImportServers(hosts);
 
-  spCtrl->ImportBasicInfo(_nPlane, _nIndex);
-  spCtrl->ImportDpidInfo(dpidInfo, _nSat + 1);
-  spCtrl->ImportDpidPortMap(dpidPortMap, _nSat + 1);
-  spCtrl->ImportDpidAdj(dpidAdj, _nSat + 1);
-  
+  ctrl->ImportBasicInfo(_nPlane, _nIndex);
+  ctrl->ImportDpidInfo(dpidInfo, _nSat + 1);
+  ctrl->ImportDpidPortMap(dpidPortMap, _nSat + 1);
+  ctrl->ImportDpidAdj(dpidAdj, _nSat + 1);
+  ctrl->ImportFlag(0000);
+
+
+  spctrl->ImportNodes(switches);
+  spctrl->ImportServers(hosts);
+
+  spctrl->ImportBasicInfo(_nPlane, _nIndex);
+  spctrl->ImportDpidInfo(dpidInfo, _nSat + 1);
+  spctrl->ImportDpidPortMap(dpidPortMap, _nSat + 1);
+  spctrl->ImportDpidAdj(dpidAdj, _nSat + 1);
+  spctrl->ImportFlag(1111);
+
+
   // Install UDP server on all nodes (port 11399)
   UdpServerHelper udpServerHelper (11399);
   ApplicationContainer serverApps = udpServerHelper.Install (hosts);
@@ -500,12 +547,15 @@ main (int argc, char *argv[])
 
   // Configure udp application between two hosts
   CreateUdpApp(0,20,1);
+  //CreateUdpApp(1,22,1);
   
-  apps.Start (Seconds (2.0));
+  apps.Start (Seconds (1.0));
   apps.Stop (Seconds (10.0));
 
   // Run the simulation
+  //int a = 1;
   Simulator::Stop (Seconds (simTime));
+  //Simulator::Schedule (MilliSeconds (1), &test, &a);
   Simulator::Run ();
   Simulator::Destroy ();
   dealloc();

@@ -22,9 +22,13 @@
 #define SP_CONTROLLER_H
 
 #include <ns3/ofswitch13-module.h>
+#include <ns3/network-module.h>
+#include <ns3/internet-module.h>
+#include <ns3/ofswitch13-controller.h>
 #include <iostream>
 #include <vector>
 #include <map>
+#include <queue>
 #include <algorithm>
 using namespace ns3;
 using namespace std;
@@ -36,6 +40,8 @@ typedef struct NodeInfo
     int plane;
     int index;
 } nodeInfo_t;
+
+
 
 /**
  * \brief An border OpenFlow 1.3 controller
@@ -76,6 +82,34 @@ public:
   void ImportDpidPortMap(int** dpidPortMap, uint16_t len);
   void ImportDpidAdj(double** dpidAdj, uint16_t len);
 
+  void ImportFlag(int flag);
+  void ImportDomainConfig(int cnum, int scnum, map<int,int>s2c, map<int,int>c2sc);
+  void IsSC(bool issc); 
+  
+
+  int m_flag;
+  bool m_issc;
+  int m_scnum;
+  int m_cnum;
+  map<int, int> m_s2c;
+  map<int, int> m_c2sc;
+
+
+  typedef struct PktInCtx
+  {
+      struct ofl_msg_packet_in *msg;
+      Ptr<const RemoteSwitch> swtch;
+      uint32_t xid;
+  } pktInCtx_t;
+
+  map<int, queue<pktInCtx_t>* > ctrlq;
+  map<int, queue<pktInCtx_t>* > sctrlq;
+
+
+  void HandlePacketInHelper(queue<pktInCtx_t>* qe);
+   
+  //void HandlePacketInHelper(int* a);
+
   dpid_t getDpidByIndex(int i);
  
      
@@ -99,7 +133,9 @@ public:
   void calPath(dpid_t srcDpid, dpid_t dstDpid, vector<dpid_t>& path);
 
   uint32_t updateL2Table(vector<dpid_t> path, Mac48Address dst48);
-
+  void insertFlowTable(vector<dpid_t> path, Mac48Address dst48);
+  void insertCrossDomainFlowTable(vector<dpid_t> path, Mac48Address dst48, int sdomainId);
+  void insertDomainFlowTable(vector<dpid_t> path, Mac48Address dst48, int domainId);
   bool turnRight(int src_plane, int dst_plane);
   bool turnUp(int src_index, int dst_index);
   
@@ -120,7 +156,12 @@ private:
   bool* visited;
   dpid_t* last_hop;
   double* weight;
-  double* cost;
+  double* cost;  
+  vector<int> crflag[128][128];
+  vector<int> rflag[128][128];
+
+  
+
 
 
   typedef std::map<Mac48Address, uint32_t> L2Table_t;
@@ -167,7 +208,7 @@ private:
   MacDpidMap_t m_macDpidTable;
 
   ofl_err HandleArpPacketIn (struct ofl_msg_packet_in *msg, Ptr<const RemoteSwitch> swtch, uint32_t xid);
-  
+  ofl_err HandlePacketInBackup (struct ofl_msg_packet_in *msg, Ptr<const RemoteSwitch> swtch, uint32_t xid);
   Ptr<Packet> CreateArpReply (Mac48Address srcMac, Ipv4Address srcIp, Mac48Address dstMac, Ipv4Address dstIp);
 };
 

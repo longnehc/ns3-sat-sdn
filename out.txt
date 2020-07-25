@@ -1,0 +1,34 @@
+Waf: Entering directory `/home/chenlong/ns-allinone-3.29/ns3-sat-sdn/build'
+[1947/2000] Compiling scratch/ofswitch13-sp-controller/main.cc
+[1959/2000] Linking build/scratch/ofswitch13-sp-controller/ofswitch13-sp-controller
+Waf: Leaving directory `/home/chenlong/ns-allinone-3.29/ns3-sat-sdn/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (6.944s)
+eeeeeeeeeeeeeeee:0
+eeeeeeeeeeeeeeee:0
+fffffffffffffff:0
+eeeeeeeeeeeeeeee:0
+eeeeeeeeeeeeeeee:0
+fffffffffffffff:0
+remote addr:03-04-0a:01:01:15
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:2a is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:2a is 4, domain=0
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:2a is 5
+Superdomain=0, domain1=0,domain2=1
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 20 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 20, the port to 00:00:00:00:00:2a is 4, domain=1
+Inserting domain flowtable of dpid = 21, The port to 00:00:00:00:00:2a is 1, domain=1

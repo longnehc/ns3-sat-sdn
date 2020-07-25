@@ -1,0 +1,105 @@
+Waf: Entering directory `/home/chenlong/ns-allinone-3.29/ns3-sat-sdn/build'
+[1946/2000] Compiling scratch/ofswitch13-sp-controller/sp-controller.cc
+[1959/2000] Linking build/scratch/ofswitch13-sp-controller/ofswitch13-sp-controller
+Waf: Leaving directory `/home/chenlong/ns-allinone-3.29/ns3-sat-sdn/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (11.885s)
+remote addr:03-04-0a:01:01:15
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+dpId=1
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+dpId=1
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+The src dpid for Mac: 00:00:00:00:00:02 is 1
+The dst dpid for Mac: 00:00:00:00:00:2a is 21
+Find L2 table for this datapath id=1
+Finding path from srcDpid: 1(0,0) to dstDpid: 21(2,2)
+Updating L2Table of dpid = 1
+The port to 00:00:00:00:00:2a is 2
+Updating L2Table of dpid = 2
+The port to 00:00:00:00:00:2a is 4
+Updating L2Table of dpid = 11
+The port to 00:00:00:00:00:2a is 5
+Updating L2Table of dpid = 20
+The port to 00:00:00:00:00:2a is 4
+Updating L2Table of dpid = 21
+The port to 00:00:00:00:00:2a is 1
+port calculated for: 00:00:00:00:00:2a is 2
+Inserting flow entry to dpid: 1 dst = 00:00:00:00:00:2a outPort 2
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+The src dpid for Mac: 00:00:00:00:00:02 is 1
+The dst dpid for Mac: 00:00:00:00:00:2a is 21
+Find L2 table for this datapath id=1
+Finding path from srcDpid: 1(0,0) to dstDpid: 21(2,2)
+Updating L2Table of dpid = 1
+The port to 00:00:00:00:00:2a is 2
+Updating L2Table of dpid = 2
+The port to 00:00:00:00:00:2a is 4
+Updating L2Table of dpid = 11
+The port to 00:00:00:00:00:2a is 5
+Updating L2Table of dpid = 20
+The port to 00:00:00:00:00:2a is 4
+Updating L2Table of dpid = 21
+The port to 00:00:00:00:00:2a is 1
+port calculated for: 00:00:00:00:00:2a is 2
+Inserting flow entry to dpid: 1 dst = 00:00:00:00:00:2a outPort 2
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+The src dpid for Mac: 00:00:00:00:00:02 is 1
+The dst dpid for Mac: 00:00:00:00:00:2a is 21
+Find L2 table for this datapath id=2
+port exists destined to: 00:00:00:00:00:2a at 2 is 4
+Inserting flow entry to dpid: 2 dst = 00:00:00:00:00:2a outPort 4
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+The src dpid for Mac: 00:00:00:00:00:02 is 1
+The dst dpid for Mac: 00:00:00:00:00:2a is 21
+Find L2 table for this datapath id=2
+port exists destined to: 00:00:00:00:00:2a at 2 is 4
+Inserting flow entry to dpid: 2 dst = 00:00:00:00:00:2a outPort 4
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+The src dpid for Mac: 00:00:00:00:00:02 is 1
+The dst dpid for Mac: 00:00:00:00:00:2a is 21
+Find L2 table for this datapath id=11
+port exists destined to: 00:00:00:00:00:2a at 11 is 5
+Inserting flow entry to dpid: 11 dst = 00:00:00:00:00:2a outPort 5
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+The src dpid for Mac: 00:00:00:00:00:02 is 1
+The dst dpid for Mac: 00:00:00:00:00:2a is 21
+Find L2 table for this datapath id=11
+port exists destined to: 00:00:00:00:00:2a at 11 is 5
+Inserting flow entry to dpid: 11 dst = 00:00:00:00:00:2a outPort 5
+The switch with dpid= 20 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+The src dpid for Mac: 00:00:00:00:00:02 is 1
+The dst dpid for Mac: 00:00:00:00:00:2a is 21
+Find L2 table for this datapath id=20
+port exists destined to: 00:00:00:00:00:2a at 20 is 4
+Inserting flow entry to dpid: 20 dst = 00:00:00:00:00:2a outPort 4
+The switch with dpid= 20 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+The src dpid for Mac: 00:00:00:00:00:02 is 1
+The dst dpid for Mac: 00:00:00:00:00:2a is 21
+Find L2 table for this datapath id=20
+port exists destined to: 00:00:00:00:00:2a at 20 is 4
+Inserting flow entry to dpid: 20 dst = 00:00:00:00:00:2a outPort 4
+The switch with dpid= 21 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+The src dpid for Mac: 00:00:00:00:00:02 is 1
+The dst dpid for Mac: 00:00:00:00:00:2a is 21
+Find L2 table for this datapath id=21
+port exists destined to: 00:00:00:00:00:2a at 21 is 1
+Inserting flow entry to dpid: 21 dst = 00:00:00:00:00:2a outPort 1
+The switch with dpid= 21 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+The src dpid for Mac: 00:00:00:00:00:02 is 1
+The dst dpid for Mac: 00:00:00:00:00:2a is 21
+Find L2 table for this datapath id=21
+port exists destined to: 00:00:00:00:00:2a at 21 is 1
+Inserting flow entry to dpid: 21 dst = 00:00:00:00:00:2a outPort 1
