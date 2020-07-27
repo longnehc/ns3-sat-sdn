@@ -1,34 +1,2074 @@
 Waf: Entering directory `/home/chenlong/ns-allinone-3.29/ns3-sat-sdn/build'
-[1947/2000] Compiling scratch/ofswitch13-sp-controller/main.cc
-[1959/2000] Linking build/scratch/ofswitch13-sp-controller/ofswitch13-sp-controller
+[1946/2000] Compiling scratch/ofswitch13-sp-controller/main.cc
+[1960/2000] Linking build/scratch/ofswitch13-sp-controller/ofswitch13-sp-controller
 Waf: Leaving directory `/home/chenlong/ns-allinone-3.29/ns3-sat-sdn/build'
 Build commands will be stored in build/compile_commands.json
-'build' finished successfully (6.944s)
+'build' finished successfully (8.061s)
 eeeeeeeeeeeeeeee:0
 eeeeeeeeeeeeeeee:0
 fffffffffffffff:0
 eeeeeeeeeeeeeeee:0
 eeeeeeeeeeeeeeee:0
 fffffffffffffff:0
-remote addr:03-04-0a:01:01:15
+etime=100
+Update topology invoked at 1
 Super-controller no.=0 received packetIn!!!!!!!!!!!!!
 Controller no.=0 received packetIn!!!!!!!!!!!!!
 The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
 Flag= 0 !!!!!!!!!!!!!
+Controller: total qdelay: 0.71 ms,reqcnt=1, avg. qdelay=0.71 ms
+Controller: total pdelay: 65 ms,reqcnt=1, avg. pdelay=65 ms
 The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
 Flag= 1111 !!!!!!!!!!!!!
+Supercontroller: total qdelay: 1.6 ms,reqcnt=1, avg. qdelay=1.6 ms
+Supercontroller: total pdelay: 52 ms,reqcnt=1, avg. pdelay=52 ms
 Super-controller no.=0 received packetIn!!!!!!!!!!!!!
 Controller no.=0 received packetIn!!!!!!!!!!!!!
 The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
 Flag= 0 !!!!!!!!!!!!!
-Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:2a is 2, domain=0
-Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:2a is 4, domain=0
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: 1.4 ms,reqcnt=2, avg. qdelay=0.7 ms
+Controller: total pdelay: 1.3e+02 ms,reqcnt=2, avg. pdelay=65 ms
 The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
 Flag= 1111 !!!!!!!!!!!!!
-Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:2a is 5
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
 Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 3.2 ms,reqcnt=2, avg. qdelay=1.6 ms
+Supercontroller: total pdelay: 1e+02 ms,reqcnt=2, avg. pdelay=52 ms
 Controller no.=1 received packetIn!!!!!!!!!!!!!
-The switch with dpid= 20 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
 Flag= 0 !!!!!!!!!!!!!
-Inserting domain flowtable of dpid = 20, the port to 00:00:00:00:00:2a is 4, domain=1
-Inserting domain flowtable of dpid = 21, The port to 00:00:00:00:00:2a is 1, domain=1
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: 5.5 ms,reqcnt=3, avg. qdelay=1.8 ms
+Controller: total pdelay: 1.5e+02 ms,reqcnt=3, avg. pdelay=49 ms
+Update topology invoked at 2
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: 9.6 ms,reqcnt=4, avg. qdelay=2.4 ms
+Controller: total pdelay: 2e+02 ms,reqcnt=4, avg. pdelay=49 ms
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 9.9 ms,reqcnt=3, avg. qdelay=3.3 ms
+Supercontroller: total pdelay: 1.6e+02 ms,reqcnt=3, avg. pdelay=52 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: 15 ms,reqcnt=5, avg. qdelay=3.1 ms
+Controller: total pdelay: 2.1e+02 ms,reqcnt=5, avg. pdelay=42 ms
+Update topology invoked at 3
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: 18 ms,reqcnt=6, avg. qdelay=3 ms
+Controller: total pdelay: 2.7e+02 ms,reqcnt=6, avg. pdelay=44 ms
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 14 ms,reqcnt=4, avg. qdelay=3.5 ms
+Supercontroller: total pdelay: 2.1e+02 ms,reqcnt=4, avg. pdelay=52 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: 23 ms,reqcnt=7, avg. qdelay=3.2 ms
+Controller: total pdelay: 2.8e+02 ms,reqcnt=7, avg. pdelay=40 ms
+Update topology invoked at 4
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: 27 ms,reqcnt=8, avg. qdelay=3.3 ms
+Controller: total pdelay: 3.5e+02 ms,reqcnt=8, avg. pdelay=44 ms
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 21 ms,reqcnt=5, avg. qdelay=4.1 ms
+Supercontroller: total pdelay: 2.6e+02 ms,reqcnt=5, avg. pdelay=52 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: 31 ms,reqcnt=9, avg. qdelay=3.5 ms
+Controller: total pdelay: 3.6e+02 ms,reqcnt=9, avg. pdelay=41 ms
+Update topology invoked at 5
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: 35 ms,reqcnt=10, avg. qdelay=3.5 ms
+Controller: total pdelay: 4.1e+02 ms,reqcnt=10, avg. pdelay=41 ms
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 26 ms,reqcnt=6, avg. qdelay=4.4 ms
+Supercontroller: total pdelay: 3.1e+02 ms,reqcnt=6, avg. pdelay=52 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -9.6e+02 ms,reqcnt=11, avg. qdelay=-87 ms
+Controller: total pdelay: 4.3e+02 ms,reqcnt=11, avg. pdelay=39 ms
+Update topology invoked at 6
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -9.6e+02 ms,reqcnt=12, avg. qdelay=-80 ms
+Controller: total pdelay: 4.8e+02 ms,reqcnt=12, avg. pdelay=40 ms
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 29 ms,reqcnt=7, avg. qdelay=4.2 ms
+Supercontroller: total pdelay: 3.7e+02 ms,reqcnt=7, avg. pdelay=52 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -9.6e+02 ms,reqcnt=13, avg. qdelay=-74 ms
+Controller: total pdelay: 5e+02 ms,reqcnt=13, avg. pdelay=39 ms
+Update topology invoked at 7
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -9.6e+02 ms,reqcnt=14, avg. qdelay=-68 ms
+Controller: total pdelay: 5.7e+02 ms,reqcnt=14, avg. pdelay=40 ms
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 31 ms,reqcnt=8, avg. qdelay=3.9 ms
+Supercontroller: total pdelay: 4.2e+02 ms,reqcnt=8, avg. pdelay=52 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -9.6e+02 ms,reqcnt=15, avg. qdelay=-64 ms
+Controller: total pdelay: 5.8e+02 ms,reqcnt=15, avg. pdelay=39 ms
+Update topology invoked at 8
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -9.5e+02 ms,reqcnt=16, avg. qdelay=-60 ms
+Controller: total pdelay: 6.3e+02 ms,reqcnt=16, avg. pdelay=39 ms
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 35 ms,reqcnt=9, avg. qdelay=3.9 ms
+Supercontroller: total pdelay: 4.7e+02 ms,reqcnt=9, avg. pdelay=52 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -9.5e+02 ms,reqcnt=17, avg. qdelay=-56 ms
+Controller: total pdelay: 6.5e+02 ms,reqcnt=17, avg. pdelay=38 ms
+Update topology invoked at 9
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -9.5e+02 ms,reqcnt=18, avg. qdelay=-53 ms
+Controller: total pdelay: 7e+02 ms,reqcnt=18, avg. pdelay=39 ms
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 40 ms,reqcnt=10, avg. qdelay=4 ms
+Supercontroller: total pdelay: 5.2e+02 ms,reqcnt=10, avg. pdelay=52 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -9.4e+02 ms,reqcnt=19, avg. qdelay=-49 ms
+Controller: total pdelay: 7.2e+02 ms,reqcnt=19, avg. pdelay=38 ms
+Update topology invoked at 10
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -9.3e+02 ms,reqcnt=20, avg. qdelay=-47 ms
+Controller: total pdelay: 7.8e+02 ms,reqcnt=20, avg. pdelay=39 ms
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 49 ms,reqcnt=11, avg. qdelay=4.5 ms
+Supercontroller: total pdelay: 5.8e+02 ms,reqcnt=11, avg. pdelay=52 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -9.3e+02 ms,reqcnt=21, avg. qdelay=-44 ms
+Controller: total pdelay: 8e+02 ms,reqcnt=21, avg. pdelay=38 ms
+Update topology invoked at 11
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -9.3e+02 ms,reqcnt=22, avg. qdelay=-42 ms
+Controller: total pdelay: 8.5e+02 ms,reqcnt=22, avg. pdelay=39 ms
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 54 ms,reqcnt=12, avg. qdelay=4.5 ms
+Supercontroller: total pdelay: 6.3e+02 ms,reqcnt=12, avg. pdelay=52 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -9.2e+02 ms,reqcnt=23, avg. qdelay=-40 ms
+Controller: total pdelay: 8.7e+02 ms,reqcnt=23, avg. pdelay=38 ms
+Update topology invoked at 12
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -9.2e+02 ms,reqcnt=24, avg. qdelay=-38 ms
+Controller: total pdelay: 9.2e+02 ms,reqcnt=24, avg. pdelay=38 ms
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 56 ms,reqcnt=13, avg. qdelay=4.3 ms
+Supercontroller: total pdelay: 6.8e+02 ms,reqcnt=13, avg. pdelay=52 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -9.2e+02 ms,reqcnt=25, avg. qdelay=-37 ms
+Controller: total pdelay: 9.4e+02 ms,reqcnt=25, avg. pdelay=37 ms
+Update topology invoked at 13
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -9.2e+02 ms,reqcnt=26, avg. qdelay=-35 ms
+Controller: total pdelay: 1e+03 ms,reqcnt=26, avg. pdelay=39 ms
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 58 ms,reqcnt=14, avg. qdelay=4.1 ms
+Supercontroller: total pdelay: 7.3e+02 ms,reqcnt=14, avg. pdelay=52 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -9.2e+02 ms,reqcnt=27, avg. qdelay=-34 ms
+Controller: total pdelay: 1e+03 ms,reqcnt=27, avg. pdelay=38 ms
+Update topology invoked at 14
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -9.2e+02 ms,reqcnt=28, avg. qdelay=-33 ms
+Controller: total pdelay: 1.1e+03 ms,reqcnt=28, avg. pdelay=38 ms
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 61 ms,reqcnt=15, avg. qdelay=4.1 ms
+Supercontroller: total pdelay: 7.9e+02 ms,reqcnt=15, avg. pdelay=52 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -9.1e+02 ms,reqcnt=29, avg. qdelay=-32 ms
+Controller: total pdelay: 1.1e+03 ms,reqcnt=29, avg. pdelay=37 ms
+Update topology invoked at 15
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -9.1e+02 ms,reqcnt=30, avg. qdelay=-30 ms
+Controller: total pdelay: 1.1e+03 ms,reqcnt=30, avg. pdelay=38 ms
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 63 ms,reqcnt=16, avg. qdelay=3.9 ms
+Supercontroller: total pdelay: 8.4e+02 ms,reqcnt=16, avg. pdelay=52 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -9.1e+02 ms,reqcnt=31, avg. qdelay=-29 ms
+Controller: total pdelay: 1.2e+03 ms,reqcnt=31, avg. pdelay=37 ms
+Update topology invoked at 16
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -9.1e+02 ms,reqcnt=32, avg. qdelay=-28 ms
+Controller: total pdelay: 1.2e+03 ms,reqcnt=32, avg. pdelay=38 ms
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 67 ms,reqcnt=17, avg. qdelay=3.9 ms
+Supercontroller: total pdelay: 8.9e+02 ms,reqcnt=17, avg. pdelay=52 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -9.1e+02 ms,reqcnt=33, avg. qdelay=-27 ms
+Controller: total pdelay: 1.2e+03 ms,reqcnt=33, avg. pdelay=37 ms
+Update topology invoked at 17
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -9e+02 ms,reqcnt=34, avg. qdelay=-27 ms
+Controller: total pdelay: 1.3e+03 ms,reqcnt=34, avg. pdelay=38 ms
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 73 ms,reqcnt=18, avg. qdelay=4.1 ms
+Supercontroller: total pdelay: 9.4e+02 ms,reqcnt=18, avg. pdelay=52 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -9e+02 ms,reqcnt=35, avg. qdelay=-26 ms
+Controller: total pdelay: 1.3e+03 ms,reqcnt=35, avg. pdelay=37 ms
+Update topology invoked at 18
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -8.9e+02 ms,reqcnt=36, avg. qdelay=-25 ms
+Controller: total pdelay: 1.4e+03 ms,reqcnt=36, avg. pdelay=38 ms
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 78 ms,reqcnt=19, avg. qdelay=4.1 ms
+Supercontroller: total pdelay: 9.9e+02 ms,reqcnt=19, avg. pdelay=52 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -8.9e+02 ms,reqcnt=37, avg. qdelay=-24 ms
+Controller: total pdelay: 1.4e+03 ms,reqcnt=37, avg. pdelay=37 ms
+Update topology invoked at 19
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -8.9e+02 ms,reqcnt=38, avg. qdelay=-23 ms
+Controller: total pdelay: 1.4e+03 ms,reqcnt=38, avg. pdelay=38 ms
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 80 ms,reqcnt=20, avg. qdelay=4 ms
+Supercontroller: total pdelay: 1e+03 ms,reqcnt=20, avg. pdelay=52 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -8.9e+02 ms,reqcnt=39, avg. qdelay=-23 ms
+Controller: total pdelay: 1.5e+03 ms,reqcnt=39, avg. pdelay=37 ms
+Update topology invoked at 20
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -8.9e+02 ms,reqcnt=40, avg. qdelay=-22 ms
+Controller: total pdelay: 1.5e+03 ms,reqcnt=40, avg. pdelay=38 ms
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 83 ms,reqcnt=21, avg. qdelay=3.9 ms
+Supercontroller: total pdelay: 1.1e+03 ms,reqcnt=21, avg. pdelay=52 ms
+Update topology invoked at 21
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -8.8e+02 ms,reqcnt=41, avg. qdelay=-22 ms
+Controller: total pdelay: 1.5e+03 ms,reqcnt=41, avg. pdelay=37 ms
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -8.8e+02 ms,reqcnt=42, avg. qdelay=-21 ms
+Controller: total pdelay: 1.6e+03 ms,reqcnt=42, avg. pdelay=38 ms
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 89 ms,reqcnt=22, avg. qdelay=4.1 ms
+Supercontroller: total pdelay: 1.2e+03 ms,reqcnt=22, avg. pdelay=52 ms
+Update topology invoked at 22
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -8.7e+02 ms,reqcnt=43, avg. qdelay=-20 ms
+Controller: total pdelay: 1.6e+03 ms,reqcnt=43, avg. pdelay=37 ms
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -8.7e+02 ms,reqcnt=44, avg. qdelay=-20 ms
+Controller: total pdelay: 1.7e+03 ms,reqcnt=44, avg. pdelay=38 ms
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 94 ms,reqcnt=23, avg. qdelay=4.1 ms
+Supercontroller: total pdelay: 1.2e+03 ms,reqcnt=23, avg. pdelay=52 ms
+Update topology invoked at 23
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -8.6e+02 ms,reqcnt=45, avg. qdelay=-19 ms
+Controller: total pdelay: 1.7e+03 ms,reqcnt=45, avg. pdelay=37 ms
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -8.6e+02 ms,reqcnt=46, avg. qdelay=-19 ms
+Controller: total pdelay: 1.7e+03 ms,reqcnt=46, avg. pdelay=37 ms
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 97 ms,reqcnt=24, avg. qdelay=4 ms
+Supercontroller: total pdelay: 1.3e+03 ms,reqcnt=24, avg. pdelay=52 ms
+Update topology invoked at 24
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -8.6e+02 ms,reqcnt=47, avg. qdelay=-18 ms
+Controller: total pdelay: 1.7e+03 ms,reqcnt=47, avg. pdelay=37 ms
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -8.5e+02 ms,reqcnt=48, avg. qdelay=-18 ms
+Controller: total pdelay: 1.8e+03 ms,reqcnt=48, avg. pdelay=37 ms
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 1e+02 ms,reqcnt=25, avg. qdelay=4.1 ms
+Supercontroller: total pdelay: 1.3e+03 ms,reqcnt=25, avg. pdelay=52 ms
+Update topology invoked at 25
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -8.5e+02 ms,reqcnt=49, avg. qdelay=-17 ms
+Controller: total pdelay: 1.8e+03 ms,reqcnt=49, avg. pdelay=37 ms
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -8.5e+02 ms,reqcnt=50, avg. qdelay=-17 ms
+Controller: total pdelay: 1.9e+03 ms,reqcnt=50, avg. pdelay=38 ms
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 1.1e+02 ms,reqcnt=26, avg. qdelay=4.1 ms
+Supercontroller: total pdelay: 1.4e+03 ms,reqcnt=26, avg. pdelay=52 ms
+Update topology invoked at 26
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -8.5e+02 ms,reqcnt=51, avg. qdelay=-17 ms
+Controller: total pdelay: 1.9e+03 ms,reqcnt=51, avg. pdelay=37 ms
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -8.5e+02 ms,reqcnt=52, avg. qdelay=-16 ms
+Controller: total pdelay: 1.9e+03 ms,reqcnt=52, avg. pdelay=37 ms
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 1.1e+02 ms,reqcnt=27, avg. qdelay=4 ms
+Supercontroller: total pdelay: 1.4e+03 ms,reqcnt=27, avg. pdelay=52 ms
+Update topology invoked at 27
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -8.4e+02 ms,reqcnt=53, avg. qdelay=-16 ms
+Controller: total pdelay: 2e+03 ms,reqcnt=53, avg. pdelay=37 ms
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -8.4e+02 ms,reqcnt=54, avg. qdelay=-16 ms
+Controller: total pdelay: 2e+03 ms,reqcnt=54, avg. pdelay=37 ms
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 1.1e+02 ms,reqcnt=28, avg. qdelay=4 ms
+Supercontroller: total pdelay: 1.5e+03 ms,reqcnt=28, avg. pdelay=52 ms
+Update topology invoked at 28
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -8.4e+02 ms,reqcnt=55, avg. qdelay=-15 ms
+Controller: total pdelay: 2e+03 ms,reqcnt=55, avg. pdelay=37 ms
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -8.3e+02 ms,reqcnt=56, avg. qdelay=-15 ms
+Controller: total pdelay: 2.1e+03 ms,reqcnt=56, avg. pdelay=37 ms
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 1.1e+02 ms,reqcnt=29, avg. qdelay=3.9 ms
+Supercontroller: total pdelay: 1.5e+03 ms,reqcnt=29, avg. pdelay=52 ms
+Update topology invoked at 29
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -8.3e+02 ms,reqcnt=57, avg. qdelay=-15 ms
+Controller: total pdelay: 2.1e+03 ms,reqcnt=57, avg. pdelay=37 ms
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -8.3e+02 ms,reqcnt=58, avg. qdelay=-14 ms
+Controller: total pdelay: 2.2e+03 ms,reqcnt=58, avg. pdelay=37 ms
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 1.2e+02 ms,reqcnt=30, avg. qdelay=4 ms
+Supercontroller: total pdelay: 1.6e+03 ms,reqcnt=30, avg. pdelay=52 ms
+Update topology invoked at 30
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -8.2e+02 ms,reqcnt=59, avg. qdelay=-14 ms
+Controller: total pdelay: 2.2e+03 ms,reqcnt=59, avg. pdelay=38 ms
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 1.3e+02 ms,reqcnt=31, avg. qdelay=4.1 ms
+Supercontroller: total pdelay: 1.6e+03 ms,reqcnt=31, avg. pdelay=52 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -8.2e+02 ms,reqcnt=60, avg. qdelay=-14 ms
+Controller: total pdelay: 2.2e+03 ms,reqcnt=60, avg. pdelay=37 ms
+Update topology invoked at 31
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -8.1e+02 ms,reqcnt=61, avg. qdelay=-13 ms
+Controller: total pdelay: 2.3e+03 ms,reqcnt=61, avg. pdelay=38 ms
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 1.4e+02 ms,reqcnt=32, avg. qdelay=4.2 ms
+Supercontroller: total pdelay: 1.7e+03 ms,reqcnt=32, avg. pdelay=52 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -8.1e+02 ms,reqcnt=62, avg. qdelay=-13 ms
+Controller: total pdelay: 2.3e+03 ms,reqcnt=62, avg. pdelay=37 ms
+Update topology invoked at 32
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -8e+02 ms,reqcnt=63, avg. qdelay=-13 ms
+Controller: total pdelay: 2.4e+03 ms,reqcnt=63, avg. pdelay=37 ms
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 1.4e+02 ms,reqcnt=33, avg. qdelay=4.3 ms
+Supercontroller: total pdelay: 1.7e+03 ms,reqcnt=33, avg. pdelay=52 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -8e+02 ms,reqcnt=64, avg. qdelay=-12 ms
+Controller: total pdelay: 2.4e+03 ms,reqcnt=64, avg. pdelay=37 ms
+Update topology invoked at 33
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -8e+02 ms,reqcnt=65, avg. qdelay=-12 ms
+Controller: total pdelay: 2.4e+03 ms,reqcnt=65, avg. pdelay=37 ms
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 1.4e+02 ms,reqcnt=34, avg. qdelay=4.3 ms
+Supercontroller: total pdelay: 1.8e+03 ms,reqcnt=34, avg. pdelay=52 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -7.9e+02 ms,reqcnt=66, avg. qdelay=-12 ms
+Controller: total pdelay: 2.4e+03 ms,reqcnt=66, avg. pdelay=37 ms
+Update topology invoked at 34
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -7.9e+02 ms,reqcnt=67, avg. qdelay=-12 ms
+Controller: total pdelay: 2.5e+03 ms,reqcnt=67, avg. pdelay=38 ms
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 1.5e+02 ms,reqcnt=35, avg. qdelay=4.2 ms
+Supercontroller: total pdelay: 1.8e+03 ms,reqcnt=35, avg. pdelay=52 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -7.9e+02 ms,reqcnt=68, avg. qdelay=-12 ms
+Controller: total pdelay: 2.5e+03 ms,reqcnt=68, avg. pdelay=37 ms
+Update topology invoked at 35
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -7.9e+02 ms,reqcnt=69, avg. qdelay=-11 ms
+Controller: total pdelay: 2.6e+03 ms,reqcnt=69, avg. pdelay=37 ms
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 1.5e+02 ms,reqcnt=36, avg. qdelay=4.2 ms
+Supercontroller: total pdelay: 1.9e+03 ms,reqcnt=36, avg. pdelay=52 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -7.9e+02 ms,reqcnt=70, avg. qdelay=-11 ms
+Controller: total pdelay: 2.6e+03 ms,reqcnt=70, avg. pdelay=37 ms
+Update topology invoked at 36
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -7.9e+02 ms,reqcnt=71, avg. qdelay=-11 ms
+Controller: total pdelay: 2.6e+03 ms,reqcnt=71, avg. pdelay=37 ms
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 1.5e+02 ms,reqcnt=37, avg. qdelay=4.2 ms
+Supercontroller: total pdelay: 1.9e+03 ms,reqcnt=37, avg. pdelay=52 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -7.8e+02 ms,reqcnt=72, avg. qdelay=-11 ms
+Controller: total pdelay: 2.7e+03 ms,reqcnt=72, avg. pdelay=37 ms
+Update topology invoked at 37
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -7.8e+02 ms,reqcnt=73, avg. qdelay=-11 ms
+Controller: total pdelay: 2.7e+03 ms,reqcnt=73, avg. pdelay=37 ms
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 1.6e+02 ms,reqcnt=38, avg. qdelay=4.1 ms
+Supercontroller: total pdelay: 2e+03 ms,reqcnt=38, avg. pdelay=52 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -7.8e+02 ms,reqcnt=74, avg. qdelay=-11 ms
+Controller: total pdelay: 2.7e+03 ms,reqcnt=74, avg. pdelay=37 ms
+Update topology invoked at 38
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -7.8e+02 ms,reqcnt=75, avg. qdelay=-10 ms
+Controller: total pdelay: 2.8e+03 ms,reqcnt=75, avg. pdelay=37 ms
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 1.6e+02 ms,reqcnt=39, avg. qdelay=4.1 ms
+Supercontroller: total pdelay: 2e+03 ms,reqcnt=39, avg. pdelay=52 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -7.8e+02 ms,reqcnt=76, avg. qdelay=-10 ms
+Controller: total pdelay: 2.8e+03 ms,reqcnt=76, avg. pdelay=37 ms
+Update topology invoked at 39
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -7.8e+02 ms,reqcnt=77, avg. qdelay=-10 ms
+Controller: total pdelay: 2.9e+03 ms,reqcnt=77, avg. pdelay=37 ms
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 1.6e+02 ms,reqcnt=40, avg. qdelay=4 ms
+Supercontroller: total pdelay: 2.1e+03 ms,reqcnt=40, avg. pdelay=52 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -7.7e+02 ms,reqcnt=78, avg. qdelay=-9.9 ms
+Controller: total pdelay: 2.9e+03 ms,reqcnt=78, avg. pdelay=37 ms
+Update topology invoked at 40
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -7.7e+02 ms,reqcnt=79, avg. qdelay=-9.7 ms
+Controller: total pdelay: 2.9e+03 ms,reqcnt=79, avg. pdelay=37 ms
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 1.7e+02 ms,reqcnt=41, avg. qdelay=4 ms
+Supercontroller: total pdelay: 2.1e+03 ms,reqcnt=41, avg. pdelay=52 ms
+Update topology invoked at 41
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -7.7e+02 ms,reqcnt=80, avg. qdelay=-9.6 ms
+Controller: total pdelay: 3e+03 ms,reqcnt=80, avg. pdelay=37 ms
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -7.7e+02 ms,reqcnt=81, avg. qdelay=-9.4 ms
+Controller: total pdelay: 3e+03 ms,reqcnt=81, avg. pdelay=37 ms
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 1.7e+02 ms,reqcnt=42, avg. qdelay=4 ms
+Supercontroller: total pdelay: 2.2e+03 ms,reqcnt=42, avg. pdelay=52 ms
+Update topology invoked at 42
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -7.6e+02 ms,reqcnt=82, avg. qdelay=-9.3 ms
+Controller: total pdelay: 3e+03 ms,reqcnt=82, avg. pdelay=37 ms
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -7.6e+02 ms,reqcnt=83, avg. qdelay=-9.2 ms
+Controller: total pdelay: 3.1e+03 ms,reqcnt=83, avg. pdelay=37 ms
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 1.7e+02 ms,reqcnt=43, avg. qdelay=4 ms
+Supercontroller: total pdelay: 2.3e+03 ms,reqcnt=43, avg. pdelay=52 ms
+Update topology invoked at 43
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -7.6e+02 ms,reqcnt=84, avg. qdelay=-9 ms
+Controller: total pdelay: 3.1e+03 ms,reqcnt=84, avg. pdelay=37 ms
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -7.5e+02 ms,reqcnt=85, avg. qdelay=-8.9 ms
+Controller: total pdelay: 3.2e+03 ms,reqcnt=85, avg. pdelay=37 ms
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 1.8e+02 ms,reqcnt=44, avg. qdelay=4 ms
+Supercontroller: total pdelay: 2.3e+03 ms,reqcnt=44, avg. pdelay=52 ms
+Update topology invoked at 44
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -7.5e+02 ms,reqcnt=86, avg. qdelay=-8.7 ms
+Controller: total pdelay: 3.2e+03 ms,reqcnt=86, avg. pdelay=37 ms
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -7.5e+02 ms,reqcnt=87, avg. qdelay=-8.6 ms
+Controller: total pdelay: 3.2e+03 ms,reqcnt=87, avg. pdelay=37 ms
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 1.8e+02 ms,reqcnt=45, avg. qdelay=4 ms
+Supercontroller: total pdelay: 2.4e+03 ms,reqcnt=45, avg. pdelay=52 ms
+Update topology invoked at 45
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -7.5e+02 ms,reqcnt=88, avg. qdelay=-8.5 ms
+Controller: total pdelay: 3.2e+03 ms,reqcnt=88, avg. pdelay=37 ms
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -7.4e+02 ms,reqcnt=89, avg. qdelay=-8.4 ms
+Controller: total pdelay: 3.3e+03 ms,reqcnt=89, avg. pdelay=37 ms
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 1.8e+02 ms,reqcnt=46, avg. qdelay=4 ms
+Supercontroller: total pdelay: 2.4e+03 ms,reqcnt=46, avg. pdelay=52 ms
+Update topology invoked at 46
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -7.4e+02 ms,reqcnt=90, avg. qdelay=-8.3 ms
+Controller: total pdelay: 3.3e+03 ms,reqcnt=90, avg. pdelay=37 ms
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -7.4e+02 ms,reqcnt=91, avg. qdelay=-8.1 ms
+Controller: total pdelay: 3.4e+03 ms,reqcnt=91, avg. pdelay=37 ms
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 1.9e+02 ms,reqcnt=47, avg. qdelay=4 ms
+Supercontroller: total pdelay: 2.5e+03 ms,reqcnt=47, avg. pdelay=52 ms
+Update topology invoked at 47
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -7.4e+02 ms,reqcnt=92, avg. qdelay=-8 ms
+Controller: total pdelay: 3.4e+03 ms,reqcnt=92, avg. pdelay=37 ms
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -7.4e+02 ms,reqcnt=93, avg. qdelay=-7.9 ms
+Controller: total pdelay: 3.5e+03 ms,reqcnt=93, avg. pdelay=37 ms
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 1.9e+02 ms,reqcnt=48, avg. qdelay=4 ms
+Supercontroller: total pdelay: 2.5e+03 ms,reqcnt=48, avg. pdelay=52 ms
+Update topology invoked at 48
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -7.3e+02 ms,reqcnt=94, avg. qdelay=-7.8 ms
+Controller: total pdelay: 3.5e+03 ms,reqcnt=94, avg. pdelay=37 ms
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -7.3e+02 ms,reqcnt=95, avg. qdelay=-7.7 ms
+Controller: total pdelay: 3.5e+03 ms,reqcnt=95, avg. pdelay=37 ms
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 2e+02 ms,reqcnt=49, avg. qdelay=4 ms
+Supercontroller: total pdelay: 2.6e+03 ms,reqcnt=49, avg. pdelay=52 ms
+Update topology invoked at 49
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -7.3e+02 ms,reqcnt=96, avg. qdelay=-7.6 ms
+Controller: total pdelay: 3.5e+03 ms,reqcnt=96, avg. pdelay=37 ms
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -7.2e+02 ms,reqcnt=97, avg. qdelay=-7.5 ms
+Controller: total pdelay: 3.6e+03 ms,reqcnt=97, avg. pdelay=37 ms
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 2e+02 ms,reqcnt=50, avg. qdelay=4 ms
+Supercontroller: total pdelay: 2.6e+03 ms,reqcnt=50, avg. pdelay=52 ms
+Update topology invoked at 50
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -7.2e+02 ms,reqcnt=98, avg. qdelay=-7.4 ms
+Controller: total pdelay: 3.6e+03 ms,reqcnt=98, avg. pdelay=37 ms
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -7.2e+02 ms,reqcnt=99, avg. qdelay=-7.3 ms
+Controller: total pdelay: 3.7e+03 ms,reqcnt=99, avg. pdelay=37 ms
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 2e+02 ms,reqcnt=51, avg. qdelay=3.9 ms
+Supercontroller: total pdelay: 2.7e+03 ms,reqcnt=51, avg. pdelay=52 ms
+Update topology invoked at 51
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -7.2e+02 ms,reqcnt=100, avg. qdelay=-7.2 ms
+Controller: total pdelay: 3.7e+03 ms,reqcnt=100, avg. pdelay=37 ms
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -7.1e+02 ms,reqcnt=101, avg. qdelay=-7.1 ms
+Controller: total pdelay: 3.7e+03 ms,reqcnt=101, avg. pdelay=37 ms
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 2.1e+02 ms,reqcnt=52, avg. qdelay=4 ms
+Supercontroller: total pdelay: 2.7e+03 ms,reqcnt=52, avg. pdelay=52 ms
+Update topology invoked at 52
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -7.1e+02 ms,reqcnt=102, avg. qdelay=-7 ms
+Controller: total pdelay: 3.8e+03 ms,reqcnt=102, avg. pdelay=37 ms
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -7.1e+02 ms,reqcnt=103, avg. qdelay=-6.9 ms
+Controller: total pdelay: 3.8e+03 ms,reqcnt=103, avg. pdelay=37 ms
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 2.1e+02 ms,reqcnt=53, avg. qdelay=4 ms
+Supercontroller: total pdelay: 2.8e+03 ms,reqcnt=53, avg. pdelay=52 ms
+Update topology invoked at 53
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -7e+02 ms,reqcnt=104, avg. qdelay=-6.8 ms
+Controller: total pdelay: 3.8e+03 ms,reqcnt=104, avg. pdelay=37 ms
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -7e+02 ms,reqcnt=105, avg. qdelay=-6.7 ms
+Controller: total pdelay: 3.9e+03 ms,reqcnt=105, avg. pdelay=37 ms
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 2.1e+02 ms,reqcnt=54, avg. qdelay=3.9 ms
+Supercontroller: total pdelay: 2.8e+03 ms,reqcnt=54, avg. pdelay=52 ms
+Update topology invoked at 54
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -7e+02 ms,reqcnt=106, avg. qdelay=-6.6 ms
+Controller: total pdelay: 3.9e+03 ms,reqcnt=106, avg. pdelay=37 ms
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -7e+02 ms,reqcnt=107, avg. qdelay=-6.5 ms
+Controller: total pdelay: 4e+03 ms,reqcnt=107, avg. pdelay=37 ms
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 2.1e+02 ms,reqcnt=55, avg. qdelay=3.9 ms
+Supercontroller: total pdelay: 2.9e+03 ms,reqcnt=55, avg. pdelay=52 ms
+Update topology invoked at 55
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -6.9e+02 ms,reqcnt=108, avg. qdelay=-6.4 ms
+Controller: total pdelay: 4e+03 ms,reqcnt=108, avg. pdelay=37 ms
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -6.9e+02 ms,reqcnt=109, avg. qdelay=-6.4 ms
+Controller: total pdelay: 4e+03 ms,reqcnt=109, avg. pdelay=37 ms
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 2.2e+02 ms,reqcnt=56, avg. qdelay=3.9 ms
+Supercontroller: total pdelay: 2.9e+03 ms,reqcnt=56, avg. pdelay=52 ms
+Update topology invoked at 56
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -6.9e+02 ms,reqcnt=110, avg. qdelay=-6.3 ms
+Controller: total pdelay: 4.1e+03 ms,reqcnt=110, avg. pdelay=37 ms
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -6.9e+02 ms,reqcnt=111, avg. qdelay=-6.2 ms
+Controller: total pdelay: 4.1e+03 ms,reqcnt=111, avg. pdelay=37 ms
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 2.2e+02 ms,reqcnt=57, avg. qdelay=3.9 ms
+Supercontroller: total pdelay: 3e+03 ms,reqcnt=57, avg. pdelay=52 ms
+Update topology invoked at 57
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -6.8e+02 ms,reqcnt=112, avg. qdelay=-6.1 ms
+Controller: total pdelay: 4.1e+03 ms,reqcnt=112, avg. pdelay=37 ms
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -6.8e+02 ms,reqcnt=113, avg. qdelay=-6 ms
+Controller: total pdelay: 4.2e+03 ms,reqcnt=113, avg. pdelay=37 ms
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 2.2e+02 ms,reqcnt=58, avg. qdelay=3.8 ms
+Supercontroller: total pdelay: 3e+03 ms,reqcnt=58, avg. pdelay=52 ms
+Update topology invoked at 58
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -6.8e+02 ms,reqcnt=114, avg. qdelay=-5.9 ms
+Controller: total pdelay: 4.2e+03 ms,reqcnt=114, avg. pdelay=37 ms
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -6.7e+02 ms,reqcnt=115, avg. qdelay=-5.9 ms
+Controller: total pdelay: 4.3e+03 ms,reqcnt=115, avg. pdelay=37 ms
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 2.3e+02 ms,reqcnt=59, avg. qdelay=3.8 ms
+Supercontroller: total pdelay: 3.1e+03 ms,reqcnt=59, avg. pdelay=52 ms
+Update topology invoked at 59
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -6.7e+02 ms,reqcnt=116, avg. qdelay=-5.8 ms
+Controller: total pdelay: 4.3e+03 ms,reqcnt=116, avg. pdelay=37 ms
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -6.6e+02 ms,reqcnt=117, avg. qdelay=-5.7 ms
+Controller: total pdelay: 4.3e+03 ms,reqcnt=117, avg. pdelay=37 ms
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: 2.3e+02 ms,reqcnt=60, avg. qdelay=3.9 ms
+Supercontroller: total pdelay: 3.1e+03 ms,reqcnt=60, avg. pdelay=52 ms
+Update topology invoked at 60
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -6.6e+02 ms,reqcnt=118, avg. qdelay=-5.6 ms
+Controller: total pdelay: 4.4e+03 ms,reqcnt=118, avg. pdelay=37 ms
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: -7.6e+02 ms,reqcnt=61, avg. qdelay=-13 ms
+Supercontroller: total pdelay: 3.2e+03 ms,reqcnt=61, avg. pdelay=52 ms
+Update topology invoked at 61
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -6.6e+02 ms,reqcnt=119, avg. qdelay=-5.5 ms
+Controller: total pdelay: 4.4e+03 ms,reqcnt=119, avg. pdelay=37 ms
+Update topology invoked at 62
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -6.6e+02 ms,reqcnt=120, avg. qdelay=-5.5 ms
+Controller: total pdelay: 4.5e+03 ms,reqcnt=120, avg. pdelay=37 ms
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: -7.6e+02 ms,reqcnt=62, avg. qdelay=-12 ms
+Supercontroller: total pdelay: 3.3e+03 ms,reqcnt=62, avg. pdelay=52 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -6.5e+02 ms,reqcnt=121, avg. qdelay=-5.4 ms
+Controller: total pdelay: 4.5e+03 ms,reqcnt=121, avg. pdelay=37 ms
+Update topology invoked at 63
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -6.5e+02 ms,reqcnt=122, avg. qdelay=-5.3 ms
+Controller: total pdelay: 4.5e+03 ms,reqcnt=122, avg. pdelay=37 ms
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: -7.5e+02 ms,reqcnt=63, avg. qdelay=-12 ms
+Supercontroller: total pdelay: 3.3e+03 ms,reqcnt=63, avg. pdelay=52 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -6.4e+02 ms,reqcnt=123, avg. qdelay=-5.2 ms
+Controller: total pdelay: 4.5e+03 ms,reqcnt=123, avg. pdelay=37 ms
+Update topology invoked at 64
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -6.4e+02 ms,reqcnt=124, avg. qdelay=-5.2 ms
+Controller: total pdelay: 4.6e+03 ms,reqcnt=124, avg. pdelay=37 ms
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: -7.5e+02 ms,reqcnt=64, avg. qdelay=-12 ms
+Supercontroller: total pdelay: 3.4e+03 ms,reqcnt=64, avg. pdelay=52 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -6.4e+02 ms,reqcnt=125, avg. qdelay=-5.1 ms
+Controller: total pdelay: 4.6e+03 ms,reqcnt=125, avg. pdelay=37 ms
+Update topology invoked at 65
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -6.4e+02 ms,reqcnt=126, avg. qdelay=-5.1 ms
+Controller: total pdelay: 4.7e+03 ms,reqcnt=126, avg. pdelay=37 ms
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: -7.5e+02 ms,reqcnt=65, avg. qdelay=-12 ms
+Supercontroller: total pdelay: 3.4e+03 ms,reqcnt=65, avg. pdelay=53 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -6.3e+02 ms,reqcnt=127, avg. qdelay=-5 ms
+Controller: total pdelay: 4.7e+03 ms,reqcnt=127, avg. pdelay=37 ms
+Update topology invoked at 66
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -6.3e+02 ms,reqcnt=128, avg. qdelay=-4.9 ms
+Controller: total pdelay: 4.7e+03 ms,reqcnt=128, avg. pdelay=37 ms
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: -7.5e+02 ms,reqcnt=66, avg. qdelay=-11 ms
+Supercontroller: total pdelay: 3.5e+03 ms,reqcnt=66, avg. pdelay=53 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -6.3e+02 ms,reqcnt=129, avg. qdelay=-4.9 ms
+Controller: total pdelay: 4.8e+03 ms,reqcnt=129, avg. pdelay=37 ms
+Update topology invoked at 67
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -6.3e+02 ms,reqcnt=130, avg. qdelay=-4.8 ms
+Controller: total pdelay: 4.8e+03 ms,reqcnt=130, avg. pdelay=37 ms
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: -7.4e+02 ms,reqcnt=67, avg. qdelay=-11 ms
+Supercontroller: total pdelay: 3.5e+03 ms,reqcnt=67, avg. pdelay=53 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -6.2e+02 ms,reqcnt=131, avg. qdelay=-4.8 ms
+Controller: total pdelay: 4.8e+03 ms,reqcnt=131, avg. pdelay=37 ms
+Update topology invoked at 68
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -6.2e+02 ms,reqcnt=132, avg. qdelay=-4.7 ms
+Controller: total pdelay: 4.9e+03 ms,reqcnt=132, avg. pdelay=37 ms
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: -7.4e+02 ms,reqcnt=68, avg. qdelay=-11 ms
+Supercontroller: total pdelay: 3.6e+03 ms,reqcnt=68, avg. pdelay=53 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -6.2e+02 ms,reqcnt=133, avg. qdelay=-4.7 ms
+Controller: total pdelay: 4.9e+03 ms,reqcnt=133, avg. pdelay=37 ms
+Update topology invoked at 69
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -6.2e+02 ms,reqcnt=134, avg. qdelay=-4.6 ms
+Controller: total pdelay: 5e+03 ms,reqcnt=134, avg. pdelay=37 ms
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: -7.4e+02 ms,reqcnt=69, avg. qdelay=-11 ms
+Supercontroller: total pdelay: 3.6e+03 ms,reqcnt=69, avg. pdelay=53 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -6.2e+02 ms,reqcnt=135, avg. qdelay=-4.6 ms
+Controller: total pdelay: 5e+03 ms,reqcnt=135, avg. pdelay=37 ms
+Update topology invoked at 70
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -6.2e+02 ms,reqcnt=136, avg. qdelay=-4.5 ms
+Controller: total pdelay: 5e+03 ms,reqcnt=136, avg. pdelay=37 ms
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: -7.4e+02 ms,reqcnt=70, avg. qdelay=-11 ms
+Supercontroller: total pdelay: 3.7e+03 ms,reqcnt=70, avg. pdelay=53 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -6.1e+02 ms,reqcnt=137, avg. qdelay=-4.5 ms
+Controller: total pdelay: 5.1e+03 ms,reqcnt=137, avg. pdelay=37 ms
+Update topology invoked at 71
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -6.1e+02 ms,reqcnt=138, avg. qdelay=-4.4 ms
+Controller: total pdelay: 5.1e+03 ms,reqcnt=138, avg. pdelay=37 ms
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: -7.3e+02 ms,reqcnt=71, avg. qdelay=-10 ms
+Supercontroller: total pdelay: 3.7e+03 ms,reqcnt=71, avg. pdelay=53 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -6.1e+02 ms,reqcnt=139, avg. qdelay=-4.4 ms
+Controller: total pdelay: 5.1e+03 ms,reqcnt=139, avg. pdelay=37 ms
+Update topology invoked at 72
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -6.1e+02 ms,reqcnt=140, avg. qdelay=-4.3 ms
+Controller: total pdelay: 5.2e+03 ms,reqcnt=140, avg. pdelay=37 ms
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: -7.3e+02 ms,reqcnt=72, avg. qdelay=-10 ms
+Supercontroller: total pdelay: 3.8e+03 ms,reqcnt=72, avg. pdelay=53 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -6e+02 ms,reqcnt=141, avg. qdelay=-4.3 ms
+Controller: total pdelay: 5.2e+03 ms,reqcnt=141, avg. pdelay=37 ms
+Update topology invoked at 73
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -6e+02 ms,reqcnt=142, avg. qdelay=-4.2 ms
+Controller: total pdelay: 5.3e+03 ms,reqcnt=142, avg. pdelay=37 ms
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: -7.3e+02 ms,reqcnt=73, avg. qdelay=-10 ms
+Supercontroller: total pdelay: 3.8e+03 ms,reqcnt=73, avg. pdelay=53 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -6e+02 ms,reqcnt=143, avg. qdelay=-4.2 ms
+Controller: total pdelay: 5.3e+03 ms,reqcnt=143, avg. pdelay=37 ms
+Update topology invoked at 74
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -5.9e+02 ms,reqcnt=144, avg. qdelay=-4.1 ms
+Controller: total pdelay: 5.3e+03 ms,reqcnt=144, avg. pdelay=37 ms
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: -7.2e+02 ms,reqcnt=74, avg. qdelay=-9.7 ms
+Supercontroller: total pdelay: 3.9e+03 ms,reqcnt=74, avg. pdelay=53 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -5.9e+02 ms,reqcnt=145, avg. qdelay=-4.1 ms
+Controller: total pdelay: 5.4e+03 ms,reqcnt=145, avg. pdelay=37 ms
+Update topology invoked at 75
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -5.8e+02 ms,reqcnt=146, avg. qdelay=-4 ms
+Controller: total pdelay: 5.4e+03 ms,reqcnt=146, avg. pdelay=37 ms
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: -7.2e+02 ms,reqcnt=75, avg. qdelay=-9.6 ms
+Supercontroller: total pdelay: 3.9e+03 ms,reqcnt=75, avg. pdelay=53 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -5.8e+02 ms,reqcnt=147, avg. qdelay=-4 ms
+Controller: total pdelay: 5.4e+03 ms,reqcnt=147, avg. pdelay=37 ms
+Update topology invoked at 76
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -5.8e+02 ms,reqcnt=148, avg. qdelay=-3.9 ms
+Controller: total pdelay: 5.5e+03 ms,reqcnt=148, avg. pdelay=37 ms
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: -7.1e+02 ms,reqcnt=76, avg. qdelay=-9.4 ms
+Supercontroller: total pdelay: 4e+03 ms,reqcnt=76, avg. pdelay=53 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -5.8e+02 ms,reqcnt=149, avg. qdelay=-3.9 ms
+Controller: total pdelay: 5.5e+03 ms,reqcnt=149, avg. pdelay=37 ms
+Update topology invoked at 77
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -5.7e+02 ms,reqcnt=150, avg. qdelay=-3.8 ms
+Controller: total pdelay: 5.6e+03 ms,reqcnt=150, avg. pdelay=37 ms
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: -7.1e+02 ms,reqcnt=77, avg. qdelay=-9.2 ms
+Supercontroller: total pdelay: 4e+03 ms,reqcnt=77, avg. pdelay=53 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -5.7e+02 ms,reqcnt=151, avg. qdelay=-3.8 ms
+Controller: total pdelay: 5.6e+03 ms,reqcnt=151, avg. pdelay=37 ms
+Update topology invoked at 78
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -5.7e+02 ms,reqcnt=152, avg. qdelay=-3.8 ms
+Controller: total pdelay: 5.6e+03 ms,reqcnt=152, avg. pdelay=37 ms
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: -7.1e+02 ms,reqcnt=78, avg. qdelay=-9.1 ms
+Supercontroller: total pdelay: 4.1e+03 ms,reqcnt=78, avg. pdelay=53 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -5.7e+02 ms,reqcnt=153, avg. qdelay=-3.7 ms
+Controller: total pdelay: 5.6e+03 ms,reqcnt=153, avg. pdelay=37 ms
+Update topology invoked at 79
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -5.7e+02 ms,reqcnt=154, avg. qdelay=-3.7 ms
+Controller: total pdelay: 5.7e+03 ms,reqcnt=154, avg. pdelay=37 ms
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: -7e+02 ms,reqcnt=79, avg. qdelay=-8.9 ms
+Supercontroller: total pdelay: 4.2e+03 ms,reqcnt=79, avg. pdelay=53 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -5.6e+02 ms,reqcnt=155, avg. qdelay=-3.6 ms
+Controller: total pdelay: 5.7e+03 ms,reqcnt=155, avg. pdelay=37 ms
+Update topology invoked at 80
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -5.6e+02 ms,reqcnt=156, avg. qdelay=-3.6 ms
+Controller: total pdelay: 5.8e+03 ms,reqcnt=156, avg. pdelay=37 ms
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: -7e+02 ms,reqcnt=80, avg. qdelay=-8.7 ms
+Supercontroller: total pdelay: 4.2e+03 ms,reqcnt=80, avg. pdelay=53 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -5.6e+02 ms,reqcnt=157, avg. qdelay=-3.5 ms
+Controller: total pdelay: 5.8e+03 ms,reqcnt=157, avg. pdelay=37 ms
+Update topology invoked at 81
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -5.5e+02 ms,reqcnt=158, avg. qdelay=-3.5 ms
+Controller: total pdelay: 5.8e+03 ms,reqcnt=158, avg. pdelay=37 ms
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: -7e+02 ms,reqcnt=81, avg. qdelay=-8.6 ms
+Supercontroller: total pdelay: 4.3e+03 ms,reqcnt=81, avg. pdelay=53 ms
+Update topology invoked at 82
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -5.5e+02 ms,reqcnt=159, avg. qdelay=-3.5 ms
+Controller: total pdelay: 5.9e+03 ms,reqcnt=159, avg. pdelay=37 ms
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -5.5e+02 ms,reqcnt=160, avg. qdelay=-3.4 ms
+Controller: total pdelay: 5.9e+03 ms,reqcnt=160, avg. pdelay=37 ms
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: -6.9e+02 ms,reqcnt=82, avg. qdelay=-8.5 ms
+Supercontroller: total pdelay: 4.3e+03 ms,reqcnt=82, avg. pdelay=53 ms
+Update topology invoked at 83
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -5.5e+02 ms,reqcnt=161, avg. qdelay=-3.4 ms
+Controller: total pdelay: 5.9e+03 ms,reqcnt=161, avg. pdelay=37 ms
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -5.5e+02 ms,reqcnt=162, avg. qdelay=-3.4 ms
+Controller: total pdelay: 6e+03 ms,reqcnt=162, avg. pdelay=37 ms
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: -6.9e+02 ms,reqcnt=83, avg. qdelay=-8.3 ms
+Supercontroller: total pdelay: 4.4e+03 ms,reqcnt=83, avg. pdelay=53 ms
+Update topology invoked at 84
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -5.4e+02 ms,reqcnt=163, avg. qdelay=-3.3 ms
+Controller: total pdelay: 6e+03 ms,reqcnt=163, avg. pdelay=37 ms
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -5.4e+02 ms,reqcnt=164, avg. qdelay=-3.3 ms
+Controller: total pdelay: 6.1e+03 ms,reqcnt=164, avg. pdelay=37 ms
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: -6.8e+02 ms,reqcnt=84, avg. qdelay=-8.2 ms
+Supercontroller: total pdelay: 4.4e+03 ms,reqcnt=84, avg. pdelay=53 ms
+Update topology invoked at 85
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -5.4e+02 ms,reqcnt=165, avg. qdelay=-3.3 ms
+Controller: total pdelay: 6.1e+03 ms,reqcnt=165, avg. pdelay=37 ms
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -5.3e+02 ms,reqcnt=166, avg. qdelay=-3.2 ms
+Controller: total pdelay: 6.1e+03 ms,reqcnt=166, avg. pdelay=37 ms
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: -6.8e+02 ms,reqcnt=85, avg. qdelay=-8 ms
+Supercontroller: total pdelay: 4.5e+03 ms,reqcnt=85, avg. pdelay=53 ms
+Update topology invoked at 86
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -5.3e+02 ms,reqcnt=167, avg. qdelay=-3.2 ms
+Controller: total pdelay: 6.1e+03 ms,reqcnt=167, avg. pdelay=37 ms
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -5.3e+02 ms,reqcnt=168, avg. qdelay=-3.2 ms
+Controller: total pdelay: 6.2e+03 ms,reqcnt=168, avg. pdelay=37 ms
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: -6.8e+02 ms,reqcnt=86, avg. qdelay=-7.9 ms
+Supercontroller: total pdelay: 4.5e+03 ms,reqcnt=86, avg. pdelay=53 ms
+Update topology invoked at 87
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -5.3e+02 ms,reqcnt=169, avg. qdelay=-3.1 ms
+Controller: total pdelay: 6.2e+03 ms,reqcnt=169, avg. pdelay=37 ms
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -5.2e+02 ms,reqcnt=170, avg. qdelay=-3.1 ms
+Controller: total pdelay: 6.3e+03 ms,reqcnt=170, avg. pdelay=37 ms
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: -6.7e+02 ms,reqcnt=87, avg. qdelay=-7.7 ms
+Supercontroller: total pdelay: 4.6e+03 ms,reqcnt=87, avg. pdelay=53 ms
+Update topology invoked at 88
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -5.2e+02 ms,reqcnt=171, avg. qdelay=-3 ms
+Controller: total pdelay: 6.3e+03 ms,reqcnt=171, avg. pdelay=37 ms
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -5.2e+02 ms,reqcnt=172, avg. qdelay=-3 ms
+Controller: total pdelay: 6.3e+03 ms,reqcnt=172, avg. pdelay=37 ms
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: -6.7e+02 ms,reqcnt=88, avg. qdelay=-7.6 ms
+Supercontroller: total pdelay: 4.6e+03 ms,reqcnt=88, avg. pdelay=53 ms
+Update topology invoked at 89
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -5.2e+02 ms,reqcnt=173, avg. qdelay=-3 ms
+Controller: total pdelay: 6.4e+03 ms,reqcnt=173, avg. pdelay=37 ms
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -5.2e+02 ms,reqcnt=174, avg. qdelay=-3 ms
+Controller: total pdelay: 6.4e+03 ms,reqcnt=174, avg. pdelay=37 ms
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: -6.7e+02 ms,reqcnt=89, avg. qdelay=-7.5 ms
+Supercontroller: total pdelay: 4.7e+03 ms,reqcnt=89, avg. pdelay=53 ms
+Update topology invoked at 90
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -5.1e+02 ms,reqcnt=175, avg. qdelay=-2.9 ms
+Controller: total pdelay: 6.4e+03 ms,reqcnt=175, avg. pdelay=37 ms
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+path latency from 5 to 17 is 53
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -5.1e+02 ms,reqcnt=176, avg. qdelay=-2.9 ms
+Controller: total pdelay: 6.5e+03 ms,reqcnt=176, avg. pdelay=37 ms
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: -6.6e+02 ms,reqcnt=90, avg. qdelay=-7.4 ms
+Supercontroller: total pdelay: 4.7e+03 ms,reqcnt=90, avg. pdelay=53 ms
+Update topology invoked at 91
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+path latency from 5 to 17 is 53
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -5.1e+02 ms,reqcnt=177, avg. qdelay=-2.9 ms
+Controller: total pdelay: 6.5e+03 ms,reqcnt=177, avg. pdelay=37 ms
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: -6.6e+02 ms,reqcnt=91, avg. qdelay=-7.2 ms
+Supercontroller: total pdelay: 4.8e+03 ms,reqcnt=91, avg. pdelay=53 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -5.1e+02 ms,reqcnt=178, avg. qdelay=-2.8 ms
+Controller: total pdelay: 6.6e+03 ms,reqcnt=178, avg. pdelay=37 ms
+Update topology invoked at 92
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+path latency from 5 to 17 is 53
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -5e+02 ms,reqcnt=179, avg. qdelay=-2.8 ms
+Controller: total pdelay: 6.6e+03 ms,reqcnt=179, avg. pdelay=37 ms
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: -6.6e+02 ms,reqcnt=92, avg. qdelay=-7.1 ms
+Supercontroller: total pdelay: 4.8e+03 ms,reqcnt=92, avg. pdelay=53 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -5e+02 ms,reqcnt=180, avg. qdelay=-2.8 ms
+Controller: total pdelay: 6.6e+03 ms,reqcnt=180, avg. pdelay=37 ms
+Update topology invoked at 93
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+path latency from 5 to 17 is 53
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -5e+02 ms,reqcnt=181, avg. qdelay=-2.8 ms
+Controller: total pdelay: 6.7e+03 ms,reqcnt=181, avg. pdelay=37 ms
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: -6.5e+02 ms,reqcnt=93, avg. qdelay=-7 ms
+Supercontroller: total pdelay: 4.9e+03 ms,reqcnt=93, avg. pdelay=53 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -5e+02 ms,reqcnt=182, avg. qdelay=-2.7 ms
+Controller: total pdelay: 6.7e+03 ms,reqcnt=182, avg. pdelay=37 ms
+Update topology invoked at 94
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+path latency from 5 to 17 is 53
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -4.9e+02 ms,reqcnt=183, avg. qdelay=-2.7 ms
+Controller: total pdelay: 6.8e+03 ms,reqcnt=183, avg. pdelay=37 ms
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: -6.5e+02 ms,reqcnt=94, avg. qdelay=-6.9 ms
+Supercontroller: total pdelay: 4.9e+03 ms,reqcnt=94, avg. pdelay=53 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -4.9e+02 ms,reqcnt=184, avg. qdelay=-2.7 ms
+Controller: total pdelay: 6.8e+03 ms,reqcnt=184, avg. pdelay=37 ms
+Update topology invoked at 95
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+path latency from 5 to 17 is 53
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -4.9e+02 ms,reqcnt=185, avg. qdelay=-2.6 ms
+Controller: total pdelay: 6.8e+03 ms,reqcnt=185, avg. pdelay=37 ms
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: -6.5e+02 ms,reqcnt=95, avg. qdelay=-6.8 ms
+Supercontroller: total pdelay: 5e+03 ms,reqcnt=95, avg. pdelay=53 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -4.8e+02 ms,reqcnt=186, avg. qdelay=-2.6 ms
+Controller: total pdelay: 6.9e+03 ms,reqcnt=186, avg. pdelay=37 ms
+Update topology invoked at 96
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+path latency from 5 to 17 is 53
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -4.8e+02 ms,reqcnt=187, avg. qdelay=-2.6 ms
+Controller: total pdelay: 6.9e+03 ms,reqcnt=187, avg. pdelay=37 ms
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: -6.4e+02 ms,reqcnt=96, avg. qdelay=-6.7 ms
+Supercontroller: total pdelay: 5e+03 ms,reqcnt=96, avg. pdelay=53 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -4.8e+02 ms,reqcnt=188, avg. qdelay=-2.5 ms
+Controller: total pdelay: 6.9e+03 ms,reqcnt=188, avg. pdelay=37 ms
+Update topology invoked at 97
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+path latency from 5 to 17 is 53
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -4.7e+02 ms,reqcnt=189, avg. qdelay=-2.5 ms
+Controller: total pdelay: 7e+03 ms,reqcnt=189, avg. pdelay=37 ms
+The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: -6.4e+02 ms,reqcnt=97, avg. qdelay=-6.6 ms
+Supercontroller: total pdelay: 5.1e+03 ms,reqcnt=97, avg. pdelay=53 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -4.7e+02 ms,reqcnt=190, avg. qdelay=-2.5 ms
+Controller: total pdelay: 7e+03 ms,reqcnt=190, avg. pdelay=37 ms
+Update topology invoked at 98
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+path latency from 5 to 17 is 53
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -4.6e+02 ms,reqcnt=191, avg. qdelay=-2.4 ms
+Controller: total pdelay: 7.1e+03 ms,reqcnt=191, avg. pdelay=37 ms
+The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: -6.3e+02 ms,reqcnt=98, avg. qdelay=-6.5 ms
+Supercontroller: total pdelay: 5.2e+03 ms,reqcnt=98, avg. pdelay=53 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -4.6e+02 ms,reqcnt=192, avg. qdelay=-2.4 ms
+Controller: total pdelay: 7.1e+03 ms,reqcnt=192, avg. pdelay=37 ms
+Update topology invoked at 99
+Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+path latency from 5 to 17 is 53
+Controller no.=0 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
+Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
+Controller: total qdelay: -4.6e+02 ms,reqcnt=193, avg. qdelay=-2.4 ms
+Controller: total pdelay: 7.1e+03 ms,reqcnt=193, avg. pdelay=37 ms
+The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
+Flag= 1111 !!!!!!!!!!!!!
+Inserting cross-domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4
+Superdomain=0, domain1=0,domain2=1
+Supercontroller: total qdelay: -6.3e+02 ms,reqcnt=99, avg. qdelay=-6.4 ms
+Supercontroller: total pdelay: 5.2e+03 ms,reqcnt=99, avg. pdelay=53 ms
+Controller no.=1 received packetIn!!!!!!!!!!!!!
+The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
+Flag= 0 !!!!!!!!!!!!!
+Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=1
+Controller: total qdelay: -4.6e+02 ms,reqcnt=194, avg. qdelay=-2.4 ms
+Controller: total pdelay: 7.1e+03 ms,reqcnt=194, avg. pdelay=37 ms

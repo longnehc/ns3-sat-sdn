@@ -33,7 +33,9 @@ NS_OBJECT_ENSURE_REGISTERED (SPController);
 SPController::SPController ()
 {
   NS_LOG_FUNCTION (this);
-
+  reqcnt = 0;
+  pdelay = 0;
+  qdelay = 0;
   TopologyConstruction();
 
 }
@@ -138,10 +140,10 @@ SPController::IsSC(bool issc){
   m_issc = issc;
 }
  
-
+  
 void 
 SPController::HandlePacketInHelper(queue<pktInCtx_t>* qe){
-  //cout<<"ddddddddddddddddfffffffffffffff:"<<endl;
+  
   if(!qe->empty()){
     //cout<<"dddddddddddddddd:"<<qe->size()<<endl;
     pktInCtx_t ctx = qe->front();
@@ -149,10 +151,14 @@ SPController::HandlePacketInHelper(queue<pktInCtx_t>* qe){
     struct ofl_msg_packet_in *msg;
     Ptr<const RemoteSwitch> swtch;
     uint32_t xid;
+    struct timeval t_start;
+    double path_latency;
 
     msg = ctx.msg;
     swtch = ctx.swtch;
     xid = ctx.xid;
+    t_start = ctx.t_start;
+    path_latency = ctx.platency;
     NS_LOG_FUNCTION (this << swtch << xid);
     //static int prio = 100;
     char *msgStr =
@@ -191,7 +197,8 @@ SPController::HandlePacketInHelper(queue<pktInCtx_t>* qe){
       struct ofl_match_tlv *input =
         oxm_match_lookup (OXM_OF_IN_PORT, (struct ofl_match*)msg->match);
       memcpy (&inPort, input->value, portLen);
-
+      
+      //cout<<"innnnnnnnnnnnnnnn"<<inPort<<endl;
 
       Mac48Address src48;
       struct ofl_match_tlv *ethSrc =
@@ -203,6 +210,12 @@ SPController::HandlePacketInHelper(queue<pktInCtx_t>* qe){
         oxm_match_lookup (OXM_OF_ETH_DST, (struct ofl_match*)msg->match);
       dst48.CopyFrom (ethDst->value);
       
+            
+      uint16_t udpsrcport;
+      struct ofl_match_tlv *udpSrc = oxm_match_lookup (OXM_OF_UDP_SRC, (struct ofl_match*)msg->match);
+      memcpy (&udpsrcport, udpSrc->value, OXM_LENGTH (OXM_OF_UDP_SRC)); 
+      
+
       dpid_t srcDpid = m_macDpidTable[src48];
       //std::cout<<"The src dpid for Mac: "<<src48<<" is "<<srcDpid<<std::endl;
 
@@ -218,16 +231,32 @@ SPController::HandlePacketInHelper(queue<pktInCtx_t>* qe){
       calPath(srcDpid, dstDpid, path);
       //insertFlowTable(path, dst48);
       if(m_issc){
-        insertCrossDomainFlowTable(path, dst48, m_c2sc[m_s2c[dpId]]);
+        insertCrossDomainFlowTable(path, src48, dst48, m_c2sc[m_s2c[dpId]]);
         vector<int> tv = crflag[srcDpid][dstDpid];
         tv.push_back(m_c2sc[m_s2c[dpId]]);
            //cout<<"tttttt"<<srcDpid<<","<<dstDpid<<","<<tv.size()<<endl;
         crflag[srcDpid][dstDpid] = tv;
       }
       else {
-        insertDomainFlowTable(path, dst48, m_s2c[dpId]);
+        insertDomainFlowTable(path, src48, dst48, m_s2c[dpId]);
       }
     }
+  struct timeval t_end;
+
+  gettimeofday(&t_end, NULL); 
+  qdelay += t_end.tv_usec - t_start.tv_usec;
+  pdelay += path_latency;
+  reqcnt++;
+ 
+  
+  if(m_issc){
+    cout<<"Supercontroller: total qdelay: "<<setprecision(2)<<(double) qdelay / 1000<<" ms,reqcnt="<<reqcnt<<", avg. qdelay="<<(double) qdelay /(1000 *reqcnt)<<" ms"<<endl;
+    cout<<"Supercontroller: total pdelay: "<<pdelay <<" ms,reqcnt="<<reqcnt<<", avg. pdelay="<<pdelay / reqcnt<<" ms"<<endl;
+  }
+  else{
+    cout<<"Controller: total qdelay: "<<setprecision(2)<<(double) qdelay / 1000<<" ms,reqcnt="<<reqcnt<<", avg. qdelay="<<(double) qdelay /(1000 *reqcnt)<<" ms"<<endl;
+     cout<<"Controller: total pdelay: "<<pdelay <<" ms,reqcnt="<<reqcnt<<", avg. pdelay="<<pdelay / reqcnt<<" ms"<<endl;
+  }
     // All handlers must free the message when everything is ok
        ofl_msg_free ((struct ofl_msg_header*)msg, 0);
   }
@@ -258,6 +287,21 @@ SPController::ImportDomainConfig(int cnum, int scnum, map<int,int>s2c, map<int,i
 }
  
 
+void 
+SPController::ImportCLocation(int time, int cseq, uint64_t dpid)
+{
+    //c_loc[cseq] = dpid;
+    t_cloc[time][cseq] = dpid;
+
+}
+
+void 
+SPController::ImportSCLocation(int time, int scseq, uint64_t dpid)
+{
+    //sc_loc[scseq] = dpid;
+    t_scloc[time][scseq] = dpid;
+}
+
 
 Ptr<Node>
 SPController::FindNodeByDpid(uint64_t dpid, int& index)
@@ -286,11 +330,25 @@ SPController::HandlePacketIn (
   struct ofl_msg_packet_in *msg, Ptr<const RemoteSwitch> swtch,
   uint32_t xid)
 {
+  struct timeval t_start;
+
+  gettimeofday(&t_start, NULL);
+
+
   uint64_t dpId = swtch->GetDpId ();
   pktInCtx_t qele;
   qele.msg = msg;
   qele.swtch = swtch;
   qele.xid = xid;
+  qele.t_start = t_start;
+  
+  int now = (int)Simulator::Now().GetSeconds();
+
+  if(t_scloc[now].find(m_c2sc[m_s2c[dpId]]) == t_scloc[now].end()) {NS_ABORT_MSG ("SC location not found.");}
+  if(t_cloc[now].find(m_s2c[dpId]) == t_cloc[now].end()) {cout<<"dpId="<<dpId<<",m_s2c[dpId]="<<m_s2c[dpId]<<endl; NS_ABORT_MSG ("SC location not found.");}
+  uint64_t sc_dpId = t_scloc[now][m_c2sc[m_s2c[dpId]]];
+  uint64_t c_dpId = t_cloc[now][m_s2c[dpId]];
+
   if(m_issc) {
     if(sctrlq.find(m_c2sc[m_s2c[dpId]]) != sctrlq.end()){
       Mac48Address src48;
@@ -302,7 +360,15 @@ SPController::HandlePacketIn (
       struct ofl_match_tlv *ethDst =
         oxm_match_lookup (OXM_OF_ETH_DST, (struct ofl_match*)msg->match);
       dst48.CopyFrom (ethDst->value);
-      
+ 
+      uint32_t inPort;
+      size_t portLen = OXM_LENGTH (OXM_OF_IN_PORT); // (Always 4 bytes)
+      struct ofl_match_tlv *input =
+        oxm_match_lookup (OXM_OF_IN_PORT, (struct ofl_match*)msg->match);
+      memcpy (&inPort, input->value, portLen);
+
+      //cout<<"inpop"<<inPort<<endl;
+
       dpid_t srcDpid = m_macDpidTable[src48];
       //std::cout<<"The src dpid for Mac: "<<src48<<" is "<<srcDpid<<std::endl;
 
@@ -312,8 +378,25 @@ SPController::HandlePacketIn (
       vector<int> tv = crflag[srcDpid][dstDpid];
 
       vector<int>::iterator it = find(tv.begin(), tv.end(), m_c2sc[m_s2c[dpId]]);
+      
+      
+
       if(tv.end() == it) {
         std::cout<<"Super-controller no.="<<m_c2sc[m_s2c[dpId]]<<" received packetIn!!!!!!!!!!!!!"<<std::endl;
+
+        vector<dpid_t> path;
+        double cost = 0;
+        calPath(c_dpId, sc_dpId, path);
+        for(uint32_t i = 0; i < path.size()-1; i++){
+           if(m_dpidAdj[path[i]][path[i+1]] != -1) 
+               cost += m_dpidAdj[path[i]][path[i+1]];
+           else
+              NS_ABORT_MSG ("Path calulation error.");
+        }
+        qele.platency = cost; //ms
+        if(Simulator::Now().GetSeconds() > 90)
+          cout<<"path latency from "<<c_dpId<<" to "<<sc_dpId<<" is "<< qele.platency<<endl;
+
         sctrlq[m_c2sc[m_s2c[dpId]]]->push(qele);
       }
     } else {
@@ -322,6 +405,17 @@ SPController::HandlePacketIn (
   } else {
     if(ctrlq.find(m_s2c[dpId]) != ctrlq.end()){
       std::cout<<"Controller no.="<<m_s2c[dpId]<<" received packetIn!!!!!!!!!!!!!"<<std::endl;
+      vector<dpid_t> path;
+      double cost = 0;
+      calPath(dpId, c_dpId, path);
+      for(uint32_t i = 0; i < path.size()-1; i++){
+          if(m_dpidAdj[path[i]][path[i+1]] != -1) 
+              cost += m_dpidAdj[path[i]][path[i+1]];
+          else
+            NS_ABORT_MSG ("Path calulation error.");
+      }
+      qele.platency = cost; //ms
+      //cout<<"path latency from "<<dpId<<" to "<<c_dpId<<" is "<< qele.platency<<endl;
       ctrlq[m_s2c[dpId]]->push(qele);
     } else {
       NS_ABORT_MSG ("No map key found.");
@@ -819,17 +913,20 @@ SPController::calPath(dpid_t srcDpid, dpid_t dstDpid, vector<dpid_t>& path) {
   }
 
   dpid_t cur = dstDpid;
+  //cout<<"srcDpid="<<srcDpid<<",dstDpid="<<dstDpid<<endl;
   do{
+    //cout<<"Cur="<<cur<<",";
     path.push_back(cur);
     cur = last_hop[cur];
   } while(cur!= srcDpid);
   path.push_back(srcDpid);
   reverse(path.begin(), path.end());
-  
-  //for(uint32_t i = 0; i < path.size(); i++)
-  //  cout<<path[i]<<"->";
-  //cout<<endl;
-
+  /*
+  cout<<endl;
+  for(uint32_t i = 0; i < path.size(); i++)
+    cout<<path[i]<<"->";
+  cout<<endl;
+*/
  
  /*
   
@@ -858,9 +955,30 @@ SPController::calPath(dpid_t srcDpid, dpid_t dstDpid, vector<dpid_t>& path) {
 */
 }
 
+void SPController::deleteEntry(dpid_t dp, Mac48Address src48, Mac48Address dst48, int sdomainId){
+   //cout<<dp<<" "<<dst48<<endl;
+   ostringstream cmd;
+   cmd << "flow-mod cmd=del, eth_dst=" << dst48;
+   int stat = DpctlExecute (dp, cmd.str ());
+   if(stat != 0)
+    NS_ABORT_MSG("Error accured!!!!!!!!!!!!!!!!!!!!!");   
+   if(m_issc){
+      vector<int> tv, res;
+      dpid_t srcDpid = m_macDpidTable[src48];
+      dpid_t dstDpid = m_macDpidTable[dst48];
+      tv = crflag[srcDpid][dstDpid];
+      for(uint32_t i = 0; i < tv.size(); i++){
+          if(tv[i] != sdomainId)
+            res.push_back(tv[i]);
+      }
+      crflag[srcDpid][dstDpid] = res;
+   }
+}
+
 void 
-SPController::insertCrossDomainFlowTable(vector<dpid_t> path, Mac48Address dst48, int sdomainId){
+SPController::insertCrossDomainFlowTable(vector<dpid_t> path, Mac48Address src48, Mac48Address dst48, int sdomainId){
   int prio = 100;
+  int dur = 1000; //ms
   for(uint32_t i = 0; i < path.size() - 1; i++) {
     /*
     cout<<"m_s2c[path[i]] : "<<m_s2c[path[i]]<<endl;
@@ -879,12 +997,15 @@ SPController::insertCrossDomainFlowTable(vector<dpid_t> path, Mac48Address dst48
 
 
         ostringstream cmd;
+       // cout<<"flow-mod cmd=add,table=0,flags=0x0001"<< ",prio=" << ++prio << " eth_dst=" << dst48<<",ip_proto=17,udp_src="<<100<<",udp_dst="<<100<< " apply:output=" << outPort<<endl;
         cmd << "flow-mod cmd=add,table=0,flags=0x0001"
-                      << ",prio=" << ++prio << " eth_dst=" << dst48
-                      << " apply:output=" << outPort;
+                    //<< ",prio=" << ++prio << " eth_dst=" << dst48<<",ip_proto=17,udp_src="<<100<<",udp_dst="<<100<< " apply:output=" << outPort;
+                      << ",prio=" << ++prio << " eth_dst=" << dst48<<" apply:output=" << outPort;
         int stat = DpctlExecute (path[i], cmd.str ());
         if(stat != 0)
           NS_ABORT_MSG("Error accured!!!!!!!!!!!!!!!!!!!!!");    
+
+        Simulator::Schedule (MilliSeconds (dur), &SPController::deleteEntry, this, path[i], src48, dst48, sdomainId);
       }
       else {
         //cout<<"The port from dpid="<<path[i]<<" to dpid="<<path[i+1]<<" doesn't exists"<<endl;
@@ -895,8 +1016,9 @@ SPController::insertCrossDomainFlowTable(vector<dpid_t> path, Mac48Address dst48
 
 
 void 
-SPController::insertDomainFlowTable(vector<dpid_t> path, Mac48Address dst48, int domainId){
+SPController::insertDomainFlowTable(vector<dpid_t> path, Mac48Address src48, Mac48Address dst48, int domainId){
   int prio = 100;
+  int dur = 1000; //ms
   for(uint32_t i = 0; i < path.size() - 1; i++) {
     if(m_dpidPortMap[path[i]][path[i+1]] != -1 && m_s2c[path[i]] == domainId 
       && m_s2c[path[i+1]] == domainId){
@@ -905,18 +1027,20 @@ SPController::insertDomainFlowTable(vector<dpid_t> path, Mac48Address dst48, int
         cout<<"Inserting domain flowtable of dpid = "<<path[i]<<", ";
         cout<<"the port to "<<dst48<<" is "<<outPort<<", domain="<<domainId<<endl;
         ostringstream cmd;
+        //cout<<"flow-mod cmd=add,table=0,flags=0x0001"<< ",prio=" << ++prio << " eth_dst=" << dst48<<",ip_proto=17,udp_src="<<100<<",udp_dst="<<100<< " apply:output=" << outPort<<endl;
         cmd << "flow-mod cmd=add,table=0,flags=0x0001"
-                      << ",prio=" << ++prio << " eth_dst=" << dst48
-                      << " apply:output=" << outPort;
+                      //<< ",prio=" << ++prio << " eth_dst=" << dst48<<",ip_proto=17,udp_src="<<100<<",udp_dst="<<100<< " apply:output=" << outPort;
+                      << ",prio=" << prio << " eth_dst=" << dst48<<" apply:output=" << outPort;
+                      
         int stat = DpctlExecute (path[i], cmd.str ());
         if(stat != 0)
-          NS_ABORT_MSG("Error accured!!!!!!!!!!!!!!!!!!!!!");    
+          NS_ABORT_MSG("Error accured!!!!!!!!!!!!!!!!!!!!!");
+
+        Simulator::Schedule (MilliSeconds (dur), &SPController::deleteEntry, this, path[i], src48, dst48, -1);
+
+           
+ 
       }
-      /*
-      else {
-        cout<<"The port from dpid="<<path[i]<<" to dpid="<<path[i+1]<<" doesn't exists"<<endl;
-        NS_ABORT_MSG ("No next hop available of "<<path[i]);
-      }*/
   }
   if(m_s2c[path[path.size()-1]] == domainId){
      uint32_t outPort = 1;
@@ -924,13 +1048,17 @@ SPController::insertDomainFlowTable(vector<dpid_t> path, Mac48Address dst48, int
           cout<<"The port to "<<dst48<<" is "<<outPort<<", domain="<<domainId<<endl;
      //insert flow table
      ostringstream cmd;
+     //cout<<"flow-mod cmd=add,table=0,flags=0x0001"<< ",prio=" << ++prio << " eth_dst=" << dst48<<",ip_proto=17,udp_src="<<100<<",udp_dst="<<100<< " apply:output=" << outPort<<endl;
      cmd << "flow-mod cmd=add,table=0,flags=0x0001"
-                        << ",prio=" << ++prio << " eth_dst=" << dst48
-                        << " apply:output=" << outPort;
+                        //<< ",prio=" << ++prio << " eth_dst=" << dst48<<",ip_proto=17,udp_src="<<100<<",udp_dst="<<100<< " apply:output=" << outPort;
+                        << ",prio=" << ++prio << " eth_dst=" << dst48<<" apply:output=" << outPort;
       int stat = DpctlExecute (path[path.size()-1], cmd.str ());
       if(stat != 0)
             NS_ABORT_MSG("Error accured!!!!!!!!!!!!!!!!!!!!!");   
+
+      Simulator::Schedule (MilliSeconds (dur), &SPController::deleteEntry, this, path[path.size()-1], src48, dst48, -1);
   }
+
 }
 
 void 

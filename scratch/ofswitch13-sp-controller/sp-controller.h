@@ -30,6 +30,8 @@
 #include <map>
 #include <queue>
 #include <algorithm>
+#include <sys/time.h> 
+#include <iomanip>
 using namespace ns3;
 using namespace std;
 
@@ -84,7 +86,10 @@ public:
 
   void ImportFlag(int flag);
   void ImportDomainConfig(int cnum, int scnum, map<int,int>s2c, map<int,int>c2sc);
+  void ImportCLocation(int time, int cseq, uint64_t dpid);
+  void ImportSCLocation(int time, int scseq, uint64_t dpid);
   void IsSC(bool issc); 
+  void deleteEntry(dpid_t dp, Mac48Address src48, Mac48Address dst48, int sdomainId);
   
 
   int m_flag;
@@ -93,18 +98,26 @@ public:
   int m_cnum;
   map<int, int> m_s2c;
   map<int, int> m_c2sc;
-
+  map<int, uint64_t> c_loc;
+  map<int, uint64_t> sc_loc;
+  int reqcnt;
+  long long qdelay;
+  double pdelay;
 
   typedef struct PktInCtx
   {
       struct ofl_msg_packet_in *msg;
       Ptr<const RemoteSwitch> swtch;
       uint32_t xid;
+      struct timeval t_start;
+      double platency;
   } pktInCtx_t;
 
   map<int, queue<pktInCtx_t>* > ctrlq;
   map<int, queue<pktInCtx_t>* > sctrlq;
 
+  map<int, uint64_t> t_cloc[1000];
+  map<int, uint64_t> t_scloc[1000];
 
   void HandlePacketInHelper(queue<pktInCtx_t>* qe);
    
@@ -134,8 +147,8 @@ public:
 
   uint32_t updateL2Table(vector<dpid_t> path, Mac48Address dst48);
   void insertFlowTable(vector<dpid_t> path, Mac48Address dst48);
-  void insertCrossDomainFlowTable(vector<dpid_t> path, Mac48Address dst48, int sdomainId);
-  void insertDomainFlowTable(vector<dpid_t> path, Mac48Address dst48, int domainId);
+  void insertCrossDomainFlowTable(vector<dpid_t> path, Mac48Address src48, Mac48Address dst48, int sdomainId);
+  void insertDomainFlowTable(vector<dpid_t> path, Mac48Address src48, Mac48Address dst48, int domainId);
   bool turnRight(int src_plane, int dst_plane);
   bool turnUp(int src_index, int dst_index);
   

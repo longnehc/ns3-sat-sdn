@@ -37,6 +37,7 @@
 #include <ns3/ofswitch13-module.h>
 #include <ns3/internet-apps-module.h>
 #include <ns3/udp-client-server-helper.h>
+#include <ns3/applications-module.h>
 #include <vector>
 #include <map>
 #include <sstream>
@@ -54,7 +55,9 @@ ApplicationContainer apps;
 Ipv4InterfaceContainer serverIpIfaces;
 
 int NOW = 0;
-uint16_t simTime = 20;
+uint16_t simTime = 100;
+uint16_t simBegin = 1;
+uint16_t simEnd = 100;
 bool verbose = false;
 const uint16_t _nPlane = 8;
 const uint16_t _nIndex = 9;
@@ -389,6 +392,74 @@ void dumpDpidPortMap()
     }
 }
 
+void trafficgen(int src, int dst, uint16_t port, double stime, double etime){
+
+  cout<<"etime="<<etime<<endl;
+   UdpServerHelper server (port);
+   ApplicationContainer apps = server.Install (hosts.Get (dst));
+   apps.Start (Seconds (stime));
+   apps.Stop (Seconds (etime));
+ 
+ //
+ // Create one UdpClient application to send UDP datagrams from node zero to
+ // node one.
+ //
+   uint32_t MaxPacketSize = 1024;
+   Time interPacketInterval = Seconds (0.05);
+   uint32_t maxPacketCount = 10000;
+   Address remoteServerAddr = Address(serverIpIfaces.GetAddress(dst));
+   UdpClientHelper client (remoteServerAddr, port);
+   client.SetAttribute ("MaxPackets", UintegerValue (maxPacketCount));
+   client.SetAttribute ("Interval", TimeValue (interPacketInterval));
+   client.SetAttribute ("PacketSize", UintegerValue (MaxPacketSize));
+   apps = client.Install (hosts.Get (src));
+   apps.Start (Seconds (stime));
+   apps.Stop (Seconds (etime));
+}
+
+void updatetopo(Ptr<SPController> ctrl, Ptr<SPController> spctrl, vector<PolarSatPosition> satPositions){
+  int now = Simulator::Now().GetSeconds();
+  cout<<"Update topology invoked at "<<now<<endl;
+  SatGeometry sg;
+
+  for(int i = 0; i < _nSat; i++)
+        for(int j = 0; j < _nSat; j++)
+            indexAdj[i][j] = -1;
+  for(int i = 0; i < _nSat + 1; i++)
+        for(int j = 0; j < _nSat + 1; j++)
+            dpidAdj[i][j] = -1;
+
+  for(int i = 0; i < _nPlane; i++){
+    for(int j = 0; j < _nIndex; j++){
+      int node_index = i * _nIndex + j;
+       //inter-plane isl
+      int up_j = (j != _nIndex - 1) ? j + 1 : 0;
+      int up_node_index = i * _nIndex + up_j;
+      //if(!inPolar(satPositions[node_index].coord(0)) && !inPolar(satPositions[up_node_index].coord(0))) {
+      double delay1 = sg.propdelay(satPositions[node_index].coord(now), satPositions[up_node_index].coord(now));
+      indexAdj[node_index][up_node_index] = delay1 * 1000;
+      indexAdj[up_node_index][node_index] = delay1 * 1000;
+       // cout<<"Delays between" <<node_index<<" "<<up_node_index<<"("<<i<<","<<j<<") -> ("<<i<<","<<up_j<<" ) is "<<delay1<<endl;
+      //} 
+      //intra-plane isl
+      int right_i = (i != _nPlane - 1) ? i + 1 : 0;
+      int right_node_index = right_i * _nIndex + j;
+      if(!inPolar(satPositions[node_index].coord(now)) && !inPolar(satPositions[right_node_index].coord(now))) {
+          double delay4 = sg.propdelay(satPositions[node_index].coord(now), satPositions[right_node_index].coord(now));
+          indexAdj[node_index][right_node_index] = delay4 * 1000;
+          indexAdj[right_node_index][node_index] = delay4 * 1000;
+       //   cout<<"Delays between" <<node_index<<" "<<right_node_index<<"("<<i<<","<<j<<") -> ("<<right_i<<","<<j<<" ) is "<<delay4<<endl;
+      }
+    }
+  }
+  dpidAdjConstruct(indexAdj, dpidAdj, _nSat);
+
+  ctrl->ImportDpidAdj(dpidAdj, _nSat + 1);
+  spctrl->ImportDpidAdj(dpidAdj, _nSat + 1);
+
+  Simulator::Schedule (MilliSeconds (1000), updatetopo, ctrl, spctrl, satPositions);
+}
+
 int
 main (int argc, char *argv[])
 {
@@ -396,6 +467,7 @@ main (int argc, char *argv[])
   //LogComponentEnable ("OFSwitch13Port", LOG_LEVEL_INFO);
   LogComponentEnable ("UdpClient", LOG_LEVEL_INFO);
   LogComponentEnable ("UdpServer", LOG_LEVEL_INFO);
+    LogComponentEnable ("PacketSink", LOG_LEVEL_INFO);
 
   //create iridium topology
   alloc();
@@ -497,6 +569,14 @@ main (int argc, char *argv[])
   ctrl-> ImportDomainConfig(cnum,scnum, s2c, c2sc);
   spctrl-> ImportDomainConfig(cnum,scnum, s2c, c2sc);
 
+  for(uint32_t i = simBegin; i < simEnd; i++){
+     ctrl->ImportCLocation(i,0,5);
+     ctrl->ImportCLocation(i,1,11);
+     ctrl->ImportSCLocation(i,0,17);
+     spctrl->ImportCLocation(i,0,5);
+     spctrl->ImportCLocation(i,1,11);
+     spctrl->ImportSCLocation(i,0,17);
+  }
 
   dpidInfoConstruct(indexInfo, dpidInfo, _nSat);
   dpidAdjConstruct(indexAdj, dpidAdj, _nSat);
@@ -507,8 +587,8 @@ main (int argc, char *argv[])
 //  dumpDpidinfo();
 //  dumpindexAdj();
 //  dumpdpidAdj();
-// dumpDevPortMap();
-// dumpDpidPortMap();
+//  dumpDevPortMap();
+//  dumpDpidPortMap();
 
 //-----
 
@@ -538,6 +618,7 @@ main (int argc, char *argv[])
 
 
   // Install UDP server on all nodes (port 11399)
+  /*
   UdpServerHelper udpServerHelper (11399);
   ApplicationContainer serverApps = udpServerHelper.Install (hosts);
   
@@ -546,12 +627,16 @@ main (int argc, char *argv[])
 
 
   // Configure udp application between two hosts
-  CreateUdpApp(0,20,1);
+   CreateUdpApp(0,11,1);
   //CreateUdpApp(1,22,1);
   
   apps.Start (Seconds (1.0));
   apps.Stop (Seconds (10.0));
+  */
+  
+  trafficgen(0, 11, 4010, simBegin, simEnd);
 
+  Simulator::Schedule (MilliSeconds (1000), updatetopo, ctrl, spctrl, satPositions);
   // Run the simulation
   //int a = 1;
   Simulator::Stop (Seconds (simTime));
