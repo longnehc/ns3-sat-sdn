@@ -386,12 +386,15 @@ SPController::HandlePacketIn (
 
         vector<dpid_t> path;
         double cost = 0;
-        calPath(c_dpId, sc_dpId, path);
-        for(uint32_t i = 0; i < path.size()-1; i++){
-           if(m_dpidAdj[path[i]][path[i+1]] != -1) 
-               cost += m_dpidAdj[path[i]][path[i+1]];
-           else
-              NS_ABORT_MSG ("Path calulation error.");
+        if(c_dpId == sc_dpId) cost = 0;
+        else{
+          calPath(c_dpId, sc_dpId, path);
+          for(uint32_t i = 0; i < path.size()-1; i++){
+             if(m_dpidAdj[path[i]][path[i+1]] != -1) 
+                 cost += m_dpidAdj[path[i]][path[i+1]];
+             else
+                NS_ABORT_MSG ("Path calulation error.");
+          }
         }
         qele.platency = cost; //ms
         if(Simulator::Now().GetSeconds() > 90)
@@ -407,12 +410,15 @@ SPController::HandlePacketIn (
       std::cout<<"Controller no.="<<m_s2c[dpId]<<" received packetIn!!!!!!!!!!!!!"<<std::endl;
       vector<dpid_t> path;
       double cost = 0;
-      calPath(dpId, c_dpId, path);
-      for(uint32_t i = 0; i < path.size()-1; i++){
-          if(m_dpidAdj[path[i]][path[i+1]] != -1) 
-              cost += m_dpidAdj[path[i]][path[i+1]];
-          else
-            NS_ABORT_MSG ("Path calulation error.");
+      if(dpId == c_dpId) cost = 0;
+      else{
+        calPath(dpId, c_dpId, path);
+        for(uint32_t i = 0; i < path.size()-1; i++){
+            if(m_dpidAdj[path[i]][path[i+1]] != -1) 
+                cost += m_dpidAdj[path[i]][path[i+1]];
+            else
+              NS_ABORT_MSG ("Path calulation error.");
+        }
       }
       qele.platency = cost; //ms
       //cout<<"path latency from "<<dpId<<" to "<<c_dpId<<" is "<< qele.platency<<endl;
@@ -915,13 +921,13 @@ SPController::calPath(dpid_t srcDpid, dpid_t dstDpid, vector<dpid_t>& path) {
   dpid_t cur = dstDpid;
   //cout<<"srcDpid="<<srcDpid<<",dstDpid="<<dstDpid<<endl;
   do{
-    //cout<<"Cur="<<cur<<",";
+   // cout<<"Cur="<<cur<<",";
     path.push_back(cur);
     cur = last_hop[cur];
   } while(cur!= srcDpid);
   path.push_back(srcDpid);
   reverse(path.begin(), path.end());
-  /*
+  /* 
   cout<<endl;
   for(uint32_t i = 0; i < path.size(); i++)
     cout<<path[i]<<"->";

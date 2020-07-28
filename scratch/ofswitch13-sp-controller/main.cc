@@ -232,7 +232,8 @@ CreateUdpApp(int src, int dst, float datarate)
     apps.Add(curapp.Get(0));
 }
 
-vector<PolarSatPosition> SatNodeInit(){
+vector<PolarSatPosition> 
+SatNodeInit(){
   vector<PolarSatPosition> satPositions;
   SatGeometry sg;
   for (int i=0; i<_nPlane; i++){
@@ -315,7 +316,7 @@ void SatLinkInit(vector<PolarSatPosition> satPositions, int** devPortMap){
      
     }
   }
-};
+}
 
 void dumpDpidlist()
 {
@@ -460,6 +461,92 @@ void updatetopo(Ptr<SPController> ctrl, Ptr<SPController> spctrl, vector<PolarSa
   Simulator::Schedule (MilliSeconds (1000), updatetopo, ctrl, spctrl, satPositions);
 }
 
+void ld(int scnum, int cnum, Ptr<SPController> ctrl, Ptr<SPController> spctrl, int simBegin, int simEnd){
+  map<int,int> c2sc, s2c;
+  //int scnum =  1;
+  //int cnum = 2;
+  c2sc[0] = 0;
+  c2sc[1] = 0;
+  for(int j = 0; j < _nSat; j++){
+    if(j <= _nSat / 2){
+      s2c[j+1] = 0;   //dpid = dev + 1
+    }
+    else{
+      s2c[j+1] = 1;
+    }
+  }
+  
+  ctrl-> ImportDomainConfig(cnum,scnum, s2c, c2sc);
+  spctrl-> ImportDomainConfig(cnum,scnum, s2c, c2sc);
+
+  for(int i = simBegin; i < simEnd; i++){
+     ctrl->ImportCLocation(i,0,5);
+     ctrl->ImportCLocation(i,1,11);
+     ctrl->ImportSCLocation(i,0,17);
+     spctrl->ImportCLocation(i,0,5);
+     spctrl->ImportCLocation(i,1,11);
+     spctrl->ImportSCLocation(i,0,17);
+  }
+}
+
+void dis(int scnum, int cnum, Ptr<SPController> ctrl, Ptr<SPController> spctrl, int simBegin, int simEnd){
+  map<int,int> c2sc, s2c;
+  //int scnum =  1;
+  //int cnum = 2;
+  c2sc[0] = 0;
+  c2sc[1] = 0;
+  for(int j = 0; j < _nSat; j++){
+    double cost1 = 0, cost2 = 0;
+    vector<dpid_t> path1;
+    if(j+1 == 5) s2c[j+1] = 0;
+    else if (j+1 == 11) s2c[j+1] = 1;
+    else{
+      ctrl->calPath(j+1, 5, path1);
+      for(uint32_t i = 0; i < path1.size()-1; i++){
+             if(dpidAdj[path1[i]][path1[i+1]] != -1) 
+                 cost1 += dpidAdj[path1[i]][path1[i+1]];
+             else
+                NS_ABORT_MSG ("Path calulation error.");
+      }
+
+      vector<dpid_t> path2;
+      ctrl->calPath(j+1, 11, path2);
+      for(uint32_t i = 0; i < path2.size()-1; i++){
+             if(dpidAdj[path2[i]][path2[i+1]] != -1) 
+                 cost2 += dpidAdj[path2[i]][path2[i+1]];
+             else
+                NS_ABORT_MSG ("Path calulation error.");
+      }
+
+      if(cost1 < cost2)
+        s2c[j+1] = 0;
+      else 
+        s2c[j+1] = 1;
+    }
+    /*
+    if(i <= 10){
+      s2c[i+1] = 0;   //dpid = dev + 1
+    }
+    else{
+      s2c[i+1] = 1;
+    }
+    */
+  }
+  
+  ctrl-> ImportDomainConfig(cnum,scnum, s2c, c2sc);
+  spctrl-> ImportDomainConfig(cnum,scnum, s2c, c2sc);
+
+  for(int i = simBegin; i < simEnd; i++){
+     ctrl->ImportCLocation(i,0,5);
+     ctrl->ImportCLocation(i,1,11);
+     ctrl->ImportSCLocation(i,0,17);
+     spctrl->ImportCLocation(i,0,5);
+     spctrl->ImportCLocation(i,1,11);
+     spctrl->ImportSCLocation(i,0,17);
+  }
+
+}
+
 int
 main (int argc, char *argv[])
 {
@@ -467,7 +554,7 @@ main (int argc, char *argv[])
   //LogComponentEnable ("OFSwitch13Port", LOG_LEVEL_INFO);
   LogComponentEnable ("UdpClient", LOG_LEVEL_INFO);
   LogComponentEnable ("UdpServer", LOG_LEVEL_INFO);
-    LogComponentEnable ("PacketSink", LOG_LEVEL_INFO);
+  LogComponentEnable ("PacketSink", LOG_LEVEL_INFO);
 
   //create iridium topology
   alloc();
@@ -550,33 +637,7 @@ main (int argc, char *argv[])
   }
   of13Helper->CreateOpenFlowChannels ();
 
-  //Step10: Configure the OpenFlow network domain
 
-  map<int,int> c2sc, s2c;
-  int scnum =  1;
-  int cnum = 2;
-  c2sc[0] = 0;
-  c2sc[1] = 0;
-  for(int i = 0; i < _nSat; i++){
-    if(i <= 10){
-      s2c[i+1] = 0;   //dpid = dev + 1
-    }
-    else{
-      s2c[i+1] = 1;
-    }
-  }
-  
-  ctrl-> ImportDomainConfig(cnum,scnum, s2c, c2sc);
-  spctrl-> ImportDomainConfig(cnum,scnum, s2c, c2sc);
-
-  for(uint32_t i = simBegin; i < simEnd; i++){
-     ctrl->ImportCLocation(i,0,5);
-     ctrl->ImportCLocation(i,1,11);
-     ctrl->ImportSCLocation(i,0,17);
-     spctrl->ImportCLocation(i,0,5);
-     spctrl->ImportCLocation(i,1,11);
-     spctrl->ImportSCLocation(i,0,17);
-  }
 
   dpidInfoConstruct(indexInfo, dpidInfo, _nSat);
   dpidAdjConstruct(indexAdj, dpidAdj, _nSat);
@@ -616,6 +677,10 @@ main (int argc, char *argv[])
   spctrl->ImportDpidAdj(dpidAdj, _nSat + 1);
   spctrl->ImportFlag(1111);
 
+
+    //Step10: Configure the OpenFlow network domain
+   //dis(1, 2, ctrl, spctrl, simBegin, simEnd);
+   ld(1,2,ctrl, spctrl, simBegin, simEnd);
 
   // Install UDP server on all nodes (port 11399)
   /*
