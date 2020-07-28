@@ -81,4 +81,12 @@ class PolarSatPosition : public SatPosition {
 };
 
 
+class TermSatPosition : public SatPosition {
+ public:
+	TermSatPosition(double = 0, double = 0);
+	//virtual coordinate coord();
+	void set(double latitude, double longitude);
+ protected:
+};
+
 #endif // __ns_sat_geometry_h__

@@ -257,4 +257,41 @@ bool PolarSatPosition::isascending(int NOW)
 	}
 }
 
+/////////////////////////////////////////////////////////////////////
+// class TermSatPosition
+/////////////////////////////////////////////////////////////////////
+
+// Specify initial coordinates.  Default coordinates place the terminal
+// on the Earth's surface at 0 deg lat, 0 deg long.
+TermSatPosition::TermSatPosition(double Theta, double Phi)  {
+	initial_.r = EARTH_RADIUS;
+	period_ = EARTH_PERIOD; // seconds
+	set(Theta, Phi);
+	type_ = POSITION_SAT_TERM;
+}
+
+//
+// Convert user specified latitude and longitude to our spherical coordinates
+// Latitude is in the range (-90, 90) with neg. values -> south
+// Initial_.theta is stored from 0 to PI (spherical)
+// Longitude is in the range (-180, 180) with neg. values -> west
+// Initial_.phi is stored from 0 to 2*PI (spherical)
+//
+void TermSatPosition::set(double latitude, double longitude)
+{
+	if (latitude < -90 || latitude > 90)
+		fprintf(stderr, "TermSatPosition:  latitude out of bounds %f\n",
+		   latitude);
+	if (longitude < -180 || longitude > 180)
+		fprintf(stderr, "TermSatPosition: longitude out of bounds %f\n",
+		    longitude);
+	initial_.theta = DEG_TO_RAD(90 - latitude);
+	if (longitude < 0)
+		initial_.phi = DEG_TO_RAD(360 + longitude);
+	else
+		initial_.phi = DEG_TO_RAD(longitude);
+}
+
+ 
+
  

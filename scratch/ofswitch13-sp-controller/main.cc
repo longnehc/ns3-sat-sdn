@@ -523,14 +523,6 @@ void dis(int scnum, int cnum, Ptr<SPController> ctrl, Ptr<SPController> spctrl, 
       else 
         s2c[j+1] = 1;
     }
-    /*
-    if(i <= 10){
-      s2c[i+1] = 0;   //dpid = dev + 1
-    }
-    else{
-      s2c[i+1] = 1;
-    }
-    */
   }
   
   ctrl-> ImportDomainConfig(cnum,scnum, s2c, c2sc);
@@ -637,8 +629,6 @@ main (int argc, char *argv[])
   }
   of13Helper->CreateOpenFlowChannels ();
 
-
-
   dpidInfoConstruct(indexInfo, dpidInfo, _nSat);
   dpidAdjConstruct(indexAdj, dpidAdj, _nSat);
   dpidPortMapConstruct(devPortMap, dpidPortMap, _nSat);
@@ -682,23 +672,7 @@ main (int argc, char *argv[])
    //dis(1, 2, ctrl, spctrl, simBegin, simEnd);
    ld(1,2,ctrl, spctrl, simBegin, simEnd);
 
-  // Install UDP server on all nodes (port 11399)
-  /*
-  UdpServerHelper udpServerHelper (11399);
-  ApplicationContainer serverApps = udpServerHelper.Install (hosts);
-  
-  serverApps.Start (Seconds (1.0));
-  serverApps.Stop (Seconds (10.0));
-
-
-  // Configure udp application between two hosts
-   CreateUdpApp(0,11,1);
-  //CreateUdpApp(1,22,1);
-  
-  apps.Start (Seconds (1.0));
-  apps.Stop (Seconds (10.0));
-  */
-  
+  // Install UDP server on all nodes
   trafficgen(0, 11, 4010, simBegin, simEnd);
 
   Simulator::Schedule (MilliSeconds (1000), updatetopo, ctrl, spctrl, satPositions);
