@@ -55,9 +55,9 @@ ApplicationContainer apps;
 Ipv4InterfaceContainer serverIpIfaces;
 
 int NOW = 0;
-uint16_t simTime = 100;
+uint16_t simTime = 20;
 uint16_t simBegin = 1;
-uint16_t simEnd = 100;
+uint16_t simEnd = 20;
 bool verbose = false;
 const uint16_t _nPlane = 8;
 const uint16_t _nIndex = 9;
@@ -674,7 +674,8 @@ main (int argc, char *argv[])
 
   // Install UDP server on all nodes
   trafficgen(0, 11, 4010, simBegin, simEnd);
-
+  //trafficgen(0, 11, 2000, simBegin, simEnd);
+  //trafficgen(0, 11, 3000, simBegin, simEnd);
   Simulator::Schedule (MilliSeconds (1000), updatetopo, ctrl, spctrl, satPositions);
   // Run the simulation
   //int a = 1;

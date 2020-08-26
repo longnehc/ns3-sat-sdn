@@ -367,7 +367,18 @@ SPController::HandlePacketIn (
         oxm_match_lookup (OXM_OF_IN_PORT, (struct ofl_match*)msg->match);
       memcpy (&inPort, input->value, portLen);
 
-      //cout<<"inpop"<<inPort<<endl;
+
+  
+
+      uint16_t udpsrc;
+      size_t srcLen = OXM_LENGTH (OXM_OF_UDP_SRC); 
+      struct ofl_match_tlv *input1 =
+        oxm_match_lookup (OXM_OF_UDP_SRC, (struct ofl_match*)msg->match);
+        cout<<input1<<endl;
+      if(input1!=NULL){
+        memcpy (&udpsrc, input1->value, srcLen);
+        cout<<"udpsrc:"<<udpsrc<<","<<srcLen<<endl;
+      }
 
       dpid_t srcDpid = m_macDpidTable[src48];
       //std::cout<<"The src dpid for Mac: "<<src48<<" is "<<srcDpid<<std::endl;
@@ -1006,7 +1017,9 @@ SPController::insertCrossDomainFlowTable(vector<dpid_t> path, Mac48Address src48
        // cout<<"flow-mod cmd=add,table=0,flags=0x0001"<< ",prio=" << ++prio << " eth_dst=" << dst48<<",ip_proto=17,udp_src="<<100<<",udp_dst="<<100<< " apply:output=" << outPort<<endl;
         cmd << "flow-mod cmd=add,table=0,flags=0x0001"
                     //<< ",prio=" << ++prio << " eth_dst=" << dst48<<",ip_proto=17,udp_src="<<100<<",udp_dst="<<100<< " apply:output=" << outPort;
-                      << ",prio=" << ++prio << " eth_dst=" << dst48<<" apply:output=" << outPort;
+                      << ",prio=" << ++prio << " eth_dst=" << dst48
+                      << ",eth_type=0x0800,ip_proto=17,udp_src=" << 49153
+                      <<" apply:output=" << outPort;
         int stat = DpctlExecute (path[i], cmd.str ());
         if(stat != 0)
           NS_ABORT_MSG("Error accured!!!!!!!!!!!!!!!!!!!!!");    
@@ -1036,7 +1049,9 @@ SPController::insertDomainFlowTable(vector<dpid_t> path, Mac48Address src48, Mac
         //cout<<"flow-mod cmd=add,table=0,flags=0x0001"<< ",prio=" << ++prio << " eth_dst=" << dst48<<",ip_proto=17,udp_src="<<100<<",udp_dst="<<100<< " apply:output=" << outPort<<endl;
         cmd << "flow-mod cmd=add,table=0,flags=0x0001"
                       //<< ",prio=" << ++prio << " eth_dst=" << dst48<<",ip_proto=17,udp_src="<<100<<",udp_dst="<<100<< " apply:output=" << outPort;
-                      << ",prio=" << prio << " eth_dst=" << dst48<<" apply:output=" << outPort;
+                      << ",prio=" << prio << " eth_dst=" << dst48
+                      << ",eth_type=0x0800,ip_proto=17,udp_src=" << 49153
+                      <<" apply:output=" << outPort;
                       
         int stat = DpctlExecute (path[i], cmd.str ());
         if(stat != 0)
@@ -1057,7 +1072,9 @@ SPController::insertDomainFlowTable(vector<dpid_t> path, Mac48Address src48, Mac
      //cout<<"flow-mod cmd=add,table=0,flags=0x0001"<< ",prio=" << ++prio << " eth_dst=" << dst48<<",ip_proto=17,udp_src="<<100<<",udp_dst="<<100<< " apply:output=" << outPort<<endl;
      cmd << "flow-mod cmd=add,table=0,flags=0x0001"
                         //<< ",prio=" << ++prio << " eth_dst=" << dst48<<",ip_proto=17,udp_src="<<100<<",udp_dst="<<100<< " apply:output=" << outPort;
-                        << ",prio=" << ++prio << " eth_dst=" << dst48<<" apply:output=" << outPort;
+                        << ",prio=" << ++prio << " eth_dst=" << dst48
+                        << ",eth_type=0x0800,ip_proto=17,udp_src=" << 49153
+                        <<" apply:output=" << outPort;
       int stat = DpctlExecute (path[path.size()-1], cmd.str ());
       if(stat != 0)
             NS_ABORT_MSG("Error accured!!!!!!!!!!!!!!!!!!!!!");   
