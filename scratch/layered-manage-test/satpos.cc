@@ -45,6 +45,7 @@ double SatGeometry::get_latitude(coordinate a)
         return (PI/2 - a.theta);
 }
 
+ 
 // Returns (earth-centric) longitude corresponding to the position of the node 
 // (the input coordinate corresponds to fixed coordinate system, through
 // which the Earth rotates, so we have to scale back the effects of rotation).

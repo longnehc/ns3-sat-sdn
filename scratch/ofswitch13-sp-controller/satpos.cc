@@ -6,17 +6,37 @@
 
 using namespace std;
 
-// Returns the distance in km between points a and b
+double SatGeometry::_latborder=0;
+
+SatGeometry::SatGeometry(double latborder)
+{
+   _latborder = latborder;
+}
+ 
 SatGeometry::SatGeometry()
 {
-    
+   _latborder = 0;
 }
+
+// Returns the distance in km between points a and b
+
+
 double SatGeometry::distance(coordinate a, coordinate b)
 {
     double a_x, a_y, a_z, b_x, b_y, b_z;     // cartesian
 	spherical_to_cartesian(a.r, a.theta, a.phi, a_x, a_y, a_z);
 	spherical_to_cartesian(b.r, b.theta, b.phi, b_x, b_y, b_z);
         return DISTANCE(a_x, a_y, a_z, b_x, b_y, b_z);
+}
+
+bool SatGeometry::inPolar(coordinate a)
+{ 
+    bool ret = false;
+    if (RAD_TO_DEG(get_latitude(a)) > _latborder || RAD_TO_DEG(get_latitude(a)) < -_latborder)
+        ret = true;
+    //if(ret)
+    //    cout<<"The invalid latitude is: "<<RAD_TO_DEG(sg.get_latitude(a))<<endl;
+    return ret;
 }
 
 void SatGeometry::spherical_to_cartesian(double R, double Theta,

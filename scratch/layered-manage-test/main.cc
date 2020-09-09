@@ -38,11 +38,10 @@
 #include <ns3/internet-apps-module.h>
 #include <ns3/udp-client-server-helper.h>
 #include <ns3/applications-module.h>
- #include "ns3/netanim-module.h"
+#include "ns3/netanim-module.h"
 
  
  #include "ns3/flow-monitor-helper.h"
-
  #include "ns3/ipv4-flow-classifier.h"
 
 #include <vector>

@@ -2,30 +2,12 @@
 #define __ns_sat_geometry_h__
 
 #include <math.h>
-
-// Various constants
-#define PI 3.1415926535897
-#define MU 398601.2 // Greek Mu (km^3/s^2)
-#define LIGHT 299793 // km/s
-#define EARTH_PERIOD 86164 // seconds
-#define EARTH_RADIUS 6378  // km
-#define GEO_ALTITUDE 35786 // km
-#define ATMOS_MARGIN 150 // km
-
-#define DEG_TO_RAD(x) ((x) * PI/180)
-#define RAD_TO_DEG(x) ((x) * 180/PI)
-#define DISTANCE(s_x, s_y, s_z, e_x, e_y, e_z) (sqrt((s_x - e_x) * (s_x - e_x) \
-                + (s_y - e_y) * (s_y - e_y) + (s_z - e_z) * (s_z - e_z)))
-
-struct coordinate {
-        double r;        // km
-        double theta;    // radians
-        double phi;      // radians
-};
+#include "basic.h"
 
 // Library of routines involving satellite geometry
 class SatGeometry {
 public:
+	SatGeometry(double latborder);
 	SatGeometry();
 	static double distance(coordinate, coordinate);              
 	static void spherical_to_cartesian(double, double, double,
@@ -37,15 +19,13 @@ public:
 	static double get_altitude(coordinate);
 	static double check_elevation(coordinate, coordinate, double);
 	static int are_satellites_mutually_visible(coordinate, coordinate);
-
+	static bool inPolar(coordinate a);
+private:
+	static double _latborder;
 };
 
 
-// Position types
-#define POSITION_SAT 1
-#define POSITION_SAT_POLAR 2
-#define POSITION_SAT_GEO 3
-#define POSITION_SAT_TERM 4
+
 
 class SatPosition {
  public:

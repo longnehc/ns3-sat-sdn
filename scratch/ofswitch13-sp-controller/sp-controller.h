@@ -32,16 +32,11 @@
 #include <algorithm>
 #include <sys/time.h> 
 #include <iomanip>
+#include "basic.h"
 using namespace ns3;
 using namespace std;
 
-typedef uint64_t dpid_t;
 
-typedef struct NodeInfo
-{
-    int plane;
-    int index;
-} nodeInfo_t;
 
 
 

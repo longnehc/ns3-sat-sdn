@@ -255,7 +255,7 @@ SPController::HandlePacketInHelper(queue<pktInCtx_t>* qe){
   }
   else{
     cout<<"Controller: total qdelay: "<<setprecision(2)<<(double) qdelay / 1000<<" ms,reqcnt="<<reqcnt<<", avg. qdelay="<<(double) qdelay /(1000 *reqcnt)<<" ms"<<endl;
-     cout<<"Controller: total pdelay: "<<pdelay <<" ms,reqcnt="<<reqcnt<<", avg. pdelay="<<pdelay / reqcnt<<" ms"<<endl;
+    cout<<"Controller: total pdelay: "<<pdelay <<" ms,reqcnt="<<reqcnt<<", avg. pdelay="<<pdelay / reqcnt<<" ms"<<endl;
   }
     // All handlers must free the message when everything is ok
        ofl_msg_free ((struct ofl_msg_header*)msg, 0);
