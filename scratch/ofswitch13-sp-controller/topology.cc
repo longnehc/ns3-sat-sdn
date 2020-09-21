@@ -77,14 +77,19 @@ TopoHelper::SatLinkInit(vector<PolarSatPosition> satPositions, NodeContainer swi
      
     }
   }
-      
+        for(uint32_t i = 0; i < switches.GetN(); i++){
+  
+          cout<<"addr: "<<i<<","<<switchAddrMap[i]<<endl;
+          
+        }
         Ipv4GlobalRoutingHelper::PopulateRoutingTables ();
-        
+        int dst = 43;
+        int src = 1;
         uint16_t nport = 50000;
         ApplicationContainer sinkApp;
         Address sinkLocalAddress (InetSocketAddress (Ipv4Address::GetAny (), nport));
         PacketSinkHelper sinkHelper ("ns3::TcpSocketFactory", sinkLocalAddress);
-        sinkApp.Add(sinkHelper.Install(switches.Get(9)));
+        sinkApp.Add(sinkHelper.Install(switches.Get(dst)));
         sinkApp.Start (Seconds (0.0));
         sinkApp.Stop (Seconds (10.0));
 
@@ -93,9 +98,9 @@ TopoHelper::SatLinkInit(vector<PolarSatPosition> satPositions, NodeContainer swi
         clientHelper.SetAttribute ("OffTime", StringValue ("ns3::ConstantRandomVariable[Constant=0]"));
 
         ApplicationContainer clientApps;
-        AddressValue remoteAddress(InetSocketAddress (switchAddrMap[9], nport));
+        AddressValue remoteAddress(InetSocketAddress (switchAddrMap[dst], nport));
         clientHelper.SetAttribute("Remote",remoteAddress);
-        clientApps.Add(clientHelper.Install(switches.Get(69)));
+        clientApps.Add(clientHelper.Install(switches.Get(src)));
 
         clientApps.Start(Seconds(1.0));
         clientApps.Stop (Seconds (10.0));
@@ -122,12 +127,9 @@ TopoHelper::buildLink (int src, int dst, double delay, NodeContainer switches)
         isrcidst = ipv4.Assign (p2pD);
         if(switchAddrMap.find(src) == switchAddrMap.end())
           switchAddrMap[src] = isrcidst.GetAddress(0);
-        if(switchAddrMap.find(dst) == switchAddrMap.end() )
+        if(switchAddrMap.find(dst) == switchAddrMap.end())
           switchAddrMap[dst] = isrcidst.GetAddress(1);
-        cout<<"src addr: "<<src<<","<<isrcidst.GetAddress(0)<<endl;
-        cout<<"dst addr: "<<dst<<","<<isrcidst.GetAddress(1)<<endl;
       }
- 
       updatePortMap(src, dst);
 }
 

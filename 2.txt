@@ -1,148 +1,78 @@
 Waf: Entering directory `/root/long/ns-3.29/build'
-[1829/1887] Compiling scratch/ofswitch13-sp-controller/topology.cc
-[1846/1887] Linking build/scratch/ofswitch13-sp-controller/ofswitch13-sp-controller
+[1829/1887] Compiling scratch/ofswitch13-sp-controller/main.cc
+[1887/1887] Linking build/scratch/ofswitch13-sp-controller/ofswitch13-sp-controller
 Waf: Leaving directory `/root/long/ns-3.29/build'
 Build commands will be stored in build/compile_commands.json
-'build' finished successfully (5.639s)
-src addr: 0,192.1.0.1
-dst addr: 1,192.1.0.2
-src addr: 0,192.1.1.1
-dst addr: 9,192.1.1.2
-src addr: 1,192.1.2.1
-dst addr: 2,192.1.2.2
-src addr: 1,192.1.3.1
-dst addr: 10,192.1.3.2
-src addr: 2,192.1.4.1
-dst addr: 3,192.1.4.2
-src addr: 3,192.1.5.1
-dst addr: 4,192.1.5.2
-src addr: 3,192.1.6.1
-dst addr: 12,192.1.6.2
-src addr: 4,192.1.7.1
-dst addr: 5,192.1.7.2
-src addr: 4,192.1.8.1
-dst addr: 13,192.1.8.2
-src addr: 5,192.1.9.1
-dst addr: 6,192.1.9.2
-src addr: 5,192.1.10.1
-dst addr: 14,192.1.10.2
-src addr: 6,192.1.11.1
-dst addr: 7,192.1.11.2
-src addr: 6,192.1.12.1
-dst addr: 15,192.1.12.2
-src addr: 7,192.1.13.1
-dst addr: 8,192.1.13.2
-src addr: 7,192.1.14.1
-dst addr: 16,192.1.14.2
-src addr: 8,192.1.15.1
-dst addr: 17,192.1.15.2
-src addr: 9,192.1.16.1
-dst addr: 18,192.1.16.2
-src addr: 10,192.1.17.1
-dst addr: 11,192.1.17.2
-src addr: 10,192.1.18.1
-dst addr: 19,192.1.18.2
-src addr: 12,192.1.19.1
-dst addr: 21,192.1.19.2
-src addr: 13,192.1.20.1
-dst addr: 22,192.1.20.2
-src addr: 14,192.1.21.1
-dst addr: 23,192.1.21.2
-src addr: 15,192.1.22.1
-dst addr: 24,192.1.22.2
-src addr: 16,192.1.23.1
-dst addr: 25,192.1.23.2
-src addr: 17,192.1.24.1
-dst addr: 26,192.1.24.2
-src addr: 18,192.1.25.1
-dst addr: 27,192.1.25.2
-src addr: 19,192.1.26.1
-dst addr: 20,192.1.26.2
-src addr: 19,192.1.27.1
-dst addr: 28,192.1.27.2
-src addr: 21,192.1.28.1
-dst addr: 30,192.1.28.2
-src addr: 22,192.1.29.1
-dst addr: 31,192.1.29.2
-src addr: 23,192.1.30.1
-dst addr: 32,192.1.30.2
-src addr: 24,192.1.31.1
-dst addr: 33,192.1.31.2
-src addr: 25,192.1.32.1
-dst addr: 34,192.1.32.2
-src addr: 26,192.1.33.1
-dst addr: 35,192.1.33.2
-src addr: 27,192.1.34.1
-dst addr: 36,192.1.34.2
-src addr: 28,192.1.35.1
-dst addr: 29,192.1.35.2
-src addr: 28,192.1.36.1
-dst addr: 37,192.1.36.2
-src addr: 30,192.1.37.1
-dst addr: 39,192.1.37.2
-src addr: 31,192.1.38.1
-dst addr: 40,192.1.38.2
-src addr: 32,192.1.39.1
-dst addr: 41,192.1.39.2
-src addr: 33,192.1.40.1
-dst addr: 42,192.1.40.2
-src addr: 34,192.1.41.1
-dst addr: 43,192.1.41.2
-src addr: 35,192.1.42.1
-dst addr: 44,192.1.42.2
-src addr: 36,192.1.43.1
-dst addr: 45,192.1.43.2
-src addr: 37,192.1.44.1
-dst addr: 38,192.1.44.2
-src addr: 37,192.1.45.1
-dst addr: 46,192.1.45.2
-src addr: 38,192.1.46.1
-dst addr: 47,192.1.46.2
-src addr: 39,192.1.47.1
-dst addr: 48,192.1.47.2
-src addr: 40,192.1.48.1
-dst addr: 49,192.1.48.2
-src addr: 41,192.1.49.1
-dst addr: 50,192.1.49.2
-src addr: 43,192.1.50.1
-dst addr: 52,192.1.50.2
-src addr: 44,192.1.51.1
-dst addr: 53,192.1.51.2
-src addr: 45,192.1.52.1
-dst addr: 54,192.1.52.2
-src addr: 46,192.1.53.1
-dst addr: 55,192.1.53.2
-src addr: 47,192.1.54.1
-dst addr: 56,192.1.54.2
-src addr: 48,192.1.55.1
-dst addr: 57,192.1.55.2
-src addr: 49,192.1.56.1
-dst addr: 58,192.1.56.2
-src addr: 50,192.1.57.1
-dst addr: 51,192.1.57.2
-src addr: 50,192.1.58.1
-dst addr: 59,192.1.58.2
-src addr: 52,192.1.59.1
-dst addr: 61,192.1.59.2
-src addr: 53,192.1.60.1
-dst addr: 62,192.1.60.2
-src addr: 54,192.1.61.1
-dst addr: 63,192.1.61.2
-src addr: 55,192.1.62.1
-dst addr: 64,192.1.62.2
-src addr: 56,192.1.63.1
-dst addr: 65,192.1.63.2
-src addr: 57,192.1.64.1
-dst addr: 66,192.1.64.2
-src addr: 58,192.1.65.1
-dst addr: 67,192.1.65.2
-src addr: 59,192.1.66.1
-dst addr: 60,192.1.66.2
-src addr: 59,192.1.67.1
-dst addr: 68,192.1.67.2
-src addr: 61,192.1.68.1
-dst addr: 70,192.1.68.2
-src addr: 62,192.1.69.1
-dst addr: 71,192.1.69.2
-src addr: 68,192.1.70.1
-dst addr: 69,192.1.70.2
+'build' finished successfully (5.789s)
+addr: 0,192.1.0.1
+addr: 1,192.1.0.2
+addr: 2,192.1.2.2
+addr: 3,192.1.4.2
+addr: 4,192.1.5.2
+addr: 5,192.1.7.2
+addr: 6,192.1.9.2
+addr: 7,192.1.11.2
+addr: 8,192.1.13.2
+addr: 9,192.1.1.2
+addr: 10,192.1.3.2
+addr: 11,192.1.17.2
+addr: 12,192.1.6.2
+addr: 13,192.1.8.2
+addr: 14,192.1.10.2
+addr: 15,192.1.12.2
+addr: 16,192.1.14.2
+addr: 17,192.1.15.2
+addr: 18,192.1.16.2
+addr: 19,192.1.18.2
+addr: 20,192.1.26.2
+addr: 21,192.1.19.2
+addr: 22,192.1.20.2
+addr: 23,192.1.21.2
+addr: 24,192.1.22.2
+addr: 25,192.1.23.2
+addr: 26,192.1.24.2
+addr: 27,192.1.25.2
+addr: 28,192.1.27.2
+addr: 29,192.1.35.2
+addr: 30,192.1.28.2
+addr: 31,192.1.29.2
+addr: 32,192.1.30.2
+addr: 33,192.1.31.2
+addr: 34,192.1.32.2
+addr: 35,192.1.33.2
+addr: 36,192.1.34.2
+addr: 37,192.1.36.2
+addr: 38,192.1.44.2
+addr: 39,192.1.37.2
+addr: 40,192.1.38.2
+addr: 41,192.1.39.2
+addr: 42,192.1.40.2
+addr: 43,192.1.41.2
+addr: 44,192.1.42.2
+addr: 45,192.1.43.2
+addr: 46,192.1.45.2
+addr: 47,192.1.46.2
+addr: 48,192.1.47.2
+addr: 49,192.1.48.2
+addr: 50,192.1.49.2
+addr: 51,192.1.57.2
+addr: 52,192.1.50.2
+addr: 53,192.1.51.2
+addr: 54,192.1.52.2
+addr: 55,192.1.53.2
+addr: 56,192.1.54.2
+addr: 57,192.1.55.2
+addr: 58,192.1.56.2
+addr: 59,192.1.58.2
+addr: 60,192.1.66.2
+addr: 61,192.1.59.2
+addr: 62,192.1.60.2
+addr: 63,192.1.61.2
+addr: 64,192.1.62.2
+addr: 65,192.1.63.2
+addr: 66,192.1.64.2
+addr: 67,192.1.65.2
+addr: 68,192.1.67.2
+addr: 69,192.1.70.2
+addr: 70,192.1.68.2
+addr: 71,192.1.69.2

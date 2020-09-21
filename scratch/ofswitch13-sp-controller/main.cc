@@ -326,13 +326,9 @@ main (int argc, char *argv[])
   serverIpIfaces = ipv4helpr.Assign (serverPorts);
  
  
- 
-
-/*
- 
-
 
   Ptr<SPOFSwitch13InternalHelper> spof13Helper = CreateObject<SPOFSwitch13InternalHelper> ();
+  /*
   //spof13Helper->InstallController (controllerNode, ctrl);
   //spof13Helper->InstallController (superControllerNode, spctrl);
   spof13Helper->InstallController (switches.Get(1), ctrl);
