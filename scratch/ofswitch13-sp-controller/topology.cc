@@ -14,6 +14,7 @@ TopoHelper::TopoHelper(uint16_t nSat, double latborder, nodeInfo_t* indexInfo, n
     _devPortMap = devPortMap;
     _indexAdj = indexAdj;
     _dpidAdj = dpidAdj;
+    IpBias = 0;
 }
 
 vector<PolarSatPosition> 
@@ -36,6 +37,16 @@ TopoHelper::SatNodeInit(int _nPlane, int _nIndex, uint16_t _altitude, double _in
   }
   return satPositions;
 }
+
+string
+TopoHelper::IpAddressConstructor(){
+  ostringstream oss;
+  oss << "192.1."<<IpBias<<".0"; 
+  //cout<<oss.str().c_str()<<endl;
+  IpBias++;
+  return oss.str();
+}
+
 
 void 
 TopoHelper::SatLinkInit(vector<PolarSatPosition> satPositions, NodeContainer switches, int _nPlane, int _nIndex){
@@ -66,6 +77,30 @@ TopoHelper::SatLinkInit(vector<PolarSatPosition> satPositions, NodeContainer swi
      
     }
   }
+      
+        Ipv4GlobalRoutingHelper::PopulateRoutingTables ();
+        
+        uint16_t nport = 50000;
+        ApplicationContainer sinkApp;
+        Address sinkLocalAddress (InetSocketAddress (Ipv4Address::GetAny (), nport));
+        PacketSinkHelper sinkHelper ("ns3::TcpSocketFactory", sinkLocalAddress);
+        sinkApp.Add(sinkHelper.Install(switches.Get(9)));
+        sinkApp.Start (Seconds (0.0));
+        sinkApp.Stop (Seconds (10.0));
+
+        OnOffHelper clientHelper ("ns3::TcpSocketFactory", Address ());
+        clientHelper.SetAttribute ("OnTime", StringValue ("ns3::ConstantRandomVariable[Constant=1]"));
+        clientHelper.SetAttribute ("OffTime", StringValue ("ns3::ConstantRandomVariable[Constant=0]"));
+
+        ApplicationContainer clientApps;
+        AddressValue remoteAddress(InetSocketAddress (switchAddrMap[9], nport));
+        clientHelper.SetAttribute("Remote",remoteAddress);
+        clientApps.Add(clientHelper.Install(switches.Get(69)));
+
+        clientApps.Start(Seconds(1.0));
+        clientApps.Stop (Seconds (10.0));
+   
+ 
 }
 
 void 
@@ -79,6 +114,20 @@ TopoHelper::buildLink (int src, int dst, double delay, NodeContainer switches)
       NetDeviceContainer p2pD = csmaH.Install(nc); 
       _switchPorts[src].Add(p2pD.Get(0));
       _switchPorts[dst].Add(p2pD.Get(1));
+
+      Ipv4InterfaceContainer isrcidst;
+      if(switchAddrMap.find(src) == switchAddrMap.end() || 
+        switchAddrMap.find(dst) == switchAddrMap.end()){
+        ipv4.SetBase ((Ipv4Address)(IpAddressConstructor().c_str()), "255.255.255.0");
+        isrcidst = ipv4.Assign (p2pD);
+        if(switchAddrMap.find(src) == switchAddrMap.end())
+          switchAddrMap[src] = isrcidst.GetAddress(0);
+        if(switchAddrMap.find(dst) == switchAddrMap.end() )
+          switchAddrMap[dst] = isrcidst.GetAddress(1);
+        cout<<"src addr: "<<src<<","<<isrcidst.GetAddress(0)<<endl;
+        cout<<"dst addr: "<<dst<<","<<isrcidst.GetAddress(1)<<endl;
+      }
+ 
       updatePortMap(src, dst);
 }
 

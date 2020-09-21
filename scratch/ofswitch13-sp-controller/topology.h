@@ -9,6 +9,13 @@
 #include <iostream>
 #include "basic.h"
 #include "satpos.h"
+#include <map>
+
+#include "ns3/ipv4-global-routing-helper.h"
+
+
+#include "ns3/netanim-module.h"
+
 
 #include "sp-controller.h"
 
@@ -29,6 +36,7 @@ public:
     void dpidAdjConstruct(NodeContainer switches);
     void dpidPortMapConstruct(NodeContainer switches);
     void updatetopo(Ptr<SPController> ctrl, Ptr<SPController> spctrl, vector<PolarSatPosition> satPositions, NodeContainer switches, int _nPlane, int _nIndex);
+    string IpAddressConstructor();
 private:
     uint16_t _nSat;
 	double _latborder;
@@ -39,5 +47,8 @@ private:
     int** _devPortMap;
     double** _indexAdj;
     double** _dpidAdj;
+    int IpBias;
+    map<int, Ipv4Address> switchAddrMap;
+    Ipv4AddressHelper ipv4; 
 
 };

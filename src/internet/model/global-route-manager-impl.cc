@@ -609,6 +609,7 @@ GlobalRouteManagerImpl::DeleteGlobalRoutes ()
 // add them to the Link State DataBase (LSDB) from which the routes will 
 // ultimately be computed.
 //
+#include <iostream>
 void
 GlobalRouteManagerImpl::BuildGlobalRoutingDatabase () 
 {
@@ -617,6 +618,7 @@ GlobalRouteManagerImpl::BuildGlobalRoutingDatabase ()
 // Walk the list of nodes looking for the GlobalRouter Interface.  Nodes with
 // global router interfaces are, not too surprisingly, our routers.
 //
+  //std::cout<<"NodeList::GetNNodes()"<<NodeList::GetNNodes()<<std::endl;
   NodeList::Iterator listEnd = NodeList::End ();
   for (NodeList::Iterator i = NodeList::Begin (); i != listEnd; i++)
     {
@@ -724,6 +726,7 @@ GlobalRouteManagerImpl::InitializeRoutes ()
 //
       if (rtr && rtr->GetNumLSAs () )
         {
+        //std::cout<<"SPFCalculate (rtr->GetRouterId ());"<<std::endl;
           SPFCalculate (rtr->GetRouterId ());
         }
     }

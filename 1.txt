@@ -1,7 +1,15 @@
 Waf: Entering directory `/root/long/ns-3.29/build'
+[1802/1885] Compiling src/ofswitch13/model/ofswitch13-controller.cc
+[1839/1885] Linking build/lib/libns3.29-ofswitch13-debug.so
+[1881/1885] Linking build/scratch/layered-manage-test/layered-manage-test
+[1882/1885] Linking build/scratch/ofswitch13-sp-controller/ofswitch13-sp-controller
+[1883/1885] Linking build/scratch/simple-global-routing
+[1884/1885] Linking build/utils/ns3.29-test-runner-debug
+[1885/1885] Linking build/utils/ns3.29-print-introspected-doxygen-debug
 Waf: Leaving directory `/root/long/ns-3.29/build'
 Build commands will be stored in build/compile_commands.json
-'build' finished successfully (2.468s)
+'build' finished successfully (5.068s)
+m_channelType:0
 eeeeeeeeeeeeeeee:0
 eeeeeeeeeeeeeeee:0
 fffffffffffffff:0
@@ -9,21 +17,1035 @@ eeeeeeeeeeeeeeee:0
 eeeeeeeeeeeeeeee:0
 fffffffffffffff:0
 etime=20
+Controller starts applications: 6653
+Controller starts applications: 6653
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+Controller accepted connection request!
+send hello
+Controller accepted connection request!
+send hello
+Controller accepted connection request!
+send hello
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 0
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+Controller accepted connection request!
+send hello
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+Controller accepted connection request!
+send hello
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+Controller accepted connection request!
+send hello
+Controller accepted connection request!
+send hello
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 0
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 0
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 0
+Controller accepted connection request!
+send hello
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+Controller accepted connection request!
+send hello
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 0
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+Controller accepted connection request!
+send hello
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+Controller accepted connection request!
+send hello
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 0
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+Controller accepted connection request!
+send hello
+Controller accepted connection request!
+send hello
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 0
+Controller accepted connection request!
+send hello
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 0
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+Controller accepted connection request!
+send hello
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+Controller accepted connection request!
+send hello
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 0
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+Controller accepted connection request!
+send hello
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 0
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+Controller accepted connection request!
+send hello
+Controller accepted connection request!
+send hello
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
+Controller accepted connection request!
+send hello
+OFSwitch13Controller::HandleSwitchMsg: 0
+OFSwitch13Controller::HandleSwitchMsg: 6
+OFSwitch13Controller::HandleSwitchMsg: 21
+OFSwitch13Controller::HandleSwitchMsg: 1
+OFSwitch13Controller::HandleSwitchMsg: 1
 Update topology invoked at 1
+OFSwitch13Controller::HandleSwitchMsg: 10
 0
 Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+OFSwitch13Controller::HandleSwitchMsg: 10
 Controller no.=0 received packetIn!!!!!!!!!!!!!
 The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
 Flag= 0 !!!!!!!!!!!!!
-Controller: total qdelay: 0.4 ms,reqcnt=1, avg. qdelay=0.4 ms
+Controller: total qdelay: 0.37 ms,reqcnt=1, avg. qdelay=0.37 ms
 Controller: total pdelay: 65 ms,reqcnt=1, avg. pdelay=65 ms
 The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
 Flag= 1111 !!!!!!!!!!!!!
-Supercontroller: total qdelay: 1.1 ms,reqcnt=1, avg. qdelay=1.1 ms
+Supercontroller: total qdelay: 1 ms,reqcnt=1, avg. qdelay=1 ms
 Supercontroller: total pdelay: 52 ms,reqcnt=1, avg. pdelay=52 ms
-0x55b2b30f3d60
+OFSwitch13Controller::HandleSwitchMsg: 10
+0x55938902dce0
 udpsrc:49153,2
 Super-controller no.=0 received packetIn!!!!!!!!!!!!!
+OFSwitch13Controller::HandleSwitchMsg: 10
 Controller no.=0 received packetIn!!!!!!!!!!!!!
 The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
 Flag= 0 !!!!!!!!!!!!!
@@ -38,32 +1060,62 @@ Flag= 1111 !!!!!!!!!!!!!
 Supercontroller: total qdelay: 2.4 ms,reqcnt=2, avg. qdelay=1.2 ms
 Supercontroller: total pdelay: 1e+02 ms,reqcnt=2, avg. pdelay=52 ms
 Update topology invoked at 2
-0x55b2b30860a0
-udpsrc:49153,2
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 10
 Controller no.=0 received packetIn!!!!!!!!!!!!!
+OFSwitch13Controller::HandleSwitchMsg: 10
+0x559388ed5ca0
+udpsrc:49153,2
 The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
 Flag= 0 !!!!!!!!!!!!!
 Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
 Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
 Inserting domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4, domain=0
 Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=0
-Controller: total qdelay: 2.3 ms,reqcnt=3, avg. qdelay=0.75 ms
+Controller: total qdelay: 2.7 ms,reqcnt=3, avg. qdelay=0.89 ms
 Controller: total pdelay: 1.8e+02 ms,reqcnt=3, avg. pdelay=60 ms
 Update topology invoked at 3
-0x55b2b310c4c0
-udpsrc:49153,2
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 10
 Controller no.=0 received packetIn!!!!!!!!!!!!!
+OFSwitch13Controller::HandleSwitchMsg: 10
+0x55938908db40
+udpsrc:49153,2
 The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
 Flag= 0 !!!!!!!!!!!!!
 Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
 Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
 Inserting domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4, domain=0
 Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=0
-Controller: total qdelay: 3.5 ms,reqcnt=4, avg. qdelay=0.88 ms
+Controller: total qdelay: 4.6 ms,reqcnt=4, avg. qdelay=1.1 ms
 Controller: total pdelay: 2.3e+02 ms,reqcnt=4, avg. pdelay=59 ms
 Update topology invoked at 4
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 10
 Controller no.=0 received packetIn!!!!!!!!!!!!!
-0x55b2b30a2430
+OFSwitch13Controller::HandleSwitchMsg: 10
+0x559389093490
 udpsrc:49153,2
 The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
 Flag= 0 !!!!!!!!!!!!!
@@ -71,11 +1123,21 @@ Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, doma
 Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
 Inserting domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4, domain=0
 Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=0
-Controller: total qdelay: 5.4 ms,reqcnt=5, avg. qdelay=1.1 ms
+Controller: total qdelay: 6.5 ms,reqcnt=5, avg. qdelay=1.3 ms
 Controller: total pdelay: 2.7e+02 ms,reqcnt=5, avg. pdelay=55 ms
 Update topology invoked at 5
-0x55b2b3131850
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 10
+0x5593890878e0
 udpsrc:49153,2
+OFSwitch13Controller::HandleSwitchMsg: 10
 Controller no.=0 received packetIn!!!!!!!!!!!!!
 The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
 Flag= 0 !!!!!!!!!!!!!
@@ -83,35 +1145,65 @@ Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, doma
 Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
 Inserting domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4, domain=0
 Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=0
-Controller: total qdelay: 6.7 ms,reqcnt=6, avg. qdelay=1.1 ms
+Controller: total qdelay: 7.8 ms,reqcnt=6, avg. qdelay=1.3 ms
 Controller: total pdelay: 3.4e+02 ms,reqcnt=6, avg. pdelay=56 ms
 Update topology invoked at 6
-0x55b2b30f2be0
-udpsrc:49153,2
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 10
 Controller no.=0 received packetIn!!!!!!!!!!!!!
+OFSwitch13Controller::HandleSwitchMsg: 10
+0x559388fd32c0
+udpsrc:49153,2
 The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
 Flag= 0 !!!!!!!!!!!!!
 Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
 Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
 Inserting domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4, domain=0
 Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=0
-Controller: total qdelay: 8 ms,reqcnt=7, avg. qdelay=1.1 ms
+Controller: total qdelay: 9.4 ms,reqcnt=7, avg. qdelay=1.3 ms
 Controller: total pdelay: 3.9e+02 ms,reqcnt=7, avg. pdelay=55 ms
 Update topology invoked at 7
-0x55b2b3023010
-udpsrc:49153,2
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 10
 Controller no.=0 received packetIn!!!!!!!!!!!!!
+OFSwitch13Controller::HandleSwitchMsg: 10
+0x55938900e6a0
+udpsrc:49153,2
 The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
 Flag= 0 !!!!!!!!!!!!!
 Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
 Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
 Inserting domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4, domain=0
 Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=0
-Controller: total qdelay: 9.3 ms,reqcnt=8, avg. qdelay=1.2 ms
+Controller: total qdelay: 11 ms,reqcnt=8, avg. qdelay=1.4 ms
 Controller: total pdelay: 4.4e+02 ms,reqcnt=8, avg. pdelay=55 ms
 Update topology invoked at 8
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 10
 Controller no.=0 received packetIn!!!!!!!!!!!!!
-0x55b2b311a4f0
+OFSwitch13Controller::HandleSwitchMsg: 10
+0x559388fafe40
 udpsrc:49153,2
 The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
 Flag= 0 !!!!!!!!!!!!!
@@ -119,11 +1211,21 @@ Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, doma
 Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
 Inserting domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4, domain=0
 Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=0
-Controller: total qdelay: 11 ms,reqcnt=9, avg. qdelay=1.2 ms
+Controller: total qdelay: 13 ms,reqcnt=9, avg. qdelay=1.5 ms
 Controller: total pdelay: 4.8e+02 ms,reqcnt=9, avg. pdelay=53 ms
 Update topology invoked at 9
-0x55b2b306c320
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 10
+0x559388f317a0
 udpsrc:49153,2
+OFSwitch13Controller::HandleSwitchMsg: 10
 Controller no.=0 received packetIn!!!!!!!!!!!!!
 The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
 Flag= 0 !!!!!!!!!!!!!
@@ -131,35 +1233,65 @@ Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, doma
 Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
 Inserting domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4, domain=0
 Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=0
-Controller: total qdelay: 12 ms,reqcnt=10, avg. qdelay=1.2 ms
+Controller: total qdelay: 15 ms,reqcnt=10, avg. qdelay=1.5 ms
 Controller: total pdelay: 5.5e+02 ms,reqcnt=10, avg. pdelay=55 ms
 Update topology invoked at 10
-0x55b2b31050e0
-udpsrc:49153,2
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 10
 Controller no.=0 received packetIn!!!!!!!!!!!!!
+OFSwitch13Controller::HandleSwitchMsg: 10
+0x559388fe7070
+udpsrc:49153,2
 The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
 Flag= 0 !!!!!!!!!!!!!
 Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
 Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
 Inserting domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4, domain=0
 Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=0
-Controller: total qdelay: 14 ms,reqcnt=11, avg. qdelay=1.2 ms
+Controller: total qdelay: 16 ms,reqcnt=11, avg. qdelay=1.5 ms
 Controller: total pdelay: 5.9e+02 ms,reqcnt=11, avg. pdelay=54 ms
 Update topology invoked at 11
-0x55b2b3010da0
-udpsrc:49153,2
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 10
 Controller no.=0 received packetIn!!!!!!!!!!!!!
+OFSwitch13Controller::HandleSwitchMsg: 10
+0x55938902cdc0
+udpsrc:49153,2
 The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
 Flag= 0 !!!!!!!!!!!!!
 Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
 Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
 Inserting domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4, domain=0
 Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=0
-Controller: total qdelay: 15 ms,reqcnt=12, avg. qdelay=1.3 ms
+Controller: total qdelay: 18 ms,reqcnt=12, avg. qdelay=1.5 ms
 Controller: total pdelay: 6.5e+02 ms,reqcnt=12, avg. pdelay=54 ms
 Update topology invoked at 12
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 10
 Controller no.=0 received packetIn!!!!!!!!!!!!!
-0x55b2b3014930
+OFSwitch13Controller::HandleSwitchMsg: 10
+0x5593880f2de0
 udpsrc:49153,2
 The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
 Flag= 0 !!!!!!!!!!!!!
@@ -167,11 +1299,21 @@ Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, doma
 Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
 Inserting domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4, domain=0
 Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=0
-Controller: total qdelay: 17 ms,reqcnt=13, avg. qdelay=1.3 ms
+Controller: total qdelay: 20 ms,reqcnt=13, avg. qdelay=1.5 ms
 Controller: total pdelay: 6.9e+02 ms,reqcnt=13, avg. pdelay=53 ms
 Update topology invoked at 13
-0x55b2b30fdb20
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 10
+0x559388fa4b00
 udpsrc:49153,2
+OFSwitch13Controller::HandleSwitchMsg: 10
 Controller no.=0 received packetIn!!!!!!!!!!!!!
 The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
 Flag= 0 !!!!!!!!!!!!!
@@ -179,35 +1321,65 @@ Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, doma
 Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
 Inserting domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4, domain=0
 Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=0
-Controller: total qdelay: 18 ms,reqcnt=14, avg. qdelay=1.3 ms
+Controller: total qdelay: 21 ms,reqcnt=14, avg. qdelay=1.5 ms
 Controller: total pdelay: 7.5e+02 ms,reqcnt=14, avg. pdelay=54 ms
 Update topology invoked at 14
-0x55b2b3110580
-udpsrc:49153,2
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 10
 Controller no.=0 received packetIn!!!!!!!!!!!!!
+OFSwitch13Controller::HandleSwitchMsg: 10
+0x5593890916f0
+udpsrc:49153,2
 The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
 Flag= 0 !!!!!!!!!!!!!
 Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
 Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
 Inserting domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4, domain=0
 Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=0
-Controller: total qdelay: 20 ms,reqcnt=15, avg. qdelay=1.3 ms
+Controller: total qdelay: 23 ms,reqcnt=15, avg. qdelay=1.5 ms
 Controller: total pdelay: 8e+02 ms,reqcnt=15, avg. pdelay=53 ms
 Update topology invoked at 15
-0x55b2b311e2f0
-udpsrc:49153,2
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 10
 Controller no.=0 received packetIn!!!!!!!!!!!!!
+OFSwitch13Controller::HandleSwitchMsg: 10
+0x559388faca80
+udpsrc:49153,2
 The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
 Flag= 0 !!!!!!!!!!!!!
 Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
 Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
 Inserting domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4, domain=0
 Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=0
-Controller: total qdelay: 21 ms,reqcnt=16, avg. qdelay=1.3 ms
+Controller: total qdelay: 25 ms,reqcnt=16, avg. qdelay=1.6 ms
 Controller: total pdelay: 8.6e+02 ms,reqcnt=16, avg. pdelay=54 ms
 Update topology invoked at 16
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 10
 Controller no.=0 received packetIn!!!!!!!!!!!!!
-0x55b2b3114480
+OFSwitch13Controller::HandleSwitchMsg: 10
+0x559388e23380
 udpsrc:49153,2
 The switch with dpid= 12 received packetIn!!!!!!!!!!!!!
 Flag= 0 !!!!!!!!!!!!!
@@ -215,11 +1387,21 @@ Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, doma
 Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
 Inserting domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4, domain=0
 Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=0
-Controller: total qdelay: 23 ms,reqcnt=17, avg. qdelay=1.3 ms
+Controller: total qdelay: 27 ms,reqcnt=17, avg. qdelay=1.6 ms
 Controller: total pdelay: 8.9e+02 ms,reqcnt=17, avg. pdelay=53 ms
 Update topology invoked at 17
-0x55b2b3057c80
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 10
+0x559389010090
 udpsrc:49153,2
+OFSwitch13Controller::HandleSwitchMsg: 10
 Controller no.=0 received packetIn!!!!!!!!!!!!!
 The switch with dpid= 1 received packetIn!!!!!!!!!!!!!
 Flag= 0 !!!!!!!!!!!!!
@@ -227,29 +1409,49 @@ Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, doma
 Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
 Inserting domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4, domain=0
 Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=0
-Controller: total qdelay: 24 ms,reqcnt=18, avg. qdelay=1.3 ms
+Controller: total qdelay: 28 ms,reqcnt=18, avg. qdelay=1.6 ms
 Controller: total pdelay: 9.6e+02 ms,reqcnt=18, avg. pdelay=53 ms
 Update topology invoked at 18
-0x55b2b2f8f330
-udpsrc:49153,2
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 10
 Controller no.=0 received packetIn!!!!!!!!!!!!!
+OFSwitch13Controller::HandleSwitchMsg: 10
+0x55938902d460
+udpsrc:49153,2
 The switch with dpid= 2 received packetIn!!!!!!!!!!!!!
 Flag= 0 !!!!!!!!!!!!!
 Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
 Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
 Inserting domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4, domain=0
 Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=0
-Controller: total qdelay: 25 ms,reqcnt=19, avg. qdelay=1.3 ms
+Controller: total qdelay: 30 ms,reqcnt=19, avg. qdelay=1.6 ms
 Controller: total pdelay: 1e+03 ms,reqcnt=19, avg. pdelay=53 ms
 Update topology invoked at 19
-0x55b2b3013f40
-udpsrc:49153,2
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 11
+OFSwitch13Controller::HandleSwitchMsg: 10
 Controller no.=0 received packetIn!!!!!!!!!!!!!
+OFSwitch13Controller::HandleSwitchMsg: 10
+0x559389085840
+udpsrc:49153,2
 The switch with dpid= 11 received packetIn!!!!!!!!!!!!!
 Flag= 0 !!!!!!!!!!!!!
 Inserting domain flowtable of dpid = 1, the port to 00:00:00:00:00:18 is 2, domain=0
 Inserting domain flowtable of dpid = 2, the port to 00:00:00:00:00:18 is 4, domain=0
 Inserting domain flowtable of dpid = 11, the port to 00:00:00:00:00:18 is 4, domain=0
 Inserting domain flowtable of dpid = 12, The port to 00:00:00:00:00:18 is 1, domain=0
-Controller: total qdelay: 27 ms,reqcnt=20, avg. qdelay=1.3 ms
+Controller: total qdelay: 32 ms,reqcnt=20, avg. qdelay=1.6 ms
 Controller: total pdelay: 1.1e+03 ms,reqcnt=20, avg. pdelay=53 ms

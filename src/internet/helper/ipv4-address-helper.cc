@@ -28,6 +28,7 @@
 #include "ns3/traffic-control-helper.h"
 #include "ns3/traffic-control-layer.h"
 #include "ipv4-address-helper.h"
+#include <iostream>
 
 namespace ns3 {
 
@@ -74,6 +75,7 @@ Ipv4AddressHelper::SetBase (
 //
 // Some quick reasonableness testing.
 //
+  //std::cout<<"m_network: "<<m_network<<std::endl;
   NS_ASSERT_MSG ((m_network & ~m_mask) == 0,
                  "Ipv4AddressHelper::SetBase(): Inconsistent network and mask");
 

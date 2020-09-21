@@ -39,9 +39,13 @@
 #include <ns3/udp-client-server-helper.h>
 #include <ns3/applications-module.h>
 
+#include "ns3/ipv4-global-routing-helper.h"
+
+
 #include "ns3/netanim-module.h"
 #include "ns3/flow-monitor-helper.h"
 #include "ns3/ipv4-flow-classifier.h"
+#include "sp-ofswitch13-internal-helper.h"
 
 #include <vector>
 #include <map>
@@ -264,8 +268,10 @@ main (int argc, char *argv[])
       LogComponentEnable ("OFSwitch13LearningController", LOG_LEVEL_ALL);
       LogComponentEnable ("OFSwitch13Helper", LOG_LEVEL_ALL);
       LogComponentEnable ("OFSwitch13InternalHelper", LOG_LEVEL_ALL);
+      
     }
 
+      LogComponentEnable ("PacketSink", LOG_LEVEL_INFO);
   // Enable checksum computations (required by OFSwitch13 module)
   GlobalValue::Bind ("ChecksumEnabled", BooleanValue (true));
 
@@ -293,6 +299,7 @@ main (int argc, char *argv[])
   }
   InternetStackHelper internet;
   internet.Install (hosts);
+  internet.Install (switches);
 
  
   //Step7: create datapath links  
@@ -313,14 +320,33 @@ main (int argc, char *argv[])
   Ptr<SPController> spctrl = CreateObject<SPController>();
 
 
-  Ptr<OFSwitch13InternalHelper> of13Helper = CreateObject<OFSwitch13InternalHelper> ();
-  of13Helper->InstallController (controllerNode, ctrl);
-  of13Helper->InstallController (superControllerNode, spctrl);
-  ctrl->IsSC(false);   spctrl->IsSC(true); 
+   // Set IPv4 server addresses
+  Ipv4AddressHelper ipv4helpr;
+  ipv4helpr.SetBase ("10.1.1.0", "255.255.255.0");
+  serverIpIfaces = ipv4helpr.Assign (serverPorts);
+ 
+ 
+ 
+
+/*
+ 
+
+
+  Ptr<SPOFSwitch13InternalHelper> spof13Helper = CreateObject<SPOFSwitch13InternalHelper> ();
+  //spof13Helper->InstallController (controllerNode, ctrl);
+  //spof13Helper->InstallController (superControllerNode, spctrl);
+  spof13Helper->InstallController (switches.Get(1), ctrl);
+  //spof13Helper->InstallController (switches.Get(2), spctrl);
   for(int i=0; i<_nSat; i++){
-      of13Helper->InstallSwitch (switches.Get (i), switchPorts [i]);
+      spof13Helper->InstallSwitch (switches.Get (i), switchPorts [i]);
   }
-  of13Helper->CreateOpenFlowChannels ();
+  //spof13Helper->SetChannelType(SPOFSwitch13InternalHelper::DEDICATEDCSMA);
+  //spof13Helper->CreateOpenFlowChannels ();
+  vector<int> ctIdv = {1};
+  spof13Helper->CreateOpenFlowChannelsV2 (ctIdv); 
+  
+
+  ctrl->IsSC(false);   spctrl->IsSC(true); 
 
   topohelper.dpidInfoConstruct(switches);
   topohelper.dpidAdjConstruct(switches);
@@ -339,11 +365,9 @@ main (int argc, char *argv[])
 
 //-----
 
-  // Set IPv4 server addresses
-  Ipv4AddressHelper ipv4helpr;
-  ipv4helpr.SetBase ("10.1.1.0", "255.255.255.0");
-  serverIpIfaces = ipv4helpr.Assign (serverPorts);
  
+ 
+  
   ctrl->ImportNodes(switches);
   ctrl->ImportServers(hosts);
 
@@ -366,16 +390,18 @@ main (int argc, char *argv[])
   //Step10: Configure the OpenFlow network domain
   //dis(1, 2, ctrl, spctrl, simBegin, simEnd);
   ld(1,2,ctrl, spctrl, simBegin, simEnd);
-
+*/
   // Install UDP server on all nodes
-  trafficgen(0, 11, 4010, simBegin, simEnd, serverIpIfaces, hosts);
+  //trafficgen(0, 11, 4010, simBegin, simEnd, serverIpIfaces, hosts);
   //trafficgen(0, 11, 2000, simBegin, simEnd);
   //trafficgen(0, 11, 3000, simBegin, simEnd);
 
   FlowMonitorHelper flowmon;
-  Ptr<FlowMonitor> monitor = flowmon.Install (hosts); 
+  //Ptr<FlowMonitor> monitor = flowmon.Install (hosts); 
 
-  Simulator::Schedule (MilliSeconds (1000), &TopoHelper::updatetopo, &topohelper, ctrl, spctrl, satPositions, switches, _nPlane, _nIndex);
+  Ptr<FlowMonitor> monitor = flowmon.Install(switches); 
+
+  //Simulator::Schedule (MilliSeconds (1000), &TopoHelper::updatetopo, &topohelper, ctrl, spctrl, satPositions, switches, _nPlane, _nIndex);
   // Run the simulation 
   Simulator::Stop (Seconds (simTime)); 
   Simulator::Run ();
