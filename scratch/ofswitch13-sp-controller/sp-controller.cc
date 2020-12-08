@@ -143,10 +143,13 @@ SPController::IsSC(bool issc){
   
 void 
 SPController::HandlePacketInHelper(queue<pktInCtx_t>* qe){
-  
   if(!qe->empty()){
     //cout<<"dddddddddddddddd:"<<qe->size()<<endl;
     pktInCtx_t ctx = qe->front();
+    if (ctx.msg == nullptr) {
+      delete qe;
+      return;
+    }
     qe->pop();
     struct ofl_msg_packet_in *msg;
     Ptr<const RemoteSwitch> swtch;
@@ -243,26 +246,99 @@ SPController::HandlePacketInHelper(queue<pktInCtx_t>* qe){
     }
   struct timeval t_end;
 
-  gettimeofday(&t_end, NULL); 
+  gettimeofday(&t_end, NULL);
+  if (t_end.tv_usec < t_start.tv_usec)
+    t_end.tv_usec += 1000000;
   qdelay += t_end.tv_usec - t_start.tv_usec;
   pdelay += path_latency;
   reqcnt++;
- 
+
+  cout << "printQueue length!!!!!!!!!!!!!" << endl;
+  for (auto it = ctrlq.begin(); it != ctrlq.end(); ++it) {
+    cout << it->second->size() << " ";
+  }
+  for (auto it = sctrlq.begin(); it != sctrlq.end(); ++it) {
+    cout << it->second->size() << " ";
+  }
+  cout << endl;
   
+  // cout << "end time " << t_end.tv_usec << " start " << t_start.tv_usec << "  " << qdelay <<  "!!!!!!!!!!!!!!!!!" << endl;
+  cout << "this queue delay: " << t_end.tv_usec - t_start.tv_usec << ",this pdelay: " << path_latency << ", total: " << 2*path_latency + (t_end.tv_usec - t_start.tv_usec)/1000 << endl;
+
   if(m_issc){
-    cout<<"Supercontroller: total qdelay: "<<setprecision(2)<<(double) qdelay / 1000<<" ms,reqcnt="<<reqcnt<<", avg. qdelay="<<(double) qdelay /(1000 *reqcnt)<<" ms"<<endl;
+    cout<<"Supercontroller: total qdelay: "<<(double) qdelay / 1000<<" ms,reqcnt="<<reqcnt<<", avg. qdelay="<<(double) qdelay /(1000 *reqcnt)<<" ms"<<endl;
     cout<<"Supercontroller: total pdelay: "<<pdelay <<" ms,reqcnt="<<reqcnt<<", avg. pdelay="<<pdelay / reqcnt<<" ms"<<endl;
   }
   else{
-    cout<<"Controller: total qdelay: "<<setprecision(2)<<(double) qdelay / 1000<<" ms,reqcnt="<<reqcnt<<", avg. qdelay="<<(double) qdelay /(1000 *reqcnt)<<" ms"<<endl;
-    cout<<"Controller: total pdelay: "<<pdelay <<" ms,reqcnt="<<reqcnt<<", avg. pdelay="<<pdelay / reqcnt<<" ms"<<endl;
+    cout<<"Controller: total qdelay: "<<(double) qdelay / 1000<<" ms,reqcnt="<<reqcnt<<", avg. qdelay="<<(double) qdelay /(1000 *reqcnt)<<" ms"<<endl;
+     cout<<"Controller: total pdelay: "<<pdelay <<" ms,reqcnt="<<reqcnt<<", avg. pdelay="<<pdelay / reqcnt<<" ms"<<endl;
   }
     // All handlers must free the message when everything is ok
        ofl_msg_free ((struct ofl_msg_header*)msg, 0);
   }
-  Simulator::Schedule (MilliSeconds (1), &SPController::HandlePacketInHelper, this, qe);
+  Simulator::Schedule (MilliSeconds (10), &SPController::HandlePacketInHelper, this, qe);
   //return 0;
 } 
+
+
+void 
+SPController::ImportArrDomainConfig(int cnum, int scnum, map<int, int> s2c, map<int, int> c2sc, int time, bool end) {
+  m_scnum_arr[time] = scnum;
+  m_cnum_arr[time] = cnum;
+  m_s2c_arr[time] = s2c;
+  m_c2sc_arr[time] = c2sc;
+  if (end) {
+    Simulator::Schedule(Seconds(0), &SPController::updateArr, this, 0);
+    // Simulator::Schedule(Seconds(1), &SPController::printQueue, this, 0);
+  }
+}
+
+// void
+// SPController::printQueue(int time) {
+//   cout << "printQueue length!!!!!!!!!!!!!" << endl;
+//   for (auto it = ctrlq.begin(); it != ctrlq.end(); ++it) {
+//     cout << it->second->size() << " ";
+//   }
+//   for (auto it = sctrlq.begin(); it != sctrlq.end(); ++it) {
+//     cout << it->second->size() << " ";
+//   }
+//   cout << endl;
+//   Simulator::Schedule(MilliSeconds (50), &SPController::printQueue, this, 0);
+// }
+
+void
+SPController::updateArr(int time) {
+  m_scnum = m_scnum_arr[time];
+  m_cnum = m_cnum_arr[time];
+  m_s2c = m_s2c_arr[time];
+  m_c2sc = m_c2sc_arr[time];
+
+   for(int i = 0; i < m_cnum; i++){
+    queue<pktInCtx_t>* cq = new queue<pktInCtx_t>;
+    if (ctrlq.find(i) != ctrlq.end()) {
+      pktInCtx_t p;
+      p.msg = nullptr;
+      ctrlq[i]->push(p);
+    }
+    ctrlq[i] = cq;
+    cout<<"eeeeeeeeeeeeeeee:"<<cq->size()<<endl;
+    Simulator::Schedule (MilliSeconds (1), &SPController::HandlePacketInHelper, this, cq);
+  }
+
+  for(int i = 0; i < m_scnum; i++){
+    queue<pktInCtx_t>* scq = new queue<pktInCtx_t>;
+    if (sctrlq.find(i) != sctrlq.end()) {
+      pktInCtx_t p;
+      p.msg = nullptr;
+      sctrlq[i]->push(p);
+    }
+    sctrlq[i] = scq;
+    cout<<"fffffffffffffff:"<<scq->size()<<endl;
+    Simulator::Schedule (MilliSeconds (1), &SPController::HandlePacketInHelper, this, scq);
+  }
+
+  Simulator::Schedule(Seconds(1), &SPController::updateArr, this, time + 1);
+}
 
  
 void 
@@ -284,6 +360,8 @@ SPController::ImportDomainConfig(int cnum, int scnum, map<int,int>s2c, map<int,i
     cout<<"fffffffffffffff:"<<scq->size()<<endl;
     Simulator::Schedule (MilliSeconds (1), &SPController::HandlePacketInHelper, this, scq);
   }
+  //Simulator::Schedule(MilliSeconds (5), &SPController::printQueue, this, 0);
+
 }
  
 
@@ -291,14 +369,21 @@ void
 SPController::ImportCLocation(int time, int cseq, uint64_t dpid)
 {
     //c_loc[cseq] = dpid;
+    // if (time == 1 && cseq == 2)
+    //   cout << "!!!!!!!!!!" << dpid;
+    cout << time << " " << cseq << " " << dpid << endl;
     t_cloc[time][cseq] = dpid;
-
+    // if (time == 1 && cseq == 2)
+    //   cout <<  "xxx" << (int)Simulator::Now().GetSeconds();
+    // cout << t_cloc[1][2] << "!!!!!!!!!!";
 }
 
 void 
 SPController::ImportSCLocation(int time, int scseq, uint64_t dpid)
 {
     //sc_loc[scseq] = dpid;
+    // if (time == 1 && scseq == 2)
+    //   cout << "!!!!!!!!!!" << dpid;
     t_scloc[time][scseq] = dpid;
 }
 
@@ -330,6 +415,9 @@ SPController::HandlePacketIn (
   struct ofl_msg_packet_in *msg, Ptr<const RemoteSwitch> swtch,
   uint32_t xid)
 {
+
+  //   cout << "---------------------" << endl;
+  // cout << t_cloc[1][2] << endl;
   struct timeval t_start;
 
   gettimeofday(&t_start, NULL);
@@ -344,10 +432,15 @@ SPController::HandlePacketIn (
   
   int now = (int)Simulator::Now().GetSeconds();
 
+  //cout << "!" << now;
+
+
   if(t_scloc[now].find(m_c2sc[m_s2c[dpId]]) == t_scloc[now].end()) {NS_ABORT_MSG ("SC location not found.");}
-  if(t_cloc[now].find(m_s2c[dpId]) == t_cloc[now].end()) {cout<<"dpId="<<dpId<<",m_s2c[dpId]="<<m_s2c[dpId]<<endl; NS_ABORT_MSG ("SC location not found.");}
+  if(t_cloc[now].find(m_s2c[dpId]) == t_cloc[now].end()) {cout << now  <<" dpId="<<dpId<<",m_s2c[dpId]="<<m_s2c[dpId]<<endl; NS_ABORT_MSG ("SC location not found.");}
   uint64_t sc_dpId = t_scloc[now][m_c2sc[m_s2c[dpId]]];
   uint64_t c_dpId = t_cloc[now][m_s2c[dpId]];
+
+  //cout << "m_s2c[dpid] " << m_s2c[dpId] << " dpid " << dpId << endl;
 
   if(m_issc) {
     if(sctrlq.find(m_c2sc[m_s2c[dpId]]) != sctrlq.end()){
@@ -367,18 +460,7 @@ SPController::HandlePacketIn (
         oxm_match_lookup (OXM_OF_IN_PORT, (struct ofl_match*)msg->match);
       memcpy (&inPort, input->value, portLen);
 
-
-  
-
-      uint16_t udpsrc;
-      size_t srcLen = OXM_LENGTH (OXM_OF_UDP_SRC); 
-      struct ofl_match_tlv *input1 =
-        oxm_match_lookup (OXM_OF_UDP_SRC, (struct ofl_match*)msg->match);
-        cout<<input1<<endl;
-      if(input1!=NULL){
-        memcpy (&udpsrc, input1->value, srcLen);
-        cout<<"udpsrc:"<<udpsrc<<","<<srcLen<<endl;
-      }
+      //cout<<"inpop"<<inPort<<endl;
 
       dpid_t srcDpid = m_macDpidTable[src48];
       //std::cout<<"The src dpid for Mac: "<<src48<<" is "<<srcDpid<<std::endl;
@@ -400,6 +482,7 @@ SPController::HandlePacketIn (
         if(c_dpId == sc_dpId) cost = 0;
         else{
           calPath(c_dpId, sc_dpId, path);
+          // cout << "from " << c_dpId << " " << "to " << sc_dpId << endl;
           for(uint32_t i = 0; i < path.size()-1; i++){
              if(m_dpidAdj[path[i]][path[i+1]] != -1) 
                  cost += m_dpidAdj[path[i]][path[i+1]];
@@ -938,6 +1021,12 @@ SPController::calPath(dpid_t srcDpid, dpid_t dstDpid, vector<dpid_t>& path) {
   } while(cur!= srcDpid);
   path.push_back(srcDpid);
   reverse(path.begin(), path.end());
+
+  // bool ELB = true;
+  // if(ELB == true){
+  //   for(uint32_t i = 0; i < path.size() -1 ; i++)
+  //     m_dpidAdj[path[i]][path[i+1]] += 0.2;
+  // }
   /* 
   cout<<endl;
   for(uint32_t i = 0; i < path.size(); i++)
@@ -1017,9 +1106,7 @@ SPController::insertCrossDomainFlowTable(vector<dpid_t> path, Mac48Address src48
        // cout<<"flow-mod cmd=add,table=0,flags=0x0001"<< ",prio=" << ++prio << " eth_dst=" << dst48<<",ip_proto=17,udp_src="<<100<<",udp_dst="<<100<< " apply:output=" << outPort<<endl;
         cmd << "flow-mod cmd=add,table=0,flags=0x0001"
                     //<< ",prio=" << ++prio << " eth_dst=" << dst48<<",ip_proto=17,udp_src="<<100<<",udp_dst="<<100<< " apply:output=" << outPort;
-                      << ",prio=" << ++prio << " eth_dst=" << dst48
-                      << ",eth_type=0x0800,ip_proto=17,udp_src=" << 49153
-                      <<" apply:output=" << outPort;
+                      << ",prio=" << ++prio << " eth_dst=" << dst48<<" apply:output=" << outPort;
         int stat = DpctlExecute (path[i], cmd.str ());
         if(stat != 0)
           NS_ABORT_MSG("Error accured!!!!!!!!!!!!!!!!!!!!!");    
@@ -1049,9 +1136,7 @@ SPController::insertDomainFlowTable(vector<dpid_t> path, Mac48Address src48, Mac
         //cout<<"flow-mod cmd=add,table=0,flags=0x0001"<< ",prio=" << ++prio << " eth_dst=" << dst48<<",ip_proto=17,udp_src="<<100<<",udp_dst="<<100<< " apply:output=" << outPort<<endl;
         cmd << "flow-mod cmd=add,table=0,flags=0x0001"
                       //<< ",prio=" << ++prio << " eth_dst=" << dst48<<",ip_proto=17,udp_src="<<100<<",udp_dst="<<100<< " apply:output=" << outPort;
-                      << ",prio=" << prio << " eth_dst=" << dst48
-                      << ",eth_type=0x0800,ip_proto=17,udp_src=" << 49153
-                      <<" apply:output=" << outPort;
+                      << ",prio=" << prio << " eth_dst=" << dst48<<" apply:output=" << outPort;
                       
         int stat = DpctlExecute (path[i], cmd.str ());
         if(stat != 0)
@@ -1072,9 +1157,7 @@ SPController::insertDomainFlowTable(vector<dpid_t> path, Mac48Address src48, Mac
      //cout<<"flow-mod cmd=add,table=0,flags=0x0001"<< ",prio=" << ++prio << " eth_dst=" << dst48<<",ip_proto=17,udp_src="<<100<<",udp_dst="<<100<< " apply:output=" << outPort<<endl;
      cmd << "flow-mod cmd=add,table=0,flags=0x0001"
                         //<< ",prio=" << ++prio << " eth_dst=" << dst48<<",ip_proto=17,udp_src="<<100<<",udp_dst="<<100<< " apply:output=" << outPort;
-                        << ",prio=" << ++prio << " eth_dst=" << dst48
-                        << ",eth_type=0x0800,ip_proto=17,udp_src=" << 49153
-                        <<" apply:output=" << outPort;
+                        << ",prio=" << ++prio << " eth_dst=" << dst48<<" apply:output=" << outPort;
       int stat = DpctlExecute (path[path.size()-1], cmd.str ());
       if(stat != 0)
             NS_ABORT_MSG("Error accured!!!!!!!!!!!!!!!!!!!!!");   

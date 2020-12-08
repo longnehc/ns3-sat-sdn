@@ -32,11 +32,16 @@
 #include <algorithm>
 #include <sys/time.h> 
 #include <iomanip>
-#include "basic.h"
 using namespace ns3;
 using namespace std;
 
+typedef uint64_t dpid_t;
 
+typedef struct NodeInfo
+{
+    int plane;
+    int index;
+} nodeInfo_t;
 
 
 
@@ -70,6 +75,8 @@ public:
     struct ofl_msg_packet_in *msg, Ptr<const RemoteSwitch> swtch,
     uint32_t xid);
 
+  void printQueue(int num);
+
   //void ImportOutportMap(map<int,map<int,NetDeviceContainer>> swOutPortMap);
   void ImportNodes(NodeContainer switches);
   void ImportServers(NodeContainer servers);
@@ -92,6 +99,15 @@ public:
   int m_scnum;
   int m_cnum;
   map<int, int> m_s2c;
+
+  map<int, int> m_s2c_arr[1000];
+  map<int, int> m_c2sc_arr[1000];
+  int m_scnum_arr[1000];
+  int m_cnum_arr[1000];
+
+  void ImportArrDomainConfig(int cnum, int scnum, map<int, int> s2c, map<int, int> c2sc, int time, bool end);
+  void updateArr(int time);
+
   map<int, int> m_c2sc;
   map<int, uint64_t> c_loc;
   map<int, uint64_t> sc_loc;
